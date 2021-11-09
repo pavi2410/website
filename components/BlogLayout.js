@@ -7,11 +7,11 @@ export default function BlogLayout({ meta, children }) {
         <title>{meta.title}</title>
         <meta name="description" content={meta.description || meta.title} />
       </Head>
-      <h1 className="text-6xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500">{meta.title}</h1>
-      <div className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+      <h1 className="text-7xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500">{meta.title}</h1>
+      <div className="prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
         {children}
       </div>
-      {meta.tags.map((tag, i) => <div key={i} className="inline p-2">{tag}</div>)}
+      Tags: {meta.tags.map((tag, i) => <div key={i} className="inline p-2">{tag}</div>)}
       <p>Last updated at {formatDate(meta.updatedAt)}</p>
     </div>
   )

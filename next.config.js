@@ -1,8 +1,10 @@
-const withMDX = require('@next/mdx')({
+const withPlugins = require('next-compose-plugins')
+
+const mdx = require('@next/mdx')({
   extension: /\.mdx?$/
 })
 
-module.exports = withMDX({
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
   async redirects() {
@@ -14,4 +16,11 @@ module.exports = withMDX({
       },
     ]
   },
-})
+}
+
+module.exports = withPlugins(
+  [
+    mdx
+  ],
+  nextConfig
+)

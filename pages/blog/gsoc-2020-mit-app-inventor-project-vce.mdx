@@ -128,7 +128,7 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
   - Demo
     ![Working of Cowsay VCE](assets/images/Cowsay_demo.png)
     
-# Im#plementation
+## Implementation
 
 ### Prototype I: Script element-based
 Initially, I had no idea how could I securely load Mocks. But, eventually, I and my mentors decided to leave that part of the project for the later time, and focus on other things. I worked on creating a `MockScriptsManager` (MSM) which is the heart of this project. This class had the responsibility to init and destroy itself when a project loads or is closed, and load, unload, upgrade Mock components. When a VCE is imported, MSM loads its respective `Mock<component name>.js` and injects a script element with Mock code inside it. When the code inside the script element runs, a Mock calls `MockComponentRegistry` (MCR) to register the Mock class factory along with its type name. On component instantiation, the MockComponent is created using the Mock class factory which is retrieved from the MCR. This worked pretty well leaving the security aspect of this approach.
