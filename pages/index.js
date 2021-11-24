@@ -1,84 +1,112 @@
-import { faGithub, faLinkedin, faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Head from 'next/head'
 import Image from 'next/image'
-import Button from '../components/Button'
+import { chakra, Container, Button, SimpleGrid, Center, Box, HStack, VStack, Heading, Text, Badge, Wrap, useColorModeValue } from "@chakra-ui/react"
+
+function MyHead() {
+  return (
+    <Head>
+      <title>{"Pavitra's Metaverse"}</title>
+      <meta name="description" content="Pavitra's Metaverse" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+  )
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Head>
-        <title>{"Pavitra's Metaverse"}</title>
-        <meta name="description" content="Pavitra's Metaverse" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <chakra.div p={4}>
+      <MyHead />
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-16 text-center min-h-screen">
-        <h1 className="text-6xl leading-normal font-bold">
-          Welcome to <a href="#" className="text-blue-500 hover:underline">my Metaverse</a>
-        </h1>
+      <Bg />
 
-        <p className="my-16 text-2xl">
-          Metaverse currently in development.
-        </p>
+      <Container maxW="4xl" textAlign="center">
+        <VStack spacing={16}>
+          <Heading as="h1" size="3xl">
+            Welcome to my <Text as="span" color="blue.500">Metaverse</Text>
+          </Heading>
 
-        <div className="grid grid-cols-2 gap-4">
-          <Button url="/blog">Blog</Button>
-          <Button>About</Button>
-          <Button url="#projects">Projects</Button>
-          <Button>Portfolio</Button>
-        </div>
+          <Text fontSize="2xl">
+            Metaverse currently in development.
+          </Text>
 
-      </main>
+          {/* <Center> */}
+          <SimpleGrid columns={2} spacing={8}>
+            <Button size="lg" url="/blog">Blog</Button>
+            <Button size="lg">About</Button>
+            <Button size="lg" url="#projects">Projects</Button>
+            <Button size="lg">Portfolio</Button>
+          </SimpleGrid>
+          {/* </Center> */}
+        </VStack>
+      </Container>
 
-      <section id="projects" className="grid grid-cols-1 md:grid-cols-2 bg-redd-500 bg-black w-full p-16">
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold text-4xl">My Projects</div>
-        <div className="grid grid-cols-2 gap-8">
-          <ProjectCard icon="/icon-192.png" title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" url="#" />
-          <ProjectCard icon="/icon-192.png" title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" url="#" />
-          <ProjectCard icon="/icon-192.png" title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" url="#" />
-          <ProjectCard icon="/icon-192.png" title="Lorem Ipsum" description="Lorem Ipsum dolor sit amet" url="#" />
-        </div>
-      </section>
+      <Container maxW="4xl">
+        <Heading py={8}>My Projects</Heading>
+        <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+          <ProjectCard icon="/icon-192.png" title="Kodular" description="Lorem Ipsum dolor sit amet" url="#" techStack={['Android', 'Java']} />
+          <ProjectCard icon="/icon-192.png" title="VR Compatibility Checker" description="Lorem Ipsum dolor sit amet" url="#" techStack={['Android', 'Kotlin', 'Compose']} />
+          <ProjectCard icon="/icon-192.png" title="picsup" description="Lorem Ipsum dolor sit amet" url="#" techStack={['FullStack', 'Web', 'Javascript', 'React']} />
+          <ProjectCard icon="/icon-192.png" title="REPLisp" description="Lorem Ipsum dolor sit amet" url="#" techStack={['C', 'LISP', 'Programming Language', 'Interpreter']} />
+        </SimpleGrid>
+      </Container>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 bg-redd-500 bg-black w-full p-16">
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold text-4xl">Connect with me</div>
-        <div className="grid grid-cols-2 gap-16">
-          <SocialButton icon={faTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" />
-          <SocialButton icon={faGithub} title="GitHub" url="https://github.com/pavi2410" />
-          <SocialButton icon={faLinkedin} title="LinkedIn" url="https://linkedin.com/in/pavi2410" />
-          <SocialButton icon={faEnvelope} title="Email" url="mailto://hello@pavi2410.me" />
-        </div>
-      </section>
-    </div>
+      <Container maxW="4xl">
+        <Heading py={8}>Connect with me</Heading>
+        <SimpleGrid columns={{ sm: 1, md: 4 }} spacing={8}>
+          <SocialButton icon={faTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" color="twitter" />
+          <SocialButton icon={faGithub} title="GitHub" url="https://github.com/pavi2410" color="gray" />
+          <SocialButton icon={faLinkedin} title="LinkedIn" url="https://linkedin.com/in/pavi2410" color="linkedin" />
+          <SocialButton icon={faEnvelope} title="Email" url="mailto://hello@pavi2410.me" color="red" />
+        </SimpleGrid>
+      </Container>
+    </chakra.div>
   )
 }
 
-function ProjectCard({ icon, title, description, url }) {
+function Bg() {
   return (
-    <a href={url} target="_blank" rel="noreferrer">
-      <div className="bg-white p-2 rounded flex">
-        <div>
-          <Image src={icon} alt={title} width="128" height="128" />
-        </div>
-        <div>
-          <p>{title}</p>
-          <p>{description}</p>
-        </div>
-      </div>
-    </a>
+    <Box zIndex="-99" position="absolute" width="100%" height="100%">
+      <Box
+        bgGradient={useColorModeValue(
+          'radial(gray.600 1px, transparent 1px)',
+          'radial(gray.300 1px, transparent 1px)'
+        )}
+        backgroundSize="20px 20px"
+        opacity="0.4"
+        height="100%" />
+    </Box>
+  )
+}
+
+function ProjectCard({ icon, title, description, url, techStack }) {
+  return (
+    <HStack maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" bg="white">
+      <chakra.div p={4}>
+        <Image src={icon} alt={title} width="96" height="96" layout="fixed" />
+      </chakra.div>
+      <VStack align="flex-start">
+        <Text fontSize="2xl" fontWeight="bold" lineHeight="1">{title}</Text>
+        <Text>{description}</Text>
+        <Wrap>
+          {techStack.map((tech, i) => (
+            <Badge variant="subtle" colorScheme={['red', 'green', 'blue', 'yellow', 'purple'][i % 5]} key={i}>{tech}</Badge>
+          ))}
+        </Wrap>
+      </VStack>
+    </HStack>
   )
 }
 
 
-function SocialButton({ icon, title, url }) {
+function SocialButton({ icon, title, url, color }) {
   return (
     <a href={url} target="_blank" rel="noreferrer">
-      <div className="bg-white p-2 rounded">
-        <FontAwesomeIcon icon={icon} />
-        {' ' + title}
-      </div>
+      <Button colorScheme={color} leftIcon={<FontAwesomeIcon icon={icon} />}>
+        {title}
+      </Button>
     </a>
   )
 }
