@@ -7,6 +7,7 @@ const mdx = require('@next/mdx')({
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
+  swcMinify: true,
   async redirects() {
     return [
       {
