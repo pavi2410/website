@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Kodular",
+    "icon": "/icon-192.png",
+    "description": "A no-code web-based Android app builder",
+    "url": "#",
+    "techStack": [
+      "Android",
+      "Java",
+      "No Code"
+    ]
+  },
+  {
+    "title": "VR Compatibility Checker",
+    "icon": "/icon-192.png",
+    "description": "An Android app to test your's phone VR compatibility",
+    "url": "#",
+    "techStack": [
+      "Android",
+      "Kotlin",
+      "Compose"
+    ]
+  },
+  {
+    "title": "picsup",
+    "icon": "/icon-192.png",
+    "description": "An image sharing platform",
+    "url": "#",
+    "techStack": [
+      "FullStack",
+      "Web",
+      "Javascript",
+      "React"
+    ]
+  },
+  {
+    "title": "PlayBadges",
+    "icon": "/icon-192.png",
+    "description": "Show off your Play Store™ app's downloads and rating in your repo",
+    "url": "#",
+    "techStack": [
+      "NodeJS",
+      "JavaScript",
+      "Express",
+      "REST"
+    ]
+  },
+  {
+    "title": "REPLisp",
+    "icon": "/icon-192.png",
+    "description": "A LISP interpreter implemented in C",
+    "url": "#",
+    "techStack": [
+      "C",
+      "LISP",
+      "Programming Language",
+      "Interpreter"
+    ]
+  }
+]
