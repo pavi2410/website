@@ -1,33 +1,52 @@
 import fs from 'node:fs'
 
-const posts = [
+import { Container, Heading, List, Badge, Link, ListItem } from '@chakra-ui/react'
+
+const sposts = [
+  {
+    title: 'GSoC 2020 MIT App Inventor Project VCE',
+    slug: 'gsoc-2020-mit-app-inventor-project-vce',
+  },
   {
     title: 'GSoC 2020 MIT App Inventor Project VCE',
     slug: 'gsoc-2020-mit-app-inventor-project-vce',
   }
 ]
 
-export default function Blog({ paths }) {
+export default function Blog({ posts }) {
   return (
-    <div className="p-4 mx-auto antialiased">
-      <h1 className="leading-normal text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500">Blog</h1>
-      {posts.map((post, i) => (
-        <a href={`/blog/${post.slug}`} className="underline text-blue-500 text-lg" key={i}>{post.title}</a>
+    <Container>
+      <Heading as="h1" py={8}>Blog</Heading>
+      <Badge>{sposts.length}</Badge>
+      <List>
+      {sposts.map((post, i) => (
+        <ListItem key={i} borderBottom="1px" py={8}>
+          <BlogPostCard post={post} />
+        </ListItem>
       ))}
-    </div>
+      </List>
+    </Container>
+  )
+}
+
+function BlogPostCard({ post }) {
+  return (
+    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
   )
 }
 
 export async function getStaticProps() {
-  const files = fs.readdirSync('.', 'utf-8')
+  const files = fs.readdirSync('./pages/blog', 'utf-8')
 
   const mdxFiles = files
     .filter(f => f.endsWith('.mdx'))
     .map(f => f.replace('.mdx', ''))
 
+  console.log('Found mdx files:', mdxFiles)
+
   return {
     props: {
-      paths: mdxFiles.map((f, c) => ({
+      posts: mdxFiles.map((f, c) => ({
         slug: f
       }))
     }

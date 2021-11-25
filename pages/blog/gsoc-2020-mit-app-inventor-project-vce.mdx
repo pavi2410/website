@@ -1,4 +1,6 @@
 import BlogLayout from '../../components/BlogLayout'
+import image from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
+import Image from 'next/image'
 
 export const meta = {
   title: 'GSoC 2020 MIT App Inventor Project VCE',
@@ -7,11 +9,14 @@ export const meta = {
   tags: ["GSoC", "MIT", "App Inventor", "Project", "VCE"],
 }
 
-
 [![GSoC Project Page](https://img.shields.io/badge/-GSoC%20Project%20Page-blueviolet)](https://summerofcode.withgoogle.com/projects/#4749864480538624) [![GSoC 2020 Proposal for Visible Component Extensions](https://img.shields.io/badge/-GSoC%202020%20Proposal-orange)](https://docs.google.com/document/d/14FwGfVMQcyDReeWCPSqFbMWSbW6ZsYbl3mRBsPEzBnQ/edit?usp=sharing) [![Design Document](https://img.shields.io/badge/-Design%20Document-red)](https://docs.google.com/document/d/1BV1lGCNtYjP0H0dxUyLcVPnO91ztke-1VAH4EnRdDYc/edit?usp=sharing) [![Documentation](https://img.shields.io/badge/Documentation-WIP-555?labelColor=brightgreen)](https://docs.google.com/document/d/17uMiZ5RuwC3u9J1e2oVUIGNPVHA8Mp2umDka6pXJ244/edit?usp=sharing) [![Community Feedback](https://img.shields.io/badge/-Community%20Feedback-darkblue)](https://community.appinventor.mit.edu/t/gsoc-request-for-feedback-on-design-doc-for-visible-component-extension/9705?u=pavi2410)
 
 ## About the Project
 Extensions in App inventor are currently limited to just non-visible components. Due to this, extensions can't be dragged into the mock form designer. To work around this, extension developers have to get a reference to a visible component as parent under which they create UI views. This, however, defeats the idea of App Inventor, which allows the users to create their UI of their apps using the concept of WYSIWYG.
+
+<Image src={image} alt="Cowsay demo" />
+
+{JSON.stringify(props)}
 
 My proposal to solve this problem is to create a generic `MockVisibleExtension`, a subclass of `MockComponent`, which can be dragged into the designer. The extension will have (almost) all the capabilities of a visible component. Further, this allows the extension to be placed under a container component under which the extension can create its views. Thus, this allows the users to view a clear hierarchy of their app's UI when using "visible" extensions.
 
@@ -88,7 +93,7 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
     MockComponentRegistry.register(MockSimpleLabel.TYPE, MockSimpleLabel)
     ```
   - Demo
-    ![Working of SimpleLabel VCE](assets/images/SimpleLabel_demo.png)
+    ![Working of SimpleLabel VCE](/assets/images/SimpleLabel_demo.png)
     
 - [Cowsay](https://github.com/pavi2410/vce-samples/tree/cowsay) - this extension displays text said by cow; uses script element-based implementation
   - Mock code

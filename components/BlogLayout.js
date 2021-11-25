@@ -1,19 +1,41 @@
 import Head from "next/head"
+import Image from 'next/image'
+import { MDXProvider } from '@mdx-js/react'
+import { Heading, Text, Code, Tag, Container, List, UnorderedList, OrderedList, Wrap } from "@chakra-ui/react"
+import { pickColorSchemeByStringHash } from "./util"
+
+const ResponsiveImage = (props) => (
+  <Image alt={props.alt} layout="responsive" {...props} />
+)
+
+const components = {
+  // img: ResponsiveImage,
+  h1: (props) => <Heading as="h1" size="2xl" fontWeight="900" lineHeight="1.1" py={8} {...props} />,
+  h2: (props) => <Heading as="h2" size="xl" fontWeight="700" lineHeight="1.1" py={4} {...props} />,
+  h3: (props) => <Heading as="h3" fontSize="xl" {...props} />,
+  p: (props) => <Text lineHeight="md" fontSize="xl" {...props} />,
+  // code: Pre,
+  code: (props) => <Code colorScheme="purple" px={2} py={1} {...props} />,
+  li: List,
+  ol: OrderedList,
+  ul: UnorderedList,
+}
 
 export default function BlogLayout({ meta, children }) {
   return (
-    <div className="px-4 py-10 max-w-3xl mx-auto sm:px-6 sm:py-12 lg:max-w-4xl lg:py-16 lg:px-8 xl:max-w-6xl antialiased">
+    <Container maxW="4xl">
       <Head>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description || meta.title} />
       </Head>
-      <h1 className="text-7xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-500">{meta.title}</h1>
-      <div className="prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto">
+      <Heading as="h1" size="2xl" fontWeight="900" lineHeight="1.1" py={8}>{meta.title}</Heading>
+      <MDXProvider components={components}>
         {children}
-      </div>
-      Tags: {meta.tags.map((tag, i) => <div key={i} className="inline p-2">{tag}</div>)}
+      </MDXProvider>
+      Tags: <Wrap>{meta.tags.map((tag, i) => <Tag key={i} colorScheme={pickColorSchemeByStringHash(tag)}>{tag}</Tag>)}</Wrap>
+      <p>Published on {formatDate(meta.createdAt)}</p>
       <p>Last updated at {formatDate(meta.updatedAt)}</p>
-    </div>
+    </Container>
   )
 }
 
