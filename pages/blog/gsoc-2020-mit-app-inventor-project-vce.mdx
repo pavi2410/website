@@ -1,22 +1,20 @@
+
 import BlogLayout from '../../components/BlogLayout'
-import image from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
-import Image from 'next/image'
+import cowsayDemoImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
+import simpleLabelDemoImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/SimpleLabel_demo.png'
+import iframimplSeqdiagramImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/iFrameImpl_SeqDiagram.png'
 
 export const meta = {
   title: 'GSoC 2020 MIT App Inventor Project VCE',
   createdAt: '2020-08-28',
-  updatedAt: '2020-08-30',
-  tags: ["GSoC", "MIT", "App Inventor", "Project", "VCE"],
+  updatedAt: '2021-11-25',
+  tags: ["GSoC", "MIT", "App Inventor", "Project", "VCE", "Open Source"],
 }
 
-[![GSoC Project Page](https://img.shields.io/badge/-GSoC%20Project%20Page-blueviolet)](https://summerofcode.withgoogle.com/projects/#4749864480538624) [![GSoC 2020 Proposal for Visible Component Extensions](https://img.shields.io/badge/-GSoC%202020%20Proposal-orange)](https://docs.google.com/document/d/14FwGfVMQcyDReeWCPSqFbMWSbW6ZsYbl3mRBsPEzBnQ/edit?usp=sharing) [![Design Document](https://img.shields.io/badge/-Design%20Document-red)](https://docs.google.com/document/d/1BV1lGCNtYjP0H0dxUyLcVPnO91ztke-1VAH4EnRdDYc/edit?usp=sharing) [![Documentation](https://img.shields.io/badge/Documentation-WIP-555?labelColor=brightgreen)](https://docs.google.com/document/d/17uMiZ5RuwC3u9J1e2oVUIGNPVHA8Mp2umDka6pXJ244/edit?usp=sharing) [![Community Feedback](https://img.shields.io/badge/-Community%20Feedback-darkblue)](https://community.appinventor.mit.edu/t/gsoc-request-for-feedback-on-design-doc-for-visible-component-extension/9705?u=pavi2410)
+<Tag text="GSoC Project Page" /> <Tag text="Project Proposal" /> <Tag text="Design Document" /> <Tag text="Documentation" /> <Tag text="Community Feedback" />
 
 ## About the Project
 Extensions in App inventor are currently limited to just non-visible components. Due to this, extensions can't be dragged into the mock form designer. To work around this, extension developers have to get a reference to a visible component as parent under which they create UI views. This, however, defeats the idea of App Inventor, which allows the users to create their UI of their apps using the concept of WYSIWYG.
-
-<Image src={image} alt="Cowsay demo" />
-
-{JSON.stringify(props)}
 
 My proposal to solve this problem is to create a generic `MockVisibleExtension`, a subclass of `MockComponent`, which can be dragged into the designer. The extension will have (almost) all the capabilities of a visible component. Further, this allows the extension to be placed under a container component under which the extension can create its views. Thus, this allows the users to view a clear hierarchy of their app's UI when using "visible" extensions.
 
@@ -51,19 +49,19 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
     - Added a MockScriptsManager which is responsible for loading, unloading of Mocks
   
 ### Prototype II
-  - [Branch with the new iFrame-based sandbox implementation](https://github.com/pavi2410/appinventor-sources/tree/mvce3) ![WIP](https://img.shields.io/badge/-WIP-555)
+  - [Branch with the new iFrame-based sandbox implementation](https://github.com/pavi2410/appinventor-sources/tree/mvce3) <Badge text="WIP" />
     - Start commit: [Added BuildTools](https://github.com/mit-cml/appinventor-sources/commit/61541e0c5a41f693005369a1a74f404e5aef0c02)
     - Last commit: [JUST MADE THIS WORK UP AND RUNNING](https://github.com/mit-cml/appinventor-sources/commit/30a3e1b2a0dbe7ecc5544d90fc07d42e2bcb1b91)
   - [iFrame-based VCE SDK](https://gist.github.com/pavi2410/18195e3e6096aa257aa0341524d0da9e)
   
 ### Apart from the scope of this project, I made these little contributions
-  - [PR #2275 \| URL encode faultData in bug report](https://github.com/mit-cml/appinventor-sources/pull/2275) ![GitHub PR detail](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2275)
-  - [PR #2263 \| Exclude markdown files from AndroidRuntime.jar](https://github.com/mit-cml/appinventor-sources/pull/2263) ![GitHub PR detail](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2263)
-  - [PR #2252 \| Make OdeLog to print to brower console also](https://github.com/mit-cml/appinventor-sources/pull/2252) ![GitHub PR detail](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2252)
+  - [PR #2275 | URL encode faultData in bug report](https://github.com/mit-cml/appinventor-sources/pull/2275) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2275)
+  - [PR #2263 | Exclude markdown files from AndroidRuntime.jar](https://github.com/mit-cml/appinventor-sources/pull/2263) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2263)
+  - [PR #2252 | Make OdeLog to print to brower console also](https://github.com/mit-cml/appinventor-sources/pull/2252) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2252)
 
 ## Sample Extensions I Made for Testing
 - [SimpleLabel](https://github.com/pavi2410/vce-samples/tree/simplelabel) - mimicks the built-in Label component
-  - Mock code
+  #### Mock code
     ```js
     class MockSimpleLabel extends MockVisibleExtension {
       static TYPE = "com.pavi2410.SimpleLabel"
@@ -92,11 +90,11 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
 
     MockComponentRegistry.register(MockSimpleLabel.TYPE, MockSimpleLabel)
     ```
-  - Demo
-    ![Working of SimpleLabel VCE](/assets/images/SimpleLabel_demo.png)
+  #### Demo
+  <Image src={simpleLabelDemoImg} alt="Working of SimpleLabel VCE" />
     
 - [Cowsay](https://github.com/pavi2410/vce-samples/tree/cowsay) - this extension displays text said by cow; uses script element-based implementation
-  - Mock code
+  #### Mock code
     ```js
     class MockCowsay extends MockVisibleExtension {
       static TYPE = "Cowsay"
@@ -130,8 +128,8 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
 
     MockComponentRegistry.register(MockCowsay.TYPE, MockCowsay.create)
     ```
-  - Demo
-    ![Working of Cowsay VCE](assets/images/Cowsay_demo.png)
+  #### Demo
+  <Image src={cowsayDemoImg} alt="Working of Cowsay VCE" />
     
 ## Implementation
 
@@ -142,7 +140,7 @@ Initially, I had no idea how could I securely load Mocks. But, eventually, I and
 The goal of the project is to develop a mechanism to load untrusted JS code from third-party extensions in a secure manner. I knew that the script-element based implementation is not all safe option to go with in the production. I researched a lot on creation of a safe environment to execute JS code, and came across various projects like [Google Caja](https://developers.google.com/caja/), [remote-dom](https://github.com/wix/remote-dom), [jsdom](https://github.com/jsdom/jsdom), Web Workers, [Realms](https://github.com/Agoric/realms-shim), etc. It was known from the beginning that we could iFrames to securely isolate untrusted code, but I didn't know how the implementation would go. But, after the second month, I finally decided to work with iFrames. Most of the code was reused from Prototype I. I developed an asynchronous messaging system which makes communication between iFrames and the top window (where the App Inventor client runs) possible.
 
 > Message protocol used for communication between iFrames and the GWT client
-> ```
+> ```json
 > {
 >   "action": "string",
 >   "args": [ "args to accompany the action" ],
@@ -150,6 +148,8 @@ The goal of the project is to develop a mechanism to load untrusted JS code from
 >   "uuid": "uuid of each instance"
 > }
 > ```
+
+<Image src={iframimplSeqdiagramImg} />
 
 I wanted to reuse the existing Mock API for this as well, so I created a VCE SDK which uses the async messaging system under the hood. The VCE SDK resides on the server-side, so it can be easily updated and maintained.
 
@@ -163,14 +163,14 @@ When this worked, it made my day 🥳🎉 I was full of joy that day 😁 I coul
 - Getting the GWT client to work with dynamically loaded external JavaScript code
 
 ## Future Work
-- Can't create more than one instance of a VCE ![WIP](https://img.shields.io/badge/-WIP-555)
-- Reloading the page causes a runtime error, making VCE implementation useless ![WIP](https://img.shields.io/badge/-WIP-555)
+- Can't create more than one instance of a VCE <Badge text="WIP" />
+- Reloading the page causes a runtime error, making VCE implementation useless <Badge text="WIP" />
 - Implement callback messaging system with iframe
 - Support version upgrades
 - Mock Container support
 - More and more rigorous testing.
 
-## Conclusion
+## Closing words
 I would say that this summer and the lockdown due to COVID-19 in my country was well spent. I enjoyed my time working on this project. I would continue to work on this project after the GSoC program ends as the project is still not complete. I learned many things along my way. The weekly meetings we did with other participants and mentors in the org was an amazing opportunity for me to showcase my work to others, talk and discuss problems with my mentors.
 
 

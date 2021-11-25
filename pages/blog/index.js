@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 
-import { Container, Heading, List, Badge, Link, ListItem } from '@chakra-ui/react'
+import { Container, Heading, List, Badge, Link, ListItem, Tag } from '@chakra-ui/react'
 
 const sposts = [
   {
@@ -16,8 +16,7 @@ const sposts = [
 export default function Blog({ posts }) {
   return (
     <Container>
-      <Heading as="h1" py={8}>Blog</Heading>
-      <Badge>{sposts.length}</Badge>
+      <Heading as="h1" py={8}>Blog <Tag colorScheme="purple" fontWeight="bold">{sposts.length}</Tag></Heading>
       <List>
       {sposts.map((post, i) => (
         <ListItem key={i} borderBottom="1px" py={8}>
