@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { chakra, Container, Button, SimpleGrid, Stack, VStack, Heading, Text, Link, Wrap, Tag, Icon } from "@chakra-ui/react"
+import { chakra, Box, Container, Button, SimpleGrid, Stack, HStack, VStack, Heading, Text, Link, Wrap, Tag, Icon } from "@chakra-ui/react"
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
 import Bg from '../components/Bg'
 import MyButton from '../components/MyButton'
@@ -18,32 +19,45 @@ function MyHead() {
 }
 
 export default function Home() {
+  const [blink, setBlink] = useState(true)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlink(!blink)
+    }, 800)
+
+    return () => clearInterval(timer)
+  })
+
+
   return (
     <div>
       <MyHead />
 
       <Bg />
 
-      <chakra.div p={8}>
-        <Container maxW="4xl" textAlign="center" h="100vh">
-          <VStack spacing={16}>
-
-            <Heading as="h1" size="3xl">
-              Welcome to my <Text as="span" color="blue.500">Metaverse</Text>
+      
+        <Container maxW="4xl" textAlign="start">
+          <VStack spacing={16} h="100vh" align="start" justify="center">
+            <Heading as="h1" size="2xl" fontFamily="monospace">
+              <Text as="span" fontFamily="monospace">Hello World!</Text>
+              <br />
+              I'm <Text as="span" color="green.500">Pavitra Golchha</Text>
+              <br />
+              and this is my <Text as="span" color="blue.500">Metaverse</Text>
+              {blink && '_' || <span>&nbsp;</span>}
             </Heading>
 
-            <Text fontSize="2xl">
-              Metaverse currently in development.
+            <Text fontSize="2xl" fontFamily="monospace">
+              You can find every info about me and my works here. Enjoy your stay here :)
             </Text>
 
-            {/* <Center> */}
-            <SimpleGrid columns={2} spacing={8}>
+            <Wrap spacing={8}>
               <MyButton size="lg" url="/blog" colorScheme="yellow">Blog</MyButton>
               <MyButton size="lg" colorScheme="green">About</MyButton>
               <MyButton size="lg" url="#projects" colorScheme="purple">Projects</MyButton>
               <MyButton size="lg" colorScheme="blue">Portfolio</MyButton>
-            </SimpleGrid>
-            {/* </Center> */}
+            </Wrap>
           </VStack>
         </Container>
 
@@ -58,7 +72,7 @@ export default function Home() {
           </SimpleGrid>
         </Container>
 
-        <Container maxW="4xl">
+        <Container maxW="4xl" py={16}>
           <Heading py={8}>Connect with me</Heading>
           <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={8}>
             <SocialButton icon={FaTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" color="twitter" />
@@ -67,14 +81,13 @@ export default function Home() {
             <SocialButton icon={FaEnvelope} title="Email" url="mailto:hello@pavi2410.me" color="red" />
           </SimpleGrid>
         </Container>
-      </chakra.div>
     </div>
   )
 }
 
 function ProjectCard({ icon, title, description, url, techStack }) {
   return (
-    <Stack direction={{ sm: 'column', md: 'row' }} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" bg="white" p={4} spacing={4} alignItems="start">
+    <Stack direction={{ sm: 'column', md: 'row' }} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" bg="white" p={4} spacing={4} align="start" boxShadow="lg" _hover={{boxShadow:'xl'}}>
       <chakra.div>
         <Image src={icon} alt={title} width="96" height="96" layout="fixed" />
       </chakra.div>
