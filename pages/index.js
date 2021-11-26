@@ -63,7 +63,7 @@ export default function Home() {
 
         <Container maxW="4xl" id="projects">
           <Heading py={8}>My Projects <Tag colorScheme="yellow" fontWeight="bold">{projectsData.length}</Tag></Heading>
-          <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+          <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8} gridTemplateRows="masonry">
             {
               projectsData.map((project, i) => (
                 <ProjectCard {...project} key={i} />
