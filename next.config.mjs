@@ -25,6 +25,16 @@ const nextConfig = {
         destination: '/blog/gsoc-2020-mit-app-inventor-project-vce',
         permanent: true,
       },
+      {
+        source: '/privacy_policy',
+        destination: 'https://pavi2410.github.io/privacy_policy',
+        permanent: false,
+      },
+      {
+        source: '/privacy_policy/:path',
+        destination: 'https://pavi2410.github.io/privacy_policy/:path',
+        permanent: false,
+      }
     ]
   },
 }
