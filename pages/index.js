@@ -42,7 +42,7 @@ export default function Home() {
             <Heading as="h1" size="2xl" fontFamily="monospace">
               <Text as="span" fontFamily="monospace">Hello World!</Text>
               <br />
-              I'm <Text as="span" color="green.500">Pavitra Golchha</Text>
+              {"I'm"} <Text as="span" color="green.500">Pavitra Golchha</Text>
               <br />
               and this is my <Text as="span" color="blue.500">Metaverse</Text>
               {blink && '_' || <span>&nbsp;</span>}
