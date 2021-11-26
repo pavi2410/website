@@ -1,12 +1,8 @@
 import fs from 'node:fs'
 
-import { Container, Heading, List, Badge, Link, ListItem, Tag } from '@chakra-ui/react'
+import { Container, Heading, List, Link, ListItem, Tag } from '@chakra-ui/react'
 
 const sposts = [
-  {
-    title: 'GSoC 2020 MIT App Inventor Project VCE',
-    slug: 'gsoc-2020-mit-app-inventor-project-vce',
-  },
   {
     title: 'GSoC 2020 MIT App Inventor Project VCE',
     slug: 'gsoc-2020-mit-app-inventor-project-vce',
@@ -18,11 +14,11 @@ export default function Blog({ posts }) {
     <Container>
       <Heading as="h1" py={8}>Blog <Tag colorScheme="purple" fontWeight="bold">{sposts.length}</Tag></Heading>
       <List>
-      {sposts.map((post, i) => (
-        <ListItem key={i} borderBottom="1px" py={8}>
-          <BlogPostCard post={post} />
-        </ListItem>
-      ))}
+        {sposts.map((post, i) => (
+          <ListItem key={i} borderBottom="1px" py={8}>
+            <BlogPostCard post={post} />
+          </ListItem>
+        ))}
       </List>
     </Container>
   )

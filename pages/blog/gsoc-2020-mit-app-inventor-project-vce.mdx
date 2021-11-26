@@ -7,7 +7,7 @@ import iframimplSeqdiagramImg from '../../public/assets/blog/gsoc-2020-mit-app-i
 export const meta = {
   title: 'GSoC 2020 MIT App Inventor Project VCE',
   createdAt: '2020-08-28',
-  updatedAt: '2021-11-25',
+  updatedAt: '2021-11-26',
   tags: ["GSoC", "MIT", "App Inventor", "Project", "VCE", "Open Source"],
 }
 
@@ -25,8 +25,9 @@ A **V**isible **C**omponent **E**xtension (or VCE) is a type of extension which 
 ### About Me
 My name is [Pavitra Golchha](https://pavi2410.me). I'm a CSE student. I live in india. I'm passionate about computers and programming. I love my weapons - Kotlin, JavaScript, Python. I like to play badminton, listen to music and learn new stuffs.
 
-### About MIT App Inventor ![App Inventor logo](https://appinventor.mit.edu/images/logo.png)
-[App Inventor](https://appinventor.mit.edu/images/logo.png) is a web-based Android app maker. It allows anyone to create an app without any prior coding knowledge. It features a drag-and-drop UI designer, and a Blocks editor. It is mostly a learning tool that introduces one to computer science and programming concepts using its blocks model, based on [Blockly](https://developers.google.com/blockly/). It empowers students to turn their ideas into reality as it did for me :)
+### About MIT App Inventor
+![App Inventor logo](https://www.researchgate.net/profile/Anggit_Prabowo/publication/331807684/figure/fig1/AS:737080938348544@1552745198979/MIT-App-Inventor-Platform-Icon-MIT-App-Inventor-is-a-platform-for-creating-open-source.ppm)
+[App Inventor](https://appinventor.mit.edu) is a web-based no-code Android app maker. It allows anyone to create an app without any prior coding knowledge. It features a drag-and-drop UI designer, and a Blocks editor. It is mostly a learning tool that introduces one to computer science and programming concepts using its blocks model, based on [Blockly](https://developers.google.com/blockly/). It empowers students to turn their ideas into reality as it did for me :)
 
 ### My Experience with MIT App Inventor Open Source Project
 I am an App Inventor user since 2015, an extension dev and an open source contributor. I was already involved with this organisation which has helped me in a lot of ways - I knew the people in the team, know how the project and most of the code works. I am thankful to them for accepting my proposal.
@@ -34,7 +35,8 @@ I am an App Inventor user since 2015, an extension dev and an open source contri
 ### My Mentors
 [Susan](https://github.com/SusanRatiLane) and [Evan](https://github.com/ewpatton) helped me a lot. They are very knowledgeable, friendly and supportive. They helped me with every big and small problems I faced. I am very fortunate to have them as my mentors.
 
-### My Exterience with Google Summer of Code 2020 ![GSoC logo](https://summerofcode.withgoogle.com/static/img/summer-of-code-logo.svg)
+### My Exterience with Google Summer of Code 2020
+![GSoC logo](https://upload.wikimedia.org/wikipedia/commons/1/1e/GSoC.png)
 The 3-month long journey has suddenly felt short :( I enjoyed working for the organisation of my choice. I am very grateful to have this opportunity.
 
 ## My Contributions
@@ -55,14 +57,19 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
   - [iFrame-based VCE SDK](https://gist.github.com/pavi2410/18195e3e6096aa257aa0341524d0da9e)
   
 ### Apart from the scope of this project, I made these little contributions
-  - [PR #2275 | URL encode faultData in bug report](https://github.com/mit-cml/appinventor-sources/pull/2275) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2275)
-  - [PR #2263 | Exclude markdown files from AndroidRuntime.jar](https://github.com/mit-cml/appinventor-sources/pull/2263) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2263)
-  - [PR #2252 | Make OdeLog to print to brower console also](https://github.com/mit-cml/appinventor-sources/pull/2252) ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2252)
+  - [PR #2275 : URL encode faultData in bug report](https://github.com/mit-cml/appinventor-sources/pull/2275)
+    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2275)
+  - [PR #2263 : Exclude markdown files from AndroidRuntime.jar](https://github.com/mit-cml/appinventor-sources/pull/2263)
+    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2263)
+  - [PR #2252 : Make OdeLog to print to brower console also](https://github.com/mit-cml/appinventor-sources/pull/2252)
+    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2252)
 
 ## Sample Extensions I Made for Testing
-- [SimpleLabel](https://github.com/pavi2410/vce-samples/tree/simplelabel) - mimicks the built-in Label component
+- ### [SimpleLabel](https://github.com/pavi2410/vce-samples/tree/simplelabel)
+  A simple extension that mimicks the built-in Label component
+
   #### Mock code
-    ```js
+    ```javascript
     class MockSimpleLabel extends MockVisibleExtension {
       static TYPE = "com.pavi2410.SimpleLabel"
 
@@ -93,9 +100,10 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
   #### Demo
   <Image src={simpleLabelDemoImg} alt="Working of SimpleLabel VCE" />
     
-- [Cowsay](https://github.com/pavi2410/vce-samples/tree/cowsay) - this extension displays text said by cow; uses script element-based implementation
+- ### [Cowsay](https://github.com/pavi2410/vce-samples/tree/cowsay)
+  An extension that displays text said by cow; uses script element-based implementation
   #### Mock code
-    ```js
+    ```javascript
     class MockCowsay extends MockVisibleExtension {
       static TYPE = "Cowsay"
 
@@ -170,7 +178,7 @@ When this worked, it made my day 🥳🎉 I was full of joy that day 😁 I coul
 - Mock Container support
 - More and more rigorous testing.
 
-## Closing words
+## Conclusion
 I would say that this summer and the lockdown due to COVID-19 in my country was well spent. I enjoyed my time working on this project. I would continue to work on this project after the GSoC program ends as the project is still not complete. I learned many things along my way. The weekly meetings we did with other participants and mentors in the org was an amazing opportunity for me to showcase my work to others, talk and discuss problems with my mentors.
 
 

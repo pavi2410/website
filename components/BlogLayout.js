@@ -1,13 +1,11 @@
 import Head from "next/head"
 import Image from 'next/image'
 import { MDXProvider } from '@mdx-js/react'
-import { chakra, Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th } from "@chakra-ui/react"
+import { Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th } from "@chakra-ui/react"
 import { FaTags, FaArrowLeft } from 'react-icons/fa'
 import { pickColorSchemeByStringHash } from "./util"
-
-const ResponsiveImage = (props) => (
-  <Image alt={props.alt} layout="responsive" {...props} />
-)
+import SyntaxHighlighter from "react-syntax-highlighter"
+import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 const components = {
   // img: ResponsiveImage,
@@ -18,8 +16,22 @@ const components = {
   h5: props => <Heading as="h5" size="sm" py={4} {...props} />,
   h6: props => <Heading as="h6" size="xs" py={4} {...props} />,
   p: props => <Text fontSize="xl" pb={4} color="gray.600" {...props} />,
-  blockquote: props => <Alert status="info" variant="left-accent" colorScheme="purple" style={{flexDirection:'column', alignItems: 'start'}} {...props} />,
-  pre: props => <Center><chakra.pre {...props} /></Center>,
+  blockquote: props => <Alert status="info" variant="left-accent" colorScheme="purple" rounded="lg" alignItems="start" style={{ flexDirection: 'column' }} {...props} />,
+  pre: props => {
+    const { children, className } = props.children.props
+    const code = children.replace(/^\s+|\s+$/g, '')
+    const language = className.replace(/language-/, '')
+    return (
+      <SyntaxHighlighter
+        language={language}
+        showLineNumbers
+        style={atomOneDark}
+        customStyle={{ fontSize: '1rem', borderRadius: '.5rem' }}
+      >
+        {code}
+      </SyntaxHighlighter>
+    )
+  },
   code: props => <Code colorScheme="purple" px={2} py={1} {...props} />,
   li: props => <ListItem {...props} />,
   ol: props => <OrderedList size="lg" {...props} />,
