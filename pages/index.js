@@ -55,6 +55,7 @@ export default function Home() {
             <MyButton size="lg" colorScheme="green">About</MyButton>
             <MyButton size="lg" url="#projects" colorScheme="purple">Projects</MyButton>
             <MyButton size="lg" colorScheme="blue">Portfolio</MyButton>
+            <MyButton size="lg" url="/techstack" colorScheme="gray">Tech Stack</MyButton>
           </Wrap>
         </VStack>
       </Container>
