@@ -5,7 +5,7 @@ import { chakra, Box, Container, Button, SimpleGrid, Stack, HStack, VStack, Head
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
 import Bg from '../components/Bg'
 import MyButton from '../components/MyButton'
-import { pickColorSchemeByStringHash } from '../components/util'
+import { pickColorSchemeByStringHash } from '../util/util'
 import projectsData from '/data/projects.json'
 
 function MyHead() {
@@ -54,14 +54,14 @@ export default function Home() {
             <MyButton size="lg" url="/blog" colorScheme="yellow">Blog</MyButton>
             <MyButton size="lg" colorScheme="green">About</MyButton>
             <MyButton size="lg" url="#projects" colorScheme="purple">Projects</MyButton>
-            <MyButton size="lg" colorScheme="blue">Portfolio</MyButton>
-            <MyButton size="lg" url="/techstack" colorScheme="gray">Tech Stack</MyButton>
+            <MyButton size="lg" colorScheme="rose">Portfolio</MyButton>
+            <MyButton size="lg" url="/techstack" colorScheme="blue">Tech Stack</MyButton>
           </Wrap>
         </VStack>
       </Container>
 
       <Container maxW="4xl" id="projects">
-        <Heading py={8}>My Projects <Tag colorScheme="yellow" fontWeight="bold">{projectsData.length}</Tag></Heading>
+        <Heading py={8}>My Projects <Tag colorScheme="yellow" fontWeight="bold">{projectsData.length}+</Tag></Heading>
         <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8} gridTemplateRows="masonry">
           {
             projectsData.map((project, i) => (
@@ -75,7 +75,7 @@ export default function Home() {
         <Heading py={8}>Connect with me</Heading>
         <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={8}>
           <SocialButton icon={FaTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" color="twitter" />
-          <SocialButton icon={FaGithub} title="GitHub" url="https://github.com/pavi2410" color="blackAlpha" />
+          <SocialButton icon={FaGithub} title="GitHub" url="https://github.com/pavi2410" color="slate" />
           <SocialButton icon={FaLinkedin} title="LinkedIn" url="https://linkedin.com/in/pavi2410" color="linkedin" />
           <SocialButton icon={FaEnvelope} title="Email" url="mailto:hello@pavi2410.me" color="red" />
         </SimpleGrid>

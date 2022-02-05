@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { MDXProvider } from '@mdx-js/react'
 import { Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th } from "@chakra-ui/react"
 import { FaTags, FaArrowLeft } from 'react-icons/fa'
-import { pickColorSchemeByStringHash } from "./util"
+import { pickColorSchemeByStringHash } from "../util/util"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
@@ -60,7 +60,7 @@ export default function BlogLayout({ meta, children }) {
       <MDXProvider components={components}>
         {children}
       </MDXProvider>
-      <Wrap pt={8}><Icon as={FaTags} /> {meta.tags.map((tag, i) => <Tag key={i} colorScheme={pickColorSchemeByStringHash(tag)}>{tag}</Tag>)}</Wrap>
+      <Wrap pt={8} align="center"><Icon as={FaTags} /> {meta.tags.map((tag, i) => <Tag key={i} colorScheme={pickColorSchemeByStringHash(tag)}>{tag}</Tag>)}</Wrap>
       <p>Published on {formatDate(meta.createdAt)}</p>
       <p>Last updated at {formatDate(meta.updatedAt)}</p>
     </Container>
