@@ -1,14 +1,15 @@
 import { chakra, Button, Container, Heading, HStack, VStack, Box, Grid, GridItem, Center, Spacer, Text, Flex } from "@chakra-ui/react";
-import { FaAndroid, FaCss3, FaCss3Alt, FaHtml5, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
-import { BsLightningChargeFill } from 'react-icons/bs';
+import { FaAndroid, FaCss3, FaCss3Alt, FaHtml5, FaJs, FaNodeJs, FaReact, FaTerminal } from "react-icons/fa";
+import { SiChakraui, SiPrisma, SiSupabase, SiVite } from 'react-icons/si';
+import { AiOutlineApi } from 'react-icons/ai';
 
 const techStacks = {
   Frontend: () => (
     <>
-      <StackCell colSpan={3} bg='teal.200' icon={<BsLightningChargeFill />} title="Chakra UI" />
+      <StackCell colSpan={3} bg='teal.300' icon={<SiChakraui />} title="Chakra UI" />
       <StackCell colSpan={3} bg='red.300' icon={<FaReact />} title="React Query" />
       <StackCell colSpan={3} color="white" bg='purple.400' icon={<FaReact />} title="React" />
-      <StackCell colSpan={3} bg='violet' icon={<FaHtml5 />} title="Vite" />
+      <StackCell colSpan={3} color="white" bg='violet' icon={<SiVite />} title="Vite" />
       <StackCell colSpan={2} color="white" bg='tomato' icon={<FaHtml5 />} title="HTML" />
       <StackCell colSpan={2} color="white" bg='blue.400' icon={<FaCss3Alt />} title="CSS" />
       <StackCell colSpan={2} color="black" bg='yellow.300' icon={<FaJs />} title="JS" />
