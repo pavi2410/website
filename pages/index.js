@@ -38,12 +38,12 @@ export default function Home() {
       <Container maxW="4xl" textAlign="start">
         <VStack spacing={16} h="100vh" align="start" justify="center">
           <Heading as="h1" size="2xl" fontFamily="monospace">
-            <Text as="span" fontFamily="monospace">Hello World!</Text>
+            <Text as="span" fontFamily="monospace">Hello World! 👋</Text>
             <br />
             {"I'm"} <Text as="span" color="green.500">Pavitra Golchha</Text>
             <br />
             and this is my <Text as="span" color="blue.500">Metaverse</Text>
-            {blink && '_' || <span>&nbsp;</span>}
+            {blink ? '_' : ' '}
           </Heading>
 
           <Text fontSize="2xl" fontFamily="monospace">
@@ -75,7 +75,7 @@ export default function Home() {
         <Heading py={8}>Connect with me</Heading>
         <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={8}>
           <SocialButton icon={FaTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" color="twitter" />
-          <SocialButton icon={FaGithub} title="GitHub" url="https://github.com/pavi2410" color="slate" />
+          <SocialButton icon={FaGithub} title="GitHub" url="https://github.com/pavi2410" color="zinc" />
           <SocialButton icon={FaLinkedin} title="LinkedIn" url="https://linkedin.com/in/pavi2410" color="linkedin" />
           <SocialButton icon={FaEnvelope} title="Email" url="mailto:hello@pavi2410.me" color="red" />
         </SimpleGrid>
