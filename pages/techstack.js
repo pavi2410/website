@@ -44,12 +44,7 @@ function StackContainer({ title, color, icon }) {
         {icon}
         <Text fontWeight="bold">{title}</Text>
       </HStack>
-      <Grid
-        h='18rem'
-        templateRows='repeat(3, 1fr)'
-        templateColumns='repeat(6, 1fr)'
-        gap={4}
-      >
+      <Grid templateColumns='repeat(6, 1fr)' gap={4}>
         {techStacks[title]()}
       </Grid>
     </chakra.div>
@@ -58,7 +53,9 @@ function StackContainer({ title, color, icon }) {
 
 function StackCell({ colSpan, bg, icon, color, title }) {
   return (
-    <GridItem colSpan={colSpan} color={color} bg={bg} borderRadius="1rem" fontSize="2xl" fontWeight="bold"><Center h="100%">{icon}&nbsp;{title}</Center></GridItem>
+    <GridItem colSpan={colSpan} color={color} bg={bg} borderRadius="1rem" fontSize="2xl" fontWeight="bold" h="5rem">
+      <Center h="100%">{icon}&nbsp;{title}</Center>
+    </GridItem>
   )
 }
 
