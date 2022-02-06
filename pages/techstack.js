@@ -3,18 +3,17 @@ import { FaAndroid, FaCss3, FaCss3Alt, FaHtml5, FaJs, FaNodeJs, FaReact } from "
 import { BsLightningChargeFill } from 'react-icons/bs';
 
 const techStacks = {
-  Frontend: () => {
-    return (
-      <>
-        <StackCell colSpan={6} bg='teal.200' icon={<BsLightningChargeFill />} title="Chakra UI" />
-        <StackCell colSpan={3} color="white" bg='purple.300' icon={<FaReact />} title="React" />
-        <StackCell colSpan={3} bg='violet' icon={<FaHtml5 />} title="Vite" />
-        <StackCell colSpan={2} color="white" bg='tomato' icon={<FaHtml5 />} title="HTML" />
-        <StackCell colSpan={2} color="white" bg='blue.300' icon={<FaCss3Alt />} title="CSS" />
-        <StackCell colSpan={2} color="black" bg='yellow.300' icon={<FaJs />} title="JS" />
-      </>
-    )
-  },
+  Frontend: () => (
+    <>
+      <StackCell colSpan={3} bg='teal.200' icon={<BsLightningChargeFill />} title="Chakra UI" />
+      <StackCell colSpan={3} bg='red.300' icon={<FaReact />} title="React Query" />
+      <StackCell colSpan={3} color="white" bg='purple.400' icon={<FaReact />} title="React" />
+      <StackCell colSpan={3} bg='violet' icon={<FaHtml5 />} title="Vite" />
+      <StackCell colSpan={2} color="white" bg='tomato' icon={<FaHtml5 />} title="HTML" />
+      <StackCell colSpan={2} color="white" bg='blue.400' icon={<FaCss3Alt />} title="CSS" />
+      <StackCell colSpan={2} color="black" bg='yellow.300' icon={<FaJs />} title="JS" />
+    </>
+  ),
   Backend: () => <div />,
   Android: () => <div />,
 }
@@ -57,13 +56,13 @@ function StackContainer({ title, color, icon }) {
   )
 }
 
-function StackCell({colSpan, bg, icon, color, title}) {
+function StackCell({ colSpan, bg, icon, color, title }) {
   return (
     <GridItem colSpan={colSpan} color={color} bg={bg} borderRadius="1rem" fontSize="2xl" fontWeight="bold"><Center h="100%">{icon}&nbsp;{title}</Center></GridItem>
   )
 }
 
-function StackButton({title, icon, color}) {
+function StackButton({ title, icon, color }) {
   return (
     <Button as="a" href={'#' + title} leftIcon={icon} bg={`${color}.100`} color={`${color}.500`}>{title}</Button>
   )
