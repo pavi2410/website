@@ -15,7 +15,16 @@ const techStacks = {
       <StackCell colSpan={2} color="black" bg='yellow.300' icon={<FaJs />} title="JS" />
     </>
   ),
-  Backend: () => <div />,
+  Backend: () => (
+    <>
+      <StackCell colSpan={2} color="white" bg='red.400' icon={<AiOutlineApi />} title="REST API" />
+      <StackCell colSpan={2} color="white" bg='purple.400' icon={<SiPrisma />} title="JWT" />
+      <StackCell colSpan={3} color="white" bg='slate.400' icon={<SiPrisma />} title="Prisma" />
+      <StackCell colSpan={3} color="white" bg='green.400' icon={<SiSupabase />} title="Supabase" />
+      <StackCell colSpan={6} color="white" bg='blue.400' icon={<FaJs />} title="Express JS" />
+      <StackCell colSpan={6} color="black" bg='green.400' icon={<FaNodeJs />} title="Node JS" />
+    </>
+  ),
   Android: () => <div />,
 }
 
