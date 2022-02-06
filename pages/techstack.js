@@ -1,4 +1,4 @@
-import { chakra, Button, Container, Heading, HStack, VStack, Grid, GridItem, Center, Text } from "@chakra-ui/react";
+import { chakra, Button, Container, Heading, HStack, VStack, Grid, GridItem, Center, Text, Wrap } from "@chakra-ui/react";
 import { SiChakraui, SiKotlin, SiPrisma, SiSupabase, SiVite, SiMaterialdesign, SiWindows, SiWindowsterminal, SiJetbrains, SiDocker, SiVisualstudiocode, SiFirefoxbrowser, SiGitkraken, SiLinux, SiInsomnia, SiExpress, SiReacttable, SiReact, SiIcons8, SiHtml5, SiCss3, SiJavascript, SiAndroid, SiNodedotjs } from 'react-icons/si';
 import { FaTerminal } from "react-icons/fa";
 import { AiOutlineApi } from 'react-icons/ai';
@@ -54,12 +54,12 @@ export default function TechStack() {
   return (
     <Container maxW="4xl" pb={16}>
       <Heading size="2xl" py="2rem">Tech Stacks</Heading>
-      <HStack pb="4rem">
+      <Wrap pb="4rem">
         <StackButton icon={<SiReact />} color="purple" title="Frontend" />
         <StackButton icon={<SiNodedotjs />} color="green" title="Backend" />
         <StackButton icon={<SiAndroid />} color="emerald" title="Android" />
         <StackButton icon={<FaTerminal />} color="blue" title="My Dev Env" />
-      </HStack>
+      </Wrap>
       <VStack spacing={16}>
         <StackContainer title="Frontend" color="purple" icon={<SiReact />} />
         <StackContainer title="Backend" color="green" icon={<SiNodedotjs />} />
