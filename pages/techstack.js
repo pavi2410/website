@@ -34,8 +34,21 @@ const techStacks = {
       <StackCell colSpan={3} color="white" bg='purple.500' icon={<SiKotlin />} title="Kotlin" />
     </>
   ),
+  'My Dev Env': () => (
+    <>
+      <StackCell colSpan={4} color="white" bg='orange.400' icon={<SiFirefoxbrowser />} title="Firefox" />
+      <StackCell colSpan={2} color="white" bg='teal.500' icon={<SiGitkraken />} title="GitKraken" />
+      <StackCell colSpan={2} color="white" bg='sky.400' icon={<SiIcons8 />} title="Lunacy" />
+      <StackCell colSpan={2} color="white" bg='indigo.500' icon={<SiInsomnia />} title="Insomnia" />
+      <StackCell colSpan={2} color="white" bg='sky.400' icon={<SiDocker />} title="Docker" />
+      <StackCell colSpan={4} color="white" bg='violet.500' icon={<SiJetbrains />} title="Jetbrains IDE" />
+      <StackCell colSpan={2} color="white" bg='blue.400' icon={<SiVisualstudiocode />} title="VS Code" />
+      <StackCell colSpan={3} color="white" bg='gray.700' icon={<SiWindowsterminal />} title="Windows Terminal" />
+      <StackCell colSpan={3} color="white" bg='orange.500' icon={<SiLinux />} title="WSL + Ubuntu" />
+      <StackCell colSpan={6} color="white" bg='blue.400' icon={<SiWindows />} title="Windows" />
+    </>
+  )
 }
-
 
 export default function TechStack() {
   return (
@@ -45,11 +58,13 @@ export default function TechStack() {
         <StackButton icon={<SiReact />} color="purple" title="Frontend" />
         <StackButton icon={<SiNodedotjs />} color="green" title="Backend" />
         <StackButton icon={<SiAndroid />} color="emerald" title="Android" />
+        <StackButton icon={<FaTerminal />} color="blue" title="My Dev Env" />
       </HStack>
       <VStack spacing={16}>
         <StackContainer title="Frontend" color="purple" icon={<SiReact />} />
         <StackContainer title="Backend" color="green" icon={<SiNodedotjs />} />
         <StackContainer title="Android" color="emerald" icon={<SiAndroid />} />
+        <StackContainer title="My Dev Env" color="blue" icon={<FaTerminal />} />
       </VStack>
     </Container>
   )
