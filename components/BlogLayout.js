@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Image from 'next/image'
 import { MDXProvider } from '@mdx-js/react'
-import { Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th } from "@chakra-ui/react"
+import { Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th, Image as ChakraImage } from "@chakra-ui/react"
 import { FaTags, FaArrowLeft } from 'react-icons/fa'
 import { pickColorSchemeByStringHash } from "../util/util"
 import SyntaxHighlighter from "react-syntax-highlighter"
@@ -16,11 +16,11 @@ const components = {
   h5: props => <Heading as="h5" size="sm" py={4} {...props} />,
   h6: props => <Heading as="h6" size="xs" py={4} {...props} />,
   p: props => <Text fontSize="xl" pb={4} color="gray.600" {...props} />,
-  blockquote: props => <Alert status="info" variant="left-accent" colorScheme="purple" rounded="lg" alignItems="start" style={{ flexDirection: 'column' }} {...props} />,
+  blockquote: props => <Alert status="info" variant="left-accent" colorScheme="sky" rounded="lg" alignItems="start" style={{ flexDirection: 'column' }} {...props} />,
   pre: props => {
     const { children, className } = props.children.props
     const code = children.replace(/^\s+|\s+$/g, '')
-    const language = className.replace(/language-/, '')
+    const language = className?.replace(/language-/, '')
     return (
       <SyntaxHighlighter
         language={language}
@@ -45,6 +45,7 @@ const components = {
   th: Th,
   Badge: props => <Badge colorScheme="red">{props.text}</Badge>,
   Tag: props => <Tag fontWeight="700" colorScheme={pickColorSchemeByStringHash(props.text)}>{props.text}</Tag>,
+  img: props => <Center><ChakraImage alt={props.alt} src={props.src} {...props} /></Center>,
   Image: props => <Center><Image alt={props.alt} {...props} /></Center>
 }
 
@@ -57,12 +58,13 @@ export default function BlogLayout({ meta, children }) {
       </Head>
       <Link href="/blog"><Icon as={FaArrowLeft} /> Back to blog list</Link>
       <Heading as="h1" size="2xl" fontWeight="900" lineHeight="1.3" py={4} pb={8}>{meta.title}</Heading>
+      <p>Published on {formatDate(meta.createdAt)} • Last updated at {formatDate(meta.updatedAt)}</p>
+      <Wrap py={8} align="center">
+        <Icon as={FaTags} /> {meta.tags.map((tag, i) => <Tag key={i} colorScheme={pickColorSchemeByStringHash(tag)}>{tag}</Tag>)}
+      </Wrap>
       <MDXProvider components={components}>
         {children}
       </MDXProvider>
-      <Wrap pt={8} align="center"><Icon as={FaTags} /> {meta.tags.map((tag, i) => <Tag key={i} colorScheme={pickColorSchemeByStringHash(tag)}>{tag}</Tag>)}</Wrap>
-      <p>Published on {formatDate(meta.createdAt)}</p>
-      <p>Last updated at {formatDate(meta.updatedAt)}</p>
     </Container>
   )
 }
