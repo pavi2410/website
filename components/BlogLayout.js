@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { MDXProvider } from '@mdx-js/react'
 import { Heading, Text, Code, Tag, Icon, Container, ListItem, UnorderedList, OrderedList, Wrap, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th, Image as ChakraImage } from "@chakra-ui/react"
 import { FaTags, FaArrowLeft } from 'react-icons/fa'
-import { pickColorSchemeByStringHash } from "../util/util"
+import { formatDate, pickColorSchemeByStringHash } from "/util/util"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
@@ -67,8 +67,4 @@ export default function BlogLayout({ meta, children }) {
       </MDXProvider>
     </Container>
   )
-}
-
-function formatDate(date) {
-  return new Date(date).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
 }
