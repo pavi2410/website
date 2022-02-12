@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { chakra, Box, Container, Button, SimpleGrid, Stack, HStack, VStack, Heading, Text, Link, Wrap, Tag, Icon } from "@chakra-ui/react"
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
-import Bg from '../components/Bg'
-import MyButton from '../components/MyButton'
-import { pickColorSchemeByStringHash } from '../util/util'
+import { chakra, Container, Button, SimpleGrid, Stack, VStack, Heading, Text, Link, Wrap, Tag, Icon } from "@chakra-ui/react"
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaYoutube } from 'react-icons/fa'
+import Bg from '/components/Bg'
+import MyButton from '/components/MyButton'
+import { pickColorSchemeByStringHash } from '/util/util'
 import projectsData from '/data/projects.json'
 
 function MyHead() {
@@ -73,11 +73,12 @@ export default function Home() {
 
       <Container maxW="4xl" py={16}>
         <Heading py={8}>Connect with me</Heading>
-        <SimpleGrid columns={{ sm: 2, md: 4 }} spacing={8}>
+        <SimpleGrid columns={{ sm: 2, md: 5 }} spacing={8}>
           <SocialButton icon={FaTwitter} title="Twitter" url="https://twitter.com/PavitraGolchha" color="twitter" />
           <SocialButton icon={FaGithub} title="GitHub" url="https://github.com/pavi2410" color="zinc" />
           <SocialButton icon={FaLinkedin} title="LinkedIn" url="https://linkedin.com/in/pavi2410" color="linkedin" />
-          <SocialButton icon={FaEnvelope} title="Email" url="mailto:hello@pavi2410.me" color="red" />
+          <SocialButton icon={FaYoutube} title="YouTube" url="https://youtube.com/c/PavitraGolchha" color="red" />
+          <SocialButton icon={FaEnvelope} title="Email" url="mailto:hello@pavi2410.me" color="purple" />
         </SimpleGrid>
       </Container>
     </div>
