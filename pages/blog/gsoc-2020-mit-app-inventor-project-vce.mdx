@@ -1,14 +1,13 @@
-
-import BlogLayout from '../../components/BlogLayout'
-import cowsayDemoImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
-import simpleLabelDemoImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/SimpleLabel_demo.png'
-import iframimplSeqdiagramImg from '../../public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/iFrameImpl_SeqDiagram.png'
+import BlogLayout from '/components/BlogLayout'
+import cowsayDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
+import simpleLabelDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/SimpleLabel_demo.png'
+import iframimplSeqdiagramImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/iFrameImpl_SeqDiagram.png'
 
 export const meta = {
   title: 'GSoC 2020 MIT App Inventor Project VCE',
+  excerpt: 'My experience working with MIT App Inventor team during GSoC 2020',
   createdAt: '2020-08-28',
-  updatedAt: '2021-11-26',
-  tags: ["GSoC", "MIT", "App Inventor", "Project", "VCE", "Open Source"],
+  tags: ['GSoC', 'MIT', 'App Inventor', 'Project', 'VCE', 'Open Source'],
 }
 
 > Quick Links: <Tag text="GSoC Project Page" /> <Tag text="Project Proposal" /> <Tag text="Design Document" /> <Tag text="Documentation" /> <Tag text="Community Feedback" />
@@ -18,7 +17,7 @@ Extensions in App inventor are currently limited to just non-visible components.
 
 My proposal to solve this problem is to create a generic `MockVisibleExtension`, a subclass of `MockComponent`, which can be dragged into the designer. The extension will have (almost) all the capabilities of a visible component. Further, this allows the extension to be placed under a container component under which the extension can create its views. Thus, this allows the users to view a clear hierarchy of their app's UI when using "visible" extensions.
 
-A **V**isible **C**omponent **E**xtension (or VCE) is a type of extension which is able to provide Mock preview of what a component running on a real device would like. It leverages the existing mechanism set in place to write Mocks for the internal components. **The goal of this project is to make VCE look and feel similar to a regular visible component, and provide a safe and secure way of getting a VCE running in the browser.**
+A ***V**isible **C**omponent **E**xtension* (or VCE) is a type of extension which is able to provide Mock preview of what a component running on a real device would like. It leverages the existing mechanism set in place to write Mocks for the internal components. ***The goal of this project is to make VCE look and feel similar to a regular visible component, and provide a safe and secure way of getting a VCE running in the browser.***
 
 ## Background
 
@@ -52,17 +51,14 @@ The 3-month long journey has suddenly felt short :( I enjoyed working for the or
   
 ### Prototype II
   - [Branch with the new iFrame-based sandbox implementation](https://github.com/pavi2410/appinventor-sources/tree/mvce3) <Badge text="WIP" />
-    - Start commit: [Added BuildTools](https://github.com/mit-cml/appinventor-sources/commit/61541e0c5a41f693005369a1a74f404e5aef0c02)
+    - First commit: [Added BuildTools](https://github.com/mit-cml/appinventor-sources/commit/61541e0c5a41f693005369a1a74f404e5aef0c02)
     - Last commit: [JUST MADE THIS WORK UP AND RUNNING](https://github.com/mit-cml/appinventor-sources/commit/30a3e1b2a0dbe7ecc5544d90fc07d42e2bcb1b91)
   - [iFrame-based VCE SDK](https://gist.github.com/pavi2410/18195e3e6096aa257aa0341524d0da9e)
   
 ### Apart from the scope of this project, I made these little contributions
   - [PR #2275 : URL encode faultData in bug report](https://github.com/mit-cml/appinventor-sources/pull/2275)
-    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2275)
   - [PR #2263 : Exclude markdown files from AndroidRuntime.jar](https://github.com/mit-cml/appinventor-sources/pull/2263)
-    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2263)
   - [PR #2252 : Make OdeLog to print to brower console also](https://github.com/mit-cml/appinventor-sources/pull/2252)
-    ![](https://img.shields.io/github/pulls/detail/state/mit-cml/appinventor-sources/2252)
 
 ## Sample Extensions I Made for Testing
 - ### [SimpleLabel](https://github.com/pavi2410/vce-samples/tree/simplelabel)
