@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import { default as NextLink } from 'next/link'
-import { Container, Heading, List, ListItem, Tag, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import { Container, Heading, List, ListItem, Tag, LinkBox, LinkOverlay, Text } from '@chakra-ui/react'
 import { formatDate } from '/util/util'
 
 export default function Blog({ posts }) {
@@ -30,8 +30,8 @@ function BlogPostCard({ post }) {
           </LinkOverlay>
         </NextLink>
       </Heading>
-      <p>{post.meta.excerpt}</p>
-      <i>{formatDate(post.meta.createdAt)}</i>
+      <Text as="i">{post.meta.excerpt}</Text>
+      <Text align="end">{formatDate(post.meta.createdAt)}</Text>
     </LinkBox>
   )
 }
