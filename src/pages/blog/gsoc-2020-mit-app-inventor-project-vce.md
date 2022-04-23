@@ -1,14 +1,14 @@
-import BlogLayout from '/components/BlogLayout'
-import cowsayDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
-import simpleLabelDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/SimpleLabel_demo.png'
-import iframimplSeqdiagramImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/iFrameImpl_SeqDiagram.png'
-
-export const meta = {
-  title: 'GSoC 2020 MIT App Inventor Project VCE',
-  excerpt: 'My experience working with MIT App Inventor team during GSoC 2020',
-  createdAt: '2020-08-28',
-  tags: ['GSoC', 'MIT', 'App Inventor', 'Project', 'VCE', 'Open Source'],
-}
+---
+layout: '@/layouts/BlogLayout.astro'
+setup: |
+  import cowsayDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/Cowsay_demo.png'
+  import simpleLabelDemoImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/SimpleLabel_demo.png'
+  import iframimplSeqdiagramImg from '/public/assets/blog/gsoc-2020-mit-app-inventor-project-vce/iFrameImpl_SeqDiagram.png'
+title: 'GSoC 2020 MIT App Inventor Project VCE'
+excerpt: 'My experience working with MIT App Inventor team during GSoC 2020'
+createdAt: '2020-08-28'
+tags: ['GSoC', 'MIT', 'App Inventor', 'Project', 'VCE', 'Open Source']
+---
 
 > Quick Links: <Tag text="GSoC Project Page" /> <Tag text="Project Proposal" /> <Tag text="Design Document" /> <Tag text="Documentation" /> <Tag text="Community Feedback" />
 
@@ -176,6 +176,3 @@ When this worked, it made my day 🥳🎉 I was full of joy that day 😁 I coul
 
 ## Conclusion
 I would say that this summer and the lockdown due to COVID-19 in my country was well spent. I enjoyed my time working on this project. I would continue to work on this project after the GSoC program ends as the project is still not complete. I learned many things along my way. The weekly meetings we did with other participants and mentors in the org was an amazing opportunity for me to showcase my work to others, talk and discuss problems with my mentors.
-
-
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>

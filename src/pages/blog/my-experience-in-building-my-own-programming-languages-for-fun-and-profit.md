@@ -1,11 +1,10 @@
-import BlogLayout from '/components/BlogLayout'
-
-export const meta = {
-  title: 'My experience in building my own programming languages for fun and profit!',
-  excerpt: 'Just what the title says... Built FloLang for a jam',
-  createdAt: '2020-10-02',
-  tags: ['flolang', 'programming language', 'replit'],
-}
+---
+layout: '@/layouts/BlogLayout.astro'
+title: 'My experience in building my own programming languages for fun and profit!'
+excerpt: 'Just what the title says... Built FloLang for a jam'
+createdAt: '2020-10-02'
+tags: ['flolang', 'programming language', 'replit']
+---
 
 https://pavi2410.me/blog/replisp-another-new-language
 {/* {% post https://pavi2410.me/blog/replisp-another-new-language %} */}
@@ -63,5 +62,3 @@ To encourage anyone who is curious about making their own programming language, 
 - [(How to Write a (Lisp) Interpreter (in Python))](http://norvig.com/lispy.html)
 - [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)
 - [How to implement a programming language in JavaScript](http://lisperator.net/pltut/)
-
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>

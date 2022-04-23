@@ -1,11 +1,10 @@
-import BlogLayout from '/components/BlogLayout'
-
-export const meta = {
-  title: "Don't use useState to handle arrays in React",
-  excerpt: 'Improve readabilty of your React components by not using useState to handle arrays.',
-  createdAt: '2022-02-17',
-  tags: ['react', 'hooks', 'array', 'frontend'],
-}
+---
+layout: '@/layouts/BlogLayout.astro'
+title: "Don't use useState to handle arrays in React"
+excerpt: 'Improve readabilty of your React components by not using useState to handle arrays.'
+createdAt: '2022-02-17'
+tags: ['react', 'hooks', 'array', 'frontend']
+---
 
 ## Problem 😣
 
@@ -87,7 +86,7 @@ I came up with an idea of writing my own hook to handle arrays efficiently. This
 
 Here's an example of what I mean
 
-```kt
+```kotlin
 @Composable
 fun SomeComponent() {
   val list = remember { mutableStateListOf<Int>() }
@@ -192,5 +191,3 @@ Declarative UI pattern in blooming and changing how we design and develop UIs. I
 ## Comments? Feedback?
 
 I'd love to hear you -> [Blog: Don't use `useState` to handle arrays in React](https://github.com/pavi2410/website/issues/5)
-
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>

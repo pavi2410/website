@@ -1,0 +1,26 @@
+---
+import { Container, Heading, List, ListItem, Tag } from '@chakra-ui/react'
+import { BlogPostCard } from '@/components/BlogPostCard.jsx'
+
+const files = await Astro.glob('./*.md')
+
+const posts = files.map(f => ({
+  slug: f.file.slice(f.file.lastIndexOf('/') + 1, -3),
+  meta: f.frontmatter
+}))
+
+posts.sort((a, b) => new Date(b.meta.createdAt).getTime() - new Date(a.meta.createdAt).getTime())
+---
+
+<Container>
+  <Heading as="h1" py={8} textDecoration="springgreen underline .3rem">
+    My Blog <Tag colorScheme="indigo" fontWeight="bold">{posts.length}</Tag>
+  </Heading>
+  <List>
+    {posts.map((post, i) => (
+      <ListItem key={i} py={4}>
+        <BlogPostCard post={post} />
+      </ListItem>
+    ))}
+  </List>
+</Container>

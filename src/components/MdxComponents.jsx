@@ -1,4 +1,3 @@
-import { default as NextImage } from 'next/image'
 import { Heading, Text, Code, Tag, ListItem, UnorderedList, OrderedList, Alert, Center, Badge, Link, Table, Thead, Tbody, Tr, Td, Th, Image, Divider } from "@chakra-ui/react"
 import { pickColorSchemeByStringHash } from "../util/util"
 import SyntaxHighlighter from "react-syntax-highlighter"
@@ -44,6 +43,6 @@ export const components = {
   Badge: props => <Badge colorScheme="red">{props.text}</Badge>,
   Tag: props => <Tag fontWeight="700" colorScheme={pickColorSchemeByStringHash(props.text)}>{props.text}</Tag>,
   img: props => <Center><Image alt={props.alt} src={props.src} {...props} /></Center>,
-  Image: props => <Center><NextImage alt={props.alt} {...props} /></Center>,
+  Image: props => <Center><Image alt={props.alt} {...props} /></Center>,
   wrapper: props => <div hi {...props} />
 }

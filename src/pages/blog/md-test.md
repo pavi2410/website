@@ -1,11 +1,10 @@
-import BlogLayout from '/components/BlogLayout'
-
-export const meta = {
-  title: 'MD Test',
-  excerpt: 'A markdown test page',
-  createdAt: '1970-01-01',
-  tags: ['tag1', 'tag2']
-}
+---
+layout: '@/layouts/BlogLayout.astro'
+title: 'MD Test'
+excerpt: 'A markdown test page'
+createdAt: '1970-01-01'
+tags: ['tag1', 'tag2']
+---
 
 Github Flavored Markdown (GFMD) is based on [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) with some overwriting as described at [Github Flavored Markdown](http://github.github.com/github-flavored-markdown/)
 
@@ -216,6 +215,3 @@ ID | Name | Rank
 ```
 
 ![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
-
-
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>

@@ -1,11 +1,10 @@
-import BlogLayout from '/components/BlogLayout'
-
-export const meta = {
-  title: 'REPLisp: Another New Language!?',
-  excerpt: 'I built a mini Lisp-like interpreted language from scratch',
-  createdAt: '2018-11-26',
-  tags: ['replisp', 'repl', 'lisp', 'programming', 'language', 'interpreter'],
-}
+---
+layout: '@/layouts/BlogLayout.astro'
+title: 'REPLisp: Another New Language!?'
+excerpt: 'I built a mini Lisp-like interpreted language from scratch'
+createdAt: '2018-11-26'
+tags: ['replisp', 'repl', 'lisp', 'programming', 'language', 'interpreter']
+---
 
 Hello 👋, I made a programming language called 'REPLisp'. It is a Lisp-like interpreted language, written in 100% pure JavaScript by my little fingers 🖖. I made it to just learn more about languages and how do they work.
 
@@ -16,5 +15,3 @@ It is currently incomplete but is in active development. I'd love if you help me
 > Try it now: https://replit.com/@pavi2410/REPLisp
 >
 > Source code: https://github.com/pavi2410/REPLisp
-
-export default ({ children }) => <BlogLayout meta={meta}>{children}</BlogLayout>
