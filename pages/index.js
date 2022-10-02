@@ -51,10 +51,10 @@ export default function Home() {
           </Text>
 
           <Wrap spacing={8}>
-            <MyButton size="lg" url="/blog" colorScheme="yellow">Blog</MyButton>
+            <MyButton size="lg" url="https://blog.pavi2410.me" colorScheme="yellow">Blog</MyButton>
             <MyButton size="lg" colorScheme="green">About</MyButton>
             <MyButton size="lg" url="#projects" colorScheme="purple">Projects</MyButton>
-            <MyButton size="lg" colorScheme="rose">Portfolio</MyButton>
+            <MyButton size="lg" url="https://resume.pavi2410.me" colorScheme="rose">Resume</MyButton>
             <MyButton size="lg" url="/techstack" colorScheme="blue">Tech Stack</MyButton>
           </Wrap>
         </VStack>
