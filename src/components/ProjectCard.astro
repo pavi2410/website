@@ -1,0 +1,38 @@
+---
+import { pickColorSchemeByStringHash } from "@/util";
+import Tag from "./Tag.astro";
+
+const {
+  project: { icon, title, description, url, techStack },
+} = Astro.props;
+---
+
+<div
+  class="flex flex-col sm:flex-row max-w-sm border-1 rounded-lg overflow-hidden bg-white p-4 space-y-4 md:space-y-0 md:space-x-4 items-start shadow-lg hover:shadow-xl"
+>
+  <div>
+    <img src={icon} alt={title} width="96" height="96" />
+  </div>
+  <div class="flex flex-col">
+    <div class="text-2xl font-bold leading-none">{title}</div>
+    <div>{description}</div>
+    <div class="w-full">
+      {
+        techStack.map((tech) => (
+          <Tag color={pickColorSchemeByStringHash(tech)} title={tech} />
+        ))
+      }
+    </div>
+    <!-- <Link
+      as={Button}
+      href={url}
+      isExternal
+      variant="outline"
+      size="lg"
+      colorScheme="blue"
+      alignSelf="end"
+    >
+      View Project
+    </Link> -->
+  </div>
+</div>

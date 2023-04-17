@@ -1,78 +1,117 @@
 ---
-import Logo from '@/components/Logo.astro';
+import MyButton from "@/components/MyButton.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import SocialButton from "@/components/SocialButton.astro";
+import Bg from "@/components/bg.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Tag from "@/components/Tag.astro";
 
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-let title = 'My Astro Site';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+import projectsData from "@/data/projects.json";
 ---
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<title>{title}</title>
 
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<BaseLayout title="Pavitra's Metaverse" description="Pavitra's Metaverse">
+  <Bg />
+  <div>
+    <div class="container mx-auto max-w-4xl text-left">
+      <div class="flex flex-col h-screen justify-center items-start space-y-16">
+        <h1 class="text-2xl font-mono">
+          <p class="font-mono">Hello World! 👋</p>
+          <p>
+            I'm <span class="text-green-500">Pavitra Golchha</span>
+          </p>
+          <p>
+            and this is my <span class="text-blue-500">Metaverse</span><span
+              class="blink">_</span
+            >
+          </p>
+        </h1>
 
-	<style>
-		header {
-			display: flex;
-			flex-direction: column;
-			gap: 1em;
-			max-width: min(100%, 68ch);
-		}
-		article {
-			padding-top: 2em;
-			line-height: 1.5;
-			display: flex;
-			flex-direction: column;
-			gap: 1em;
-			max-width: 70ch;
-		}
-		.banner {
-			text-align: center;
-			font-size: 1.2rem;
-			background: var(--color-light);
-			padding: 1em 1.5em;
-			padding-left: 0.75em;
-			border-radius: 4px;
-		}
-	</style>
-	<style is:global>
-		pre {
-			padding: 1rem;
-		}
-	</style>
-</head>
-<body>
-	<main>
-		<header>
-			<div>
-				<Logo width={60} height={80} />
-				<h1>Welcome to <a href="https://astro.build/">Astro</a></h1>
-			</div>
-		</header>
+        <div class="text-2xl font-mono">
+          You can find every info about me and my works here. Enjoy your stay
+          here :)
+        </div>
 
-		<article>
-			<div class="banner">
-				<p><strong>🧑‍🚀 Seasoned astronaut?</strong> Delete this template and have fun!</p>
-			</div>
-		</article>
+        <div class="flex flex-wrap justify-center items-center">
+          <MyButton
+            size="lg"
+            url="https://blog.pavi2410.me"
+            colorScheme="yellow"
+          >
+            Blog
+          </MyButton>
+          <MyButton size="lg" colorScheme="green">About</MyButton>
+          <MyButton size="lg" url="#projects" colorScheme="purple">
+            Projects
+          </MyButton>
+          <MyButton
+            size="lg"
+            url="https://resume.pavi2410.me"
+            colorScheme="rose"
+          >
+            Resume
+          </MyButton>
+          <MyButton size="lg" url="/techstack" colorScheme="blue">
+            Tech Stack
+          </MyButton>
+        </div>
+      </div>
+    </div>
 
-		<!--
+    <div class="container mx-auto max-w-4xl" id="projects">
+      <h2 class="py-8">
+        My Projects <Tag text={`${projectsData.length}+`} />
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-rows-masonry">
+        {projectsData.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
 
-		You can also use imported framework components directly in your markup!
-		
-		Note: by default, these components are NOT interactive on the client.
-		The `client:visible` directive tells Astro to make it interactive.
-		
-		See https://docs.astro.build/core-concepts/component-hydration/ 
+    <div class="container mx-auto max-w-4xl py-16">
+      <h2 class="py-8">Connect with me</h2>
+      <div class="sm:grid sm:grid-cols-2 md:grid-cols-5 md:grid md:gap-8">
+        <SocialButton
+          icon={'tabler:brand-github'}
+          title="Twitter"
+          url="https://twitter.com/PavitraGolchha"
+          color="twitter"
+        />
+        <SocialButton
+          icon={'tabler:brand-linkedin'}
+          title="GitHub"
+          url="https://github.com/pavi2410"
+          color="zinc"
+        />
+        <SocialButton
+          icon={'tabler:brand-twitter'}
+          title="LinkedIn"
+          url="https://linkedin.com/in/pavi2410"
+          color="linkedin"
+        />
+        <SocialButton
+          icon={'tabler:brand-youtube'}
+          title="YouTube"
+          url="https://youtube.com/c/PavitraGolchha"
+          color="red"
+        />
+        <SocialButton
+          icon={'tabler:mail'}
+          title="Email"
+          url="mailto:hello@pavi2410.me"
+          color="purple"
+        />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
 
-		-->
-	</main>
-</body>
-</html>
+<style>
+  .blink {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>

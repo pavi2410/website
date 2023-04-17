@@ -1,0 +1,11 @@
+---
+import { Link, Button } from "@chakra-ui/react";
+
+const { url = "#", ...props } = Astro.props;
+---
+
+<a href={url}>
+  <Button boxShadow="lg" _hover={{ top: "-4px", boxShadow: "xl" }} {...props}>
+    <slot />
+  </Button>
+</a>
