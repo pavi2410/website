@@ -8,21 +8,21 @@ const {
 ---
 
 <div
-  class="flex flex-col sm:flex-row max-w-sm border-1 rounded-lg overflow-hidden bg-white p-4 space-y-4 md:space-y-0 md:space-x-4 items-start shadow-lg hover:shadow-xl"
+  class="backdrop-blur bg-rose-500 bg-opacity-5 shadow-2xl outline outline-1 outline-gray-500 transition-all hover:-translate-y-3 flex flex-col sm:flex-row max-w-sm rounded-lg overflow-hidden p-8 space-y-4 md:space-y-0 md:space-x-4 items-start"
 >
   <div>
     <img src={icon} alt={title} width="96" height="96" />
   </div>
   <div class="flex flex-col">
     <div class="text-2xl font-bold leading-none">{title}</div>
-    <div>{description}</div>
-    <div class="w-full">
+    <div class="mt-2">{description}</div>
+    <!-- <div class="w-full">
       {
         techStack.map((tech) => (
-          <Tag color={pickColorSchemeByStringHash(tech)} title={tech} />
+          <Tag color={pickColorSchemeByStringHash(tech)} text={tech} />
         ))
       }
-    </div>
+    </div> -->
     <!-- <Link
       as={Button}
       href={url}

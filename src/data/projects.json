@@ -46,6 +46,29 @@
     ]
   },
   {
+    "title": "folo",
+    "icon": "/icon-192.png",
+    "description": "Followers tracker app",
+    "url": "#",
+    "techStack": [
+      "Android",
+      "Kotlin",
+      "Compose"
+    ]
+  },
+  {
+    "title": "TaskMate",
+    "icon": "/icon-192.png",
+    "description": "Yet another Trello clone",
+    "url": "#",
+    "techStack": [
+      "FullStack",
+      "Web",
+      "JavaScript",
+      "React"
+    ]
+  },
+  {
     "title": "REPLisp",
     "icon": "/icon-192.png",
     "description": "A LISP interpreter implemented in C",
