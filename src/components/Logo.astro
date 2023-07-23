@@ -1,0 +1,8 @@
+---
+interface Props {
+    height?: number,
+    width?: number,
+}
+const {height = 80, width = 60 } = Astro.props;
+---
+<img height={height} width={width} src="/logo.svg" alt="My logo">
