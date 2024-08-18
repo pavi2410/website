@@ -1,5 +1,7 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import "@fontsource-variable/inter/opsz.css";
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
 
 const { title, description } = Astro.props;
 ---
@@ -8,6 +10,26 @@ const { title, description } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
+    <style is:global>
+      body {
+        font-family: "Inter Variable", sans-serif;
+        background-color: white;
+        scroll-behavior: smooth;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: black;
+        }
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "Bricolage Grotesque Variable", sans-serif;
+      }
+      .font-inter {
+        font-family: "Inter Variable", sans-serif;
+      }
+      .font-bricolage {
+        font-family: "Bricolage Grotesque Variable", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <slot />

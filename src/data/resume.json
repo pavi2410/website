@@ -1,0 +1,277 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+    "basics": {
+        "name": "Pavitra Golchha",
+        "email": "hello+hire@pavi2410.me",
+        "url": "https://pavi2410.me",
+        "summary": "A computerphile who is fascinated by computers and the internet, and is enthusiastic about new technologies. I have keen focus and interest in making performant and resource-efficient software, topped with fine principles of software engineering.",
+        "profiles": [
+            {
+                "network": "LinkedIn",
+                "username": "pavi2410",
+                "url": "https://www.linkedin.com/in/pavi2410/"
+            },
+            {
+                "network": "GitHub",
+                "username": "pavi2410",
+                "url": "https://github.com/pavi2410"
+            }
+        ]
+    },
+    "work": [
+        {
+            "name": "Kodular",
+            "url": "https://kodular.io/",
+            "description": "A no-code Android app builder",
+            "position": "Co-Founder",
+            "startDate": "2017-06-01",
+            "highlights": [
+                "Website ranks under 8,000",
+                "1M app developers",
+                "4M apps built in 2020 alone"
+            ]
+        },
+        {
+            "name": "Infocusp",
+            "url": "https://infocusp.com/",
+            "position": "Software Engineer",
+            "startDate": "2023-07-01",
+            "summary": "Working on an early-stage startup project related to Salesforce",
+            "highlights": [
+                "Responsible for the end-to-end development of a Chrome browser extension.",
+                "Designed an infrastructure using a serverless architecture.",
+                "Build, test and maintain the whole project, including frontend and backend."
+            ]
+        },
+        {
+            "name": "Infocusp",
+            "url": "https://infocusp.com/",
+            "position": "Associate Software Engineer",
+            "startDate": "2022-07-01",
+            "endDate": "2023-07-01",
+            "summary": "Worked on a health-tech device",
+            "highlights": [
+                "Data engineering on AWS Glue using PySpark",
+                "Build and maintain data dashboard using Streamlit, Pandas, and Plotly"
+            ]
+        },
+        {
+            "name": "Highway to Highradius Internship Program",
+            "url": "https://www.highradius.com/",
+            "position": "Apprentice",
+            "startDate": "2022-01-01",
+            "endDate": "2022-04-01",
+            "summary": "Learnt and build an ML based fullstack project."
+        },
+        {
+            "name": "Socommerz",
+            "url": "https://socommerz.com/",
+            "position": "Web Development Intern",
+            "startDate": "2021-06-01",
+            "endDate": "2021-07-01",
+            "highlights": [
+                "Bootstrapped a Multi Tenant - SaaS based Campaign Manager",
+                "Built components of a Global E-commerce Engine",
+                "Worked on a Food Tech Platform to aggregate Home Chefs"
+            ]
+        },
+        {
+            "name": "Google Summer Of Code × MIT App Inventor",
+            "url": "https://summerofcode.withgoogle.com/archive/2020/projects/5288616609185792",
+            "position": "Participant",
+            "startDate": "2020-05-01",
+            "endDate": "2020-08-01",
+            "description": "App Inventor is a project that democratizes mobile app development",
+            "highlights": [
+                "My project was to make visible component extensions work, which would enable a missing piece of the platform.",
+                "Demo'd the prototype at the MIT App Inventor Global Developer Meetup (Fall 2020)"
+            ]
+        }
+    ],
+    "volunteer": [
+        {
+            "organization": "Google Developers Student Clubs",
+            "position": "Tech Lead",
+            "startDate": "2020-03-01",
+            "endDate": "2022-01-01",
+            "summary": "Hosted several workshops for Android Study Jams and Kotlin"
+        },
+        {
+            "organization": "Google Cloud Sprint Bootcamp",
+            "position": "Participant",
+            "startDate": "2022-06-01",
+            "endDate": "2022-07-01",
+            "summary": "Learnt Google Cloud Platform, networking and troubleshooting"
+        }
+    ],
+    "education": [
+        {
+            "institution": "SRM Institute of Science and Technology",
+            "url": "https://www.srmist.edu.in/",
+            "area": "Computer Science & Engineering",
+            "studyType": "B.Tech",
+            "startDate": "2019-07-01",
+            "endDate": "2023-06-31",
+            "score": "9.23",
+            "courses": [
+                "Operating Systems",
+                "Computer Networks",
+                "Database Management Systems",
+                "Web Security",
+                "Digital Image Processing",
+                "Distributed Computing and System Design",
+                "High Performance Computing"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "name": "Web Development",
+            "keywords": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "TypeScript",
+                "Vue",
+                "React",
+                "Node",
+                "Chrome Extensions"
+            ]
+        },
+        {
+            "name": "Android Development",
+            "keywords": [
+                "Java",
+                "Kotlin",
+                "Compose"
+            ]
+        },
+        {
+            "name": "Databases",
+            "keywords": [
+                "SQL",
+                "NoSQL",
+                "PostgreSQL",
+                "SQLite"
+            ]
+        },
+        {
+            "name": "Cloud Computing",
+            "keywords": [
+                "Docker",
+                "Terraform",
+                "AWS",
+                "GCP"
+            ]
+        },
+        {
+            "name": "Operating Systems",
+            "keywords": [
+                "Linux",
+                "Windows",
+                "Bash"
+            ]
+        },
+        {
+            "name": "Systems Programming",
+            "keywords": [
+                "C",
+                "C++",
+                "Rust"
+            ]
+        },
+        {
+            "name": "Data Engineering",
+            "keywords": [
+                "Python",
+                "Pandas",
+                "PySpark",
+                "AWS Glue",
+                "Big Data"
+            ]
+        },
+        {
+            "name": "Machine Learning",
+            "keywords": [
+                "Sklearn",
+                "Tensorflow"
+            ]
+        },
+        {
+            "name": "Misc.",
+            "keywords": [
+                "Git",
+                "Distributed Systems",
+                "Systems Design",
+                "Computer Networks"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "English",
+            "fluency": "Professional working proficiency"
+        },
+        {
+            "language": "Hindi",
+            "fluency": "Native speaker"
+        }
+    ],
+    "certificates": [
+        {
+            "name": "AWS Academy Cloud Foundations"
+        },
+        {
+            "name": "Oracle Cloud Infrastructure Foundations 2021 Certified Associate"
+        },
+        {
+            "name": "Machine Learning by Andrew Ng"
+        },
+        {
+            "name": "Fundamentals of Red Hat Enterprise Linux"
+        },
+        {
+            "name": "Oracle Database Foundations"
+        },
+        {
+            "name": "APIs and Microservices - freeCodeCamp"
+        },
+        {
+            "name": "30 Days of Google Cloud"
+        },
+        {
+            "name": "Architecting with Google Compute Engine (Specialization)"
+        }
+    ],
+    "projects": [
+        {
+            "name": "folo",
+            "description": "a social media metrics tracker app"
+        },
+        {
+            "name": "picsup",
+            "description": "an image sharing platform"
+        },
+        {
+            "name": "VR Compatibility Checker",
+            "description": "~100K downloads"
+        },
+        {
+            "name": "PlayBadges",
+            "description": "a badge service for Play Store app's downloads and rating"
+        },
+        {
+            "name": "FloLang",
+            "description": "an interpreted programming language"
+        },
+        {
+            "name": "Sendy",
+            "description": "anonymous file transfer service"
+        }
+    ],
+    "meta": {
+        "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json",
+        "version": "v1.0.0",
+        "lastModified": "2017-12-24T15:53:00"
+    }
+}
