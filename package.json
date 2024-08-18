@@ -1,6 +1,7 @@
 {
   "name": "website",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
