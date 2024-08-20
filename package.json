@@ -19,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.14",
     "astro-icon": "^1.1.1",
     "dayjs": "^1.11.12",
+    "remeda": "^2.11.0",
     "tailwindcss": "^3.4.10"
   }
 }

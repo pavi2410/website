@@ -5,30 +5,48 @@ import isToday from "dayjs/plugin/isToday";
 dayjs.extend(relativeTime)
 dayjs.extend(isToday)
 
-export function pickColorSchemeByStringHash(str: string) {
-  const colorSchemes = ['red', 'orange', 'amber', 'emerald', 'blue', 'violet', 'fuchsia'];
-  const hash = str.split('').reduce((hash, c) => hash * 31 + c.charCodeAt(0), 0);
-  const randomIndex = hash % colorSchemes.length;
-  return colorSchemes[randomIndex];
+function strHash(str: string) {
+  return str.split('').reduce((hash, c) => Math.imul(63, hash) + c.charCodeAt(0), 0);
 }
 
-export function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
+function pickItemByHash<T>(arr: T[], hash: number) {
+  const index = Math.abs(hash) % arr.length;
+  return arr[index];
+}
+
+export function pickColorSchemeByStringHash(str: string) {
+  const colorSchemes = ['red', 'orange', 'amber', 'emerald', 'blue', 'violet', 'fuchsia'];
+  return pickItemByHash(colorSchemes, strHash(str));
 }
 
 export function pickColorByHash(str: string) {
   const colorSchemes = [
-    'outline-red-200 text-red-500',
-    'outline-orange-200 text-orange-500',
-    'outline-amber-200 text-amber-500',
-    'outline-emerald-200 text-emerald-500',
-    'outline-blue-200 text-blue-500',
-    'outline-violet-200 text-violet-500',
-    'outline-fuchsia-200 text-fuchsia-500',
+    'bg-red-500/25 text-red-500',
+    'bg-orange-500/25 text-orange-500',
+    'bg-amber-500/25 text-amber-500',
+    'bg-emerald-500/25 text-emerald-500',
+    'bg-blue-500/25 text-blue-500',
+    'bg-violet-500/25 text-violet-500',
+    'bg-fuchsia-500/25 text-fuchsia-500',
   ];
-  const hash = str.split('').reduceRight((hash, c) => hash * 31 + c.charCodeAt(0), 0);
-  const randomIndex = hash % colorSchemes.length;
-  return colorSchemes[randomIndex];
+  return pickItemByHash(colorSchemes, strHash(str));
+}
+
+export function pickColorGradientByHash(str: string) {
+  const colorSchemes = [
+    'bg-gradient-to-t from-red-500 border-red-500 text-red-500',
+    'bg-gradient-to-t from-orange-500 border-orange-500 text-orange-500',
+    'bg-gradient-to-t from-amber-500 border-amber-500 text-amber-500',
+    'bg-gradient-to-t from-emerald-500 border-emerald-500 text-emerald-500',
+    'bg-gradient-to-t from-blue-500 border-blue-500 text-blue-500',
+    'bg-gradient-to-t from-violet-500 border-violet-500 text-violet-500',
+    'bg-gradient-to-t from-fuchsia-500 border-fuchsia-500 text-fuchsia-500',
+  ];
+  return pickItemByHash(colorSchemes, strHash(str));
+}
+
+export function formatDate(date: Date) {
+  return date.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 export function formatDateRange(obj: { startDate: string, endDate?: string }) {

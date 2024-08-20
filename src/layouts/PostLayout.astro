@@ -1,0 +1,130 @@
+---
+import { formatDate, pickColorByHash, pickColorGradientByHash } from "@/util";
+import BaseLayout from "./BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  frontmatter: CollectionEntry<"posts">["data"];
+}
+
+const {
+  frontmatter: {
+    title,
+    excerpt,
+    publishDate,
+    heroImage,
+    permalink,
+    alt,
+    quickLinks,
+    tags,
+  },
+} = Astro.props;
+---
+
+<BaseLayout title={title} excerpt={excerpt} permalink={permalink}>
+  <article
+    class="prose prose-lg dark:prose-invert prose-custom max-md:mx-8 mx-auto my-8 max-w-[80ch]"
+  >
+    <header class="text-left">
+      {
+        heroImage && (
+          <img
+            width="720"
+            height="420"
+            class="hero-image"
+            loading="lazy"
+            src={heroImage}
+            alt={alt}
+          />
+        )
+      }
+      <h1 class="title">{title}</h1>
+      <p>
+        <a href="https://pavi2410.me">Pavitra Golchha</a> • Published on&nbsp;
+        {formatDate(publishDate)}
+      </p>
+      <p>
+        <div class="uppercase text-sm font-semibold opacity-50 pb-1">
+          Tags
+        </div>
+        <div class="flex flex-wrap gap-1 not-prose">
+          {
+            tags.map((tag) => (
+              <a
+                href={`/blog/tag/${encodeURIComponent(tag)}`}
+                class={`rounded text-sm px-2.5 py-0.5 ${pickColorByHash(tag)}`}
+              >
+                {tag}
+              </a>
+            ))
+          }
+        </div>
+      </p>
+      {
+        quickLinks && (
+          <p>
+            <div class="uppercase text-sm font-semibold opacity-50 pb-1">
+              Quick Links
+            </div>
+            <div class="flex gap-4 not-prose overflow-x-scroll">
+              {quickLinks.map(({ title, link }) => (
+                <a
+                  href={link}
+                  target="_blank"
+                  class={`relative border rounded-xl py-2 px-4 h-32 aspect-video ${pickColorGradientByHash(title)}`}
+                >
+                  {title}
+                  <Icon
+                    name="tabler:external-link"
+                    size="2rem"
+                    class="absolute bottom-4 right-4"
+                  />
+                </a>
+              ))}
+            </div>
+          </p>
+        )
+      }
+    </header>
+    <main>
+      <slot />
+    </main>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  /* code {
+  counter-reset: step !important;
+  counter-increment: step 0 !important;
+}
+
+code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: white;
+} */
+
+  .prose-custom {
+    @apply prose-h2:underline prose-h2:decoration-emerald-300 prose-h2:decoration-2;
+    @apply prose-h3:underline prose-h3:decoration-sky-300 prose-h3:decoration-2;
+    @apply prose-a:text-blue-600 prose-a:dark:text-sky-50;
+  }
+
+  :not(pre) > code {
+    @apply before:hidden after:hidden;
+    @apply rounded py-0.5 px-2 mx-2;
+    @apply outline outline-1 outline-violet-500 dark:outline-violet-700;
+  }
+
+  blockquote > p {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+</style>

@@ -14,10 +14,12 @@ const { title, description } = Astro.props;
       body {
         font-family: "Inter Variable", sans-serif;
         background-color: white;
+        color: black;
         scroll-behavior: smooth;
 
         @media (prefers-color-scheme: dark) {
           background-color: black;
+          color: white;
         }
       }
       h1, h2, h3, h4, h5, h6 {

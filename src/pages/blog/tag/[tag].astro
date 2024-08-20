@@ -1,0 +1,39 @@
+---
+import BlogPostPreview from "@/components/BlogPostPreview.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+
+  const tagToPostsMap = new Map<string, typeof allPosts>();
+
+  for (const post of allPosts) {
+    for (const tag of post.data.tags) {
+      if (!tagToPostsMap.has(tag)) {
+        tagToPostsMap.set(tag, []);
+      }
+      tagToPostsMap.get(tag)?.push(post);
+    }
+  }
+
+  return [...tagToPostsMap.entries()].map(([tag, posts]) => {
+    return {
+      params: { tag },
+      props: { posts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout pageTitle={tag}>
+  <div class="container mx-auto max-w-prose space-y-8 my-8">
+    <p>Posts tagged with <b>{tag}</b></p>
+    <section class="flex flex-col gap-4">
+      {posts.map((post) => <BlogPostPreview post={post} />)}
+    </section>
+  </div>
+</BaseLayout>
