@@ -6,181 +6,171 @@ import { Icon } from "astro-icon/components";
 ---
 
 <BaseLayout
-    title="Resume - Pavitra Golchha"
-    description="Resume of Pavitra Golchha"
+  title="Resume - Pavitra Golchha"
+  description="Resume of Pavitra Golchha"
 >
-    <main class="prose prose-custom">
-        <section>
-            <div class="flex justify-between">
-                <h1>{resume.basics.name}</h1>
-                <div
-                    class="flex flex-wrap gap-4 md:items-start max-md:justify-end"
-                >
-                    <span>
-                        <Icon name="tabler:mail" class="inline" />
-                        {resume.basics.email}
-                    </span>
-                    <span>
-                        <Icon name="tabler:world-www" class="inline" />
-                        <a href={resume.basics.url} target="_blank">
-                            {resume.basics.url}
-                        </a>
-                    </span>
-                    {
-                        resume.basics.profiles.map((profile) => (
-                            <a href={profile.url} target="_blank">
-                                <Icon
-                                    name={`tabler:brand-${profile.network.toLowerCase()}`}
-                                    class="inline"
-                                />
-                                <span>
-                                    {profile.network} / {profile.username}
-                                </span>
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-        </section>
-        <div class="md:columns-2 gap-4 *:break-inside-avoid *:inline-block">
-            <section>
-                <h2>Career Objective</h2>
-                <p>{resume.basics.summary}</p>
-            </section>
-            <section>
-                <h2>Experience</h2>
-                {
-                    Object.entries(
-                        Object.groupBy(resume.work, (work) => work.name)
-                    ).map(([groupName, group]) => (
-                        <div>
-                            <h3>{groupName}</h3>
-                            {group.map((work) => (
-                                <div>
-                                    <p>{work.description}</p>
-                                    <p>
-                                        <b>{work.position}</b>,{" "}
-                                        {formatDateRange(work)}
-                                    </p>
-                                    <p>{work.summary}</p>
-                                    <ul>
-                                        {work.highlights?.map((highlight) => (
-                                            <li>{highlight}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    ))
-                }
-            </section>
-            <section>
-                <h2>Projects</h2>
-                <ul>
-                    {
-                        resume.projects.map((proj) => (
-                            <li>
-                                <b>{proj.name}</b> -{" "}
-                                <span>{proj.description}</span>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-            <section>
-                <h2>Technical Skills</h2>
-                <div class="flex flex-wrap gap-4">
-                    {
-                        resume.skills.map((skill) => (
-                            <div>
-                                <span class="opacity-70 text-sm">
-                                    {skill.name}
-                                </span>
-                                <span class="flex flex-wrap gap-2 text-sm">
-                                    {skill.keywords?.map((kw) => (
-                                        <span
-                                            class={`rounded px-1 outline outline-1 ${pickColorByHash(
-                                                kw
-                                            )}`}
-                                        >
-                                            {kw}
-                                        </span>
-                                    ))}
-                                </span>
-                            </div>
-                        ))
-                    }
-                </div>
-            </section>
-            <section>
-                <h2>Education</h2>
-                {
-                    resume.education.map((edu) => (
-                        <div>
-                            <h3>{edu.institution}</h3>
-                            <p>
-                                <b>{edu.studyType}</b>, {edu.area}
-                            </p>
-                            <p>{formatDateRange(edu)}</p>
-                            <ul>
-                                {edu.courses?.map((course) => (
-                                    <li>{course}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))
-                }
-            </section>
-            <section>
-                <h2>Certifications</h2>
-                <div>
-                    <ul>
-                        {
-                            resume.certificates.map((cert) => (
-                                <li>{cert.name}</li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h2>Other experiences</h2>
-                {
-                    resume.volunteer.map((vol) => (
-                        <div>
-                            <h3>{vol.organization}</h3>
-                            <p>
-                                <b>{vol.position}</b>, {formatDateRange(vol)}
-                            </p>
-                            <p>{vol.summary}</p>
-                        </div>
-                    ))
-                }
-            </section>
+  <main class="prose prose-custom">
+    <section>
+      <div class="flex justify-between">
+        <h1>{resume.basics.name}</h1>
+        <div class="flex flex-wrap gap-4 md:items-start max-md:justify-end">
+          <span>
+            <Icon name="tabler:mail" class="inline" />
+            {resume.basics.email}
+          </span>
+          <span>
+            <Icon name="tabler:world-www" class="inline" />
+            <a href={resume.basics.url} target="_blank">
+              {resume.basics.url}
+            </a>
+          </span>
+          {
+            resume.basics.profiles.map((profile) => (
+              <a href={profile.url} target="_blank">
+                <Icon
+                  name={`tabler:brand-${profile.network.toLowerCase()}`}
+                  class="inline"
+                />
+                <span>
+                  {profile.network} / {profile.username}
+                </span>
+              </a>
+            ))
+          }
         </div>
+      </div>
+    </section>
+    <div class="md:columns-2 gap-4 *:break-inside-avoid *:inline-block">
+      <section>
+        <h2>Career Objective</h2>
+        <p>{resume.basics.summary}</p>
+      </section>
+      <section>
+        <h2>Experience</h2>
+        {
+          Object.entries(Object.groupBy(resume.work, (work) => work.name)).map(
+            ([groupName, group]) => (
+              <div>
+                <h3>{groupName}</h3>
+                {group.map((work) => (
+                  <div>
+                    <p>{work.description}</p>
+                    <p>
+                      <b>{work.position}</b>, {formatDateRange(work)}
+                    </p>
+                    <p>{work.summary}</p>
+                    <ul>
+                      {work.highlights?.map((highlight) => (
+                        <li>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ),
+          )
+        }
+      </section>
+      <section>
+        <h2>Projects</h2>
+        <ul>
+          {
+            resume.projects.map((proj) => (
+              <li>
+                <b>{proj.name}</b> - <span>{proj.description}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section>
+        <h2>Technical Skills</h2>
+        <div class="flex flex-wrap gap-4">
+          {
+            resume.skills.map((skill) => (
+              <div>
+                <span class="opacity-70 text-sm">{skill.name}</span>
+                <span class="flex flex-wrap gap-2 text-sm">
+                  {skill.keywords?.map((kw) => (
+                    <span
+                      class={`rounded px-1 outline outline-1 ${pickColorByHash(
+                        kw,
+                      )}`}
+                    >
+                      {kw}
+                    </span>
+                  ))}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+      <section>
+        <h2>Education</h2>
+        {
+          resume.education.map((edu) => (
+            <div>
+              <h3>{edu.institution}</h3>
+              <p>
+                <b>{edu.studyType}</b>, {edu.area}
+              </p>
+              <p>{formatDateRange(edu)}</p>
+              <ul>
+                {edu.courses?.map((course) => (
+                  <li>{course}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </section>
+      <section>
+        <h2>Certifications</h2>
+        <div>
+          <ul>
+            {resume.certificates.map((cert) => <li>{cert.name}</li>)}
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Other experiences</h2>
+        {
+          resume.volunteer.map((vol) => (
+            <div>
+              <h3>{vol.organization}</h3>
+              <p>
+                <b>{vol.position}</b>, {formatDateRange(vol)}
+              </p>
+              <p>{vol.summary}</p>
+            </div>
+          ))
+        }
+      </section>
+    </div>
 
-        <!-- <footer class="text-right">
+    <!-- <footer class="text-right">
             <a href="/resume.json"> resume.json</a>
         </footer> -->
-    </main>
+  </main>
 </BaseLayout>
 
 <style>
-    body {
-        background-color: white;
-    }
+  body {
+    background-color: white;
+  }
 
-    @media print {
-        @page {
-            size: a4 portrait;
-            font-size: 12pt;
-        }
+  @media print {
+    @page {
+      size: a4 portrait;
+      font-size: 12pt;
     }
+  }
 
-    .prose-custom {
-        @apply prose-h2:underline prose-h2:decoration-emerald-300;
-        @apply prose-h3:underline prose-h3:decoration-sky-300;
-        @apply w-screen max-w-none m-0 p-12;
-        @apply marker:text-sky-400;
-    }
+  .prose-custom {
+    @apply prose-h2:underline prose-h2:decoration-emerald-300;
+    @apply prose-h3:underline prose-h3:decoration-sky-300;
+    @apply w-screen max-w-none m-0 p-12;
+    @apply marker:text-sky-400;
+  }
 </style>
