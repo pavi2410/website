@@ -48,11 +48,11 @@ import { Icon } from "astro-icon/components";
       <section>
         <h2>Experience</h2>
         {
-          Object.entries(Object.groupBy(resume.work, (work) => work.name)).map(
+          Object.entries(Object.groupBy(resume.work.filter((w) => !Boolean(w.hide)), (work) => work.name)).map(
             ([groupName, group]) => (
               <div>
                 <h3>{groupName}</h3>
-                {group.map((work) => (
+                {group?.map((work) => (
                   <div>
                     <p>{work.description}</p>
                     <p>

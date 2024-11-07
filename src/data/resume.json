@@ -36,11 +36,22 @@
       "url": "https://infocusp.com/",
       "position": "Software Engineer",
       "startDate": "2023-07-01",
+      "summary": "Working on an early-stage Blockchain startup project",
+      "highlights": [
+        "Responsible for the developement of a dApp web frontend using React.",
+        "Have an understanding of the Blockchain and the Ethereum network."
+      ]
+    },
+    {
+      "name": "Infocusp",
+      "url": "https://infocusp.com/",
+      "position": "Software Engineer",
+      "startDate": "2023-07-01",
       "summary": "Working on an early-stage startup project related to Salesforce",
       "highlights": [
-        "Responsible for the end-to-end development of a Chrome browser extension.",
-        "Designed an infrastructure using a serverless architecture.",
-        "Build, test and maintain the whole project, including frontend and backend."
+        "Responsible for the end-to-end development of a Chrome browser extension using Vue.",
+        "Designed the infrastructure using a serverless and event-driven architecture on AWS.",
+        "Helped getting the Google CASA (Cloud Application Security Assessment) certification for the project."
       ]
     },
     {
@@ -49,13 +60,15 @@
       "position": "Associate Software Engineer",
       "startDate": "2022-07-01",
       "endDate": "2023-07-01",
-      "summary": "Worked on a health-tech device",
+      "summary": "Worked on a health-tech device used by 100k users globally.",
       "highlights": [
-        "Data engineering on AWS Glue using PySpark",
-        "Build and maintain data dashboard using Streamlit, Pandas, and Plotly"
+        "Utilized AWS Glue with PySpark for data engineering tasks to produce performance reports and perform comparisons with the ground truth data of over 100GB.",
+        "Built and maintained a data dashboard that aid cross-functional teams to monitor and troubleshoot user data, which reduced the amount of work and time spent by 80%.",
+        "Performed regular sleep and usage data analysis on random users' sample from a pool of over 10k users, as well as, statistical analysis on all of the users on a quaterly cadence."
       ]
     },
     {
+      "hide": true,
       "name": "Highway to Highradius Internship Program",
       "url": "https://www.highradius.com/",
       "position": "Apprentice",
@@ -64,6 +77,7 @@
       "summary": "Learnt and build an ML based fullstack project."
     },
     {
+      "hide": true,
       "name": "Socommerz",
       "url": "https://socommerz.com/",
       "position": "Web Development Intern",
@@ -82,10 +96,7 @@
       "startDate": "2020-05-01",
       "endDate": "2020-08-01",
       "description": "App Inventor is a project that democratizes mobile app development",
-      "highlights": [
-        "My project was to make visible component extensions work, which would enable a missing piece of the platform.",
-        "Demo'd the prototype at the MIT App Inventor Global Developer Meetup (Fall 2020)"
-      ]
+      "summary": "Researched and Developed a prototype that enables the functionality of visible component extensions, filling a crucial gap within the platform."
     }
   ],
   "volunteer": [
@@ -94,14 +105,14 @@
       "position": "Tech Lead",
       "startDate": "2020-03-01",
       "endDate": "2022-01-01",
-      "summary": "Hosted several workshops for Android Study Jams and Kotlin"
+      "summary": "Hosted a few workshops on Android and Kotlin Study Jams."
     },
     {
       "organization": "Google Cloud Sprint Bootcamp",
-      "position": "Participant",
+      "position": "Apprenticeship",
       "startDate": "2022-06-01",
       "endDate": "2022-07-01",
-      "summary": "Learnt Google Cloud Platform, networking and troubleshooting"
+      "summary": "Learnt Google Cloud Platform, networking and troubleshooting."
     }
   ],
   "education": [
@@ -112,7 +123,7 @@
       "studyType": "B.Tech",
       "startDate": "2019-07-01",
       "endDate": "2023-06-31",
-      "score": "9.23",
+      "score": "9.23/10",
       "courses": [
         "Operating Systems",
         "Computer Networks",
@@ -132,8 +143,8 @@
         "CSS",
         "JavaScript",
         "TypeScript",
-        "Vue",
         "React",
+        "Vue",
         "Node",
         "Chrome Extensions"
       ]
@@ -149,8 +160,6 @@
     {
       "name": "Databases",
       "keywords": [
-        "SQL",
-        "NoSQL",
         "PostgreSQL",
         "SQLite"
       ]
@@ -168,15 +177,13 @@
       "name": "Operating Systems",
       "keywords": [
         "Linux",
-        "Windows",
-        "Bash"
+        "Windows"
       ]
     },
     {
       "name": "Systems Programming",
       "keywords": [
         "C",
-        "C++",
         "Rust"
       ]
     },
@@ -186,24 +193,7 @@
         "Python",
         "Pandas",
         "PySpark",
-        "AWS Glue",
-        "Big Data"
-      ]
-    },
-    {
-      "name": "Machine Learning",
-      "keywords": [
-        "Sklearn",
-        "Tensorflow"
-      ]
-    },
-    {
-      "name": "Misc.",
-      "keywords": [
-        "Git",
-        "Distributed Systems",
-        "Systems Design",
-        "Computer Networks"
+        "AWS Glue"
       ]
     }
   ],
@@ -258,7 +248,7 @@
     },
     {
       "name": "PlayBadges",
-      "description": "a badge service for Play Store app's downloads and rating"
+      "description": "a badge service for displaying Play Store app's downloads and rating"
     },
     {
       "name": "FloLang",
@@ -267,6 +257,14 @@
     {
       "name": "Sendy",
       "description": "anonymous file transfer service"
+    },
+    {
+      "name": "App Inventor Modern (unfinished)",
+      "description": "a modernized version of MIT App Inventor using the latest stack."
+    },
+    {
+      "name": "Project Jigsaw (unfinished)",
+      "description": "a new take on a blockly-based app builder. modeled using a declarative UI paradigm influenced by React."
     }
   ],
   "meta": {

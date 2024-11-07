@@ -6,7 +6,7 @@ dayjs.extend(relativeTime)
 dayjs.extend(isToday)
 
 function strHash(str: string) {
-  return str.split('').reduce((hash, c) => Math.imul(63, hash) + c.charCodeAt(0), 0);
+  return str.split('').reduce((hash, c) => Math.imul(15, hash) + c.charCodeAt(0), 0);
 }
 
 function pickItemByHash<T>(arr: T[], hash: number) {
