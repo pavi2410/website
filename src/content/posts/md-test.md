@@ -212,7 +212,7 @@ ID | Name | Rank
 ## Adding Image
 
 ```md
-![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
+![Branching Concepts](https://picsum.photos/400/300 "Branching Map")
 ```
 
-![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
+![Branching Concepts](https://picsum.photos/400/300 "Branching Map")

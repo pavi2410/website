@@ -25,7 +25,7 @@ const alt = '';
 
 <BaseLayout title={title} excerpt={excerpt} permalink={permalink}>
   <article
-    class="prose prose-lg dark:prose-invert max-md:mx-8 mx-auto my-8 max-w-prose"
+    class="prose prose-lg dark:prose-invert max-md:mx-8 mx-auto my-32 max-w-prose"
   >
     <header class="text-left">
       {
@@ -68,7 +68,7 @@ const alt = '';
             <div class="uppercase text-sm font-semibold opacity-50 pb-1">
               Quick Links
             </div>
-            <div class="flex gap-4 not-prose overflow-x-scroll">
+            <div class="flex gap-4 not-prose overflow-x-scroll mask-r-from-95%">
               {quickLinks.map(({ title, link }) => (
                 <a
                   href={link}

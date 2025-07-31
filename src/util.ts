@@ -21,13 +21,14 @@ export function pickColorSchemeByStringHash(str: string) {
 
 export function pickColorByHash(str: string) {
   const colorSchemes = [
-    'bg-red-500/25 text-red-500',
-    'bg-orange-500/25 text-orange-500',
-    'bg-amber-500/25 text-amber-500',
-    'bg-emerald-500/25 text-emerald-500',
-    'bg-blue-500/25 text-blue-500',
-    'bg-violet-500/25 text-violet-500',
-    'bg-fuchsia-500/25 text-fuchsia-500',
+    'bg-red-700/50 text-red-500',
+    'bg-orange-700/50 text-orange-500',
+    'bg-amber-700/50 text-amber-500',
+    'bg-emerald-700/50 text-emerald-500',
+    'bg-blue-700/50 text-blue-500',
+    'bg-sky-700/50 text-sky-500',
+    'bg-violet-700/50 text-violet-500',
+    'bg-fuchsia-700/50 text-fuchsia-500',
   ];
   return pickItemByHash(colorSchemes, strHash(str));
 }
