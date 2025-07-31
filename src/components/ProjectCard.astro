@@ -7,8 +7,11 @@ const {
 } = Astro.props;
 ---
 
-<div
-  class="backdrop-blur bg-rose-500/5 shadow-2xl outline-1 outline-gray-500 transition-all hover:-translate-y-3 hover:scale-x-105 flex flex-col sm:flex-row max-w-sm rounded-lg overflow-hidden p-8 space-y-4 md:space-y-0 md:space-x-4 items-start"
+<a
+  href={url}
+  target="_blank"  
+  rel="noopener noreferrer"
+  class="backdrop-blur bg-rose-500/5 shadow-2xl shadow-amber-500/30 outline-1 outline-gray-500/30 transition-all hover:-translate-y-3 hover:scale-x-105 flex flex-col sm:flex-row max-w-sm rounded-lg overflow-hidden p-8 space-y-4 md:space-y-0 md:space-x-4 items-start"
 >
   <div>
     <img src={icon} alt={title} width="96" height="96" />
@@ -28,4 +31,4 @@ const {
       View Project
     </Link> -->
   </div>
-</div>
+</a>

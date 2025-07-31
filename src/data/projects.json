@@ -3,7 +3,7 @@
     "title": "Kodular",
     "icon": "/icon-192.png",
     "description": "A no-code web-based Android app builder",
-    "url": "#",
+    "url": "https://kodular.io",
     "techStack": [
       "Android",
       "Java",
@@ -14,7 +14,7 @@
     "title": "VR Compatibility Checker",
     "icon": "/icon-192.png",
     "description": "An Android app to test your's phone VR compatibility",
-    "url": "#",
+    "url": "https://play.google.com/store/apps/details?id=appinventor.ai_pavitragolchha.VR",
     "techStack": [
       "Android",
       "Kotlin",
@@ -25,7 +25,7 @@
     "title": "picsup",
     "icon": "/icon-192.png",
     "description": "An image sharing platform",
-    "url": "#",
+    "url": "https://github.com/pavi2410/picsup",
     "techStack": [
       "FullStack",
       "Web",
@@ -37,11 +37,11 @@
     "title": "PlayBadges",
     "icon": "/icon-192.png",
     "description": "Show off your Play Store™ app's downloads and rating in your repo",
-    "url": "#",
+    "url": "https://github.com/pavi2410/playbadges",
     "techStack": [
       "NodeJS",
       "JavaScript",
-      "Express",
+      "Hono",
       "REST"
     ]
   },
@@ -49,7 +49,7 @@
     "title": "folo",
     "icon": "/icon-192.png",
     "description": "Followers tracker app",
-    "url": "#",
+    "url": "https://folo.ing",
     "techStack": [
       "Android",
       "Kotlin",
@@ -60,7 +60,7 @@
     "title": "TaskMate",
     "icon": "/icon-192.png",
     "description": "Yet another Trello clone",
-    "url": "#",
+    "url": "https://github.com/pavi2410/taskmate",
     "techStack": [
       "FullStack",
       "Web",
@@ -71,10 +71,10 @@
   {
     "title": "REPLisp",
     "icon": "/icon-192.png",
-    "description": "A LISP interpreter implemented in C",
-    "url": "#",
+    "description": "A LISP interpreter implemented in Rust",
+    "url": "https://github.com/pavi2410/replisp",
     "techStack": [
-      "C",
+      "Rust",
       "LISP",
       "Programming Language",
       "Interpreter"
