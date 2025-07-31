@@ -8,14 +8,14 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<article class="rounded-lg border hover:border-blue-500 p-4">
-  <header>
-    <a class="before:absolute hover:no-underline" href={"/blog/" + post.slug}>
+<article class="transition-all hover:bg-neutral-900">
+  <a class="block py-8 px-2 space-y-2" href={"/blog/" + post.slug}>
+    <header>
       <h1 class="font-bold text-xl">{post.data.title}</h1>
-    </a>
-  </header>
-  <p class="italic">{post.data.excerpt}</p>
-  <time class="text-end" datetime={post.data.publishDate.toISOString()}>
-    {post.data.publishDate.toDateString()}
-  </time>
+    </header>
+    <p class="italic opacity-80">{post.data.excerpt}</p>
+    <time class="text-end w-full text-sm opacity-50 float-end" datetime={post.data.publishDate.toISOString()}>
+      {post.data.publishDate.toDateString()}
+    </time>
+  </a>
 </article>

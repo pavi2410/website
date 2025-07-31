@@ -23,6 +23,12 @@
     }
 }
 
+.max-w-prose {
+    max-width: 80ch;
+}
+
+/* Global styles */
+
 body {
     font-family: "Inter Variable", sans-serif;
     background-color: white;
