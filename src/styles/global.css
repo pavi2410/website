@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+
+/* Typography customizations */
+
+.prose {
+    @apply prose-h2:underline prose-h2:decoration-emerald-300 prose-h2:decoration-2;
+    @apply prose-h3:underline prose-h3:decoration-sky-300 prose-h3:decoration-2;
+    @apply prose-a:text-blue-600 prose-a:dark:text-sky-50;
+
+    :not(pre) > code {
+        @apply before:hidden after:hidden;
+        @apply rounded py-0.5 px-2 mx-2;
+        @apply outline-1 outline-violet-500 dark:outline-violet-700;
+    }
+
+    blockquote > p {
+        &::before,
+        &::after {
+            display: none;
+        }
+    }
+}
+
+body {
+    font-family: "Inter Variable", sans-serif;
+    background-color: white;
+    color: black;
+    scroll-behavior: smooth;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: black;
+        color: white;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Bricolage Grotesque Variable", sans-serif;
+}
+
+.font-inter {
+    font-family: "Inter Variable", sans-serif;
+}
+
+.font-bricolage {
+    font-family: "Bricolage Grotesque Variable", sans-serif;
+}

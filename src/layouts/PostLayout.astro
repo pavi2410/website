@@ -13,18 +13,19 @@ const {
     title,
     excerpt,
     publishDate,
-    heroImage,
-    permalink,
-    alt,
     quickLinks,
     tags,
   },
 } = Astro.props;
+
+const permalink = '';
+const heroImage = '';
+const alt = '';
 ---
 
 <BaseLayout title={title} excerpt={excerpt} permalink={permalink}>
   <article
-    class="prose prose-lg dark:prose-invert prose-custom max-md:mx-8 mx-auto my-8 max-w-[80ch]"
+    class="prose prose-lg dark:prose-invert max-md:mx-8 mx-auto my-8 max-w-[80ch]"
   >
     <header class="text-left">
       {
@@ -92,39 +93,3 @@ const {
     </main>
   </article>
 </BaseLayout>
-
-<style is:global>
-  /* code {
-  counter-reset: step !important;
-  counter-increment: step 0 !important;
-}
-
-code .line::before {
-  content: counter(step);
-  counter-increment: step;
-  width: 1rem;
-  margin-right: 1.5rem;
-  display: inline-block;
-  text-align: right;
-  color: white;
-} */
-
-  .prose-custom {
-    @apply prose-h2:underline prose-h2:decoration-emerald-300 prose-h2:decoration-2;
-    @apply prose-h3:underline prose-h3:decoration-sky-300 prose-h3:decoration-2;
-    @apply prose-a:text-blue-600 prose-a:dark:text-sky-50;
-  }
-
-  :not(pre) > code {
-    @apply before:hidden after:hidden;
-    @apply rounded py-0.5 px-2 mx-2;
-    @apply outline outline-1 outline-violet-500 dark:outline-violet-700;
-  }
-
-  blockquote > p {
-    &::before,
-    &::after {
-      display: none;
-    }
-  }
-</style>

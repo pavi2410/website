@@ -34,13 +34,13 @@ export function pickColorByHash(str: string) {
 
 export function pickColorGradientByHash(str: string) {
   const colorSchemes = [
-    'bg-gradient-to-t from-red-500 border-red-500 text-red-500',
-    'bg-gradient-to-t from-orange-500 border-orange-500 text-orange-500',
-    'bg-gradient-to-t from-amber-500 border-amber-500 text-amber-500',
-    'bg-gradient-to-t from-emerald-500 border-emerald-500 text-emerald-500',
-    'bg-gradient-to-t from-blue-500 border-blue-500 text-blue-500',
-    'bg-gradient-to-t from-violet-500 border-violet-500 text-violet-500',
-    'bg-gradient-to-t from-fuchsia-500 border-fuchsia-500 text-fuchsia-500',
+    'bg-linear-to-t from-red-500 border-red-500 text-red-500',
+    'bg-linear-to-t from-orange-500 border-orange-500 text-orange-500',
+    'bg-linear-to-t from-amber-500 border-amber-500 text-amber-500',
+    'bg-linear-to-t from-emerald-500 border-emerald-500 text-emerald-500',
+    'bg-linear-to-t from-blue-500 border-blue-500 text-blue-500',
+    'bg-linear-to-t from-violet-500 border-violet-500 text-violet-500',
+    'bg-linear-to-t from-fuchsia-500 border-fuchsia-500 text-fuchsia-500',
   ];
   return pickItemByHash(colorSchemes, strHash(str));
 }
