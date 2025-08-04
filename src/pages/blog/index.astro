@@ -17,12 +17,12 @@ let permalink = "https://blog.pavi2410.me/";
 <BaseLayout title={title} description={description} permalink={permalink}>
   <div class="container mx-auto max-w-prose space-y-8 my-16">
     <h1
-      class="text-5xl leading-normal font-extrabold bg-clip-text text-transparent bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500"
+      class="max-md:px-4 text-5xl leading-normal font-extrabold bg-clip-text text-transparent bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500"
     >
       pavi2410's blog
     </h1>
     <section>
-      <p class="text-xl">{description}</p>
+      <p class="max-md:px-4 text-xl">{description}</p>
     </section>
     <section aria-label="Blog post list" class="divide-y divide-neutral-500/50">
       {sortedPosts.map((p) => <BlogPostPreview post={p} />)}
