@@ -26,7 +26,7 @@ A ***V**isible **C**omponent **E**xtension* (or VCE) is a type of extension whic
 ## Background
 
 ### About Me
-My name is [Pavitra Golchha](https://pavi2410.me). I'm a CSE student. I live in India. I'm passionate about computers and programming. I love my weapons - Kotlin, JavaScript, Python. I like to play badminton, listen to music and learn new stuffs.
+My name is [Pavitra Golchha](https://pavi2410.com). I'm a CSE student. I live in India. I'm passionate about computers and programming. I love my weapons - Kotlin, JavaScript, Python. I like to play badminton, listen to music and learn new stuffs.
 
 ### About MIT App Inventor
 ![App Inventor logo](/assets/blog/MIT-App-Inventor-logo.png)

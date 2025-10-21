@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [icon()],
-  site: 'https://pavi2410.me',
+  site: 'https://pavi2410.com',
 
   redirects: {
     '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',

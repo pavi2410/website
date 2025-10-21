@@ -5,8 +5,8 @@ publishDate: 2020-10-02
 tags: ['flolang', 'programming language', 'replit']
 ---
 
-https://pavi2410.me/blog/replisp-another-new-language
-<!-- {% post https://pavi2410.me/blog/replisp-another-new-language %} -->
+https://pavi2410.com/blog/replisp-another-new-language
+<!-- {% post https://pavi2410.com/blog/replisp-another-new-language %} -->
 
 It's going to be two years now since I created my own programming language called 'REPLisp' and posted about it here. It was my first of a kind experience with no prior knowledge in building one. [The Super Tiny Compiler tutorial by Jamie](https://glitch.com/~the-super-tiny-compiler) was where I got started. This is an introduction to writing your own compiler in JavaScript from scratch. It taught me the different phases of compilation - tokenising, lexical analysis, parsing, evaluation; it taught me about AST (Abstract Syntax Tree); it also taught me about code generation which takes an AST and generates a valid JS code.
 
