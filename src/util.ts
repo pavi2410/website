@@ -20,17 +20,16 @@ export function pickColorSchemeByStringHash(str: string) {
 }
 
 export function pickColorByHash(str: string) {
-  const colorSchemes = [
-    'bg-red-500/30 text-red-500',
-    'bg-orange-500/30 text-orange-500',
-    'bg-amber-500/30 text-amber-500',
-    'bg-emerald-500/30 text-emerald-500',
-    'bg-blue-500/30 text-blue-500',
-    'bg-sky-500/30 text-sky-500',
-    'bg-violet-500/30 text-violet-500',
-    'bg-fuchsia-500/30 text-fuchsia-500',
-  ];
-  return pickItemByHash(colorSchemes, strHash(str));
+  const hues = [12, 27, 45, 142, 230, 200, 270, 310]; // Red, Orange, Amber, Emerald, Blue, Sky, Violet, Fuchsia
+  const hue = pickItemByHash(hues, strHash(str));
+  
+  // OKLCH values: lightness (0-1), chroma (0-0.4), hue (0-360)
+  const bgLightness = 0.75; // Lighter background
+  const chroma = 0.15;
+  const textLightness = bgLightness > 0.6 ? 0.35 : 0.95; // Dark text for light bg, light text for dark bg
+  const textChroma = 0.18;
+  
+  return `background: oklch(${bgLightness} ${chroma} ${hue}); color: oklch(${textLightness} ${textChroma} ${hue});`;
 }
 
 export function pickColorGradientByHash(str: string) {
