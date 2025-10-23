@@ -2,7 +2,7 @@
 title: "Detecting Silence in Audio Using WebAudio"
 excerpt: "This blog explores detecting silence in audio streams using WebAudio API, outlining core principles, popular libraries, and a custom implementation for efficient voice activity detection."
 publishDate: 2024-07-11
-tags: ['web-audio', 'vad', 'audio']
+tags: ['web', 'web-audio', 'vad', 'audio', 'voice-activity-detection']
 ---
 
 Detecting silence in audio streams is essential for building responsive applications, such as automated transcription, video conferencing tools, or interactive media experiences. With WebAudio API and Voice Activity Detection (VAD), you can seamlessly detect when users start and stop speaking.

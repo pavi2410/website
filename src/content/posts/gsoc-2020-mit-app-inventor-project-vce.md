@@ -2,7 +2,7 @@
 title: 'GSoC 2020 MIT App Inventor Project VCE'
 excerpt: 'My experience working with MIT App Inventor team during GSoC 2020'
 publishDate: 2020-08-28
-tags: ['GSoC', 'MIT', 'App Inventor', 'Project', 'VCE', 'Open Source']
+tags: ['gsoc', 'mit', 'app-inventor', 'project', 'vce', 'open-source']
 quickLinks:
   - title: GSoC Project Page
     link: https://summerofcode.withgoogle.com/projects/#4749864480538624

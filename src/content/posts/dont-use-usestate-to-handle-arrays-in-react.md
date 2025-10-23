@@ -2,7 +2,7 @@
 title: "Don't use useState to handle arrays in React"
 excerpt: 'Improve readabilty of your React components by not using useState to handle arrays.'
 publishDate: 2022-02-17
-tags: ['react', 'hooks', 'array', 'frontend']
+tags: ['react', 'hooks', 'array', 'frontend', 'web']
 ---
 
 ## Problem 😣
