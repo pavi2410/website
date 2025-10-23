@@ -3,9 +3,11 @@ import { formatDate, pickColorByHash, pickColorGradientByHash } from "@/util";
 import BaseLayout from "./BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
+import TableOfContents from "@/components/TableOfContents";
 
 export interface Props {
   frontmatter: CollectionEntry<"posts">["data"];
+  headings?: { depth: number; slug: string; text: string; }[];
 }
 
 const {
@@ -21,12 +23,16 @@ const {
 const permalink = '';
 const heroImage = '';
 const alt = '';
+
+// Get headings for TOC
+const headings = await Astro.props.headings || [];
 ---
 
 <BaseLayout title={title} description={excerpt} permalink={permalink}>
-  <article
-    class="prose prose-lg dark:prose-invert max-md:mx-8 mx-auto my-32 max-w-prose"
-  >
+  <div class="blog-container">
+    <article
+      class="prose prose-lg dark:prose-invert max-lg:mx-8 my-32 max-w-prose"
+    >
     <a href="/blog" class="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity mb-8 no-underline">
       <Icon name="tabler:arrow-left" size="1rem" />
       Back to blog
@@ -94,7 +100,52 @@ const alt = '';
       }
     </header>
     <main>
+      <!-- TOC for mobile and lg: shows before content -->
+      <div class="block xl:hidden mb-8 pb-8 border-b border-neutral-200 dark:border-neutral-800">
+        <TableOfContents client:load headings={headings} />
+      </div>
+      
       <slot />
     </main>
   </article>
+  
+  <!-- TOC for desktop: sticky on the right -->
+  <aside class="toc-aside">
+    <TableOfContents client:load headings={headings} />
+  </aside>
+  </div>
 </BaseLayout>
+
+<style>
+  @reference "@/styles/global.css";
+  
+  .blog-container {
+    @apply mx-auto;
+  }
+
+  .toc-aside {
+    @apply hidden;
+  }
+
+  /* Desktop xl (1280px+): center content + TOC as a group */
+  @media (min-width: 1280px) {
+    .blog-container {
+      @apply flex justify-center gap-8 max-w-[1200px];
+    }
+
+    .toc-aside {
+      @apply block sticky top-32 w-64 max-h-[calc(100vh-8rem)] overflow-y-auto shrink-0;
+    }
+  }
+
+  /* Between lg and xl (1024px-1279px): center content only */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .blog-container {
+      @apply flex justify-center;
+    }
+
+    article {
+      @apply mx-8;
+    }
+  }
+</style>
