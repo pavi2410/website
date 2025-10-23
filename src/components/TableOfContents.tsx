@@ -52,8 +52,8 @@ export default function TableOfContents({ headings }: Props) {
   }
 
   return (
-    <nav className="text-sm" aria-label="Table of contents">
-      <h2 className="font-semibold text-base mb-4 font-bricolage">On this page</h2>
+    <nav className="text-sm mt-6 not-prose" aria-label="Table of contents">
+      <div className="uppercase text-sm font-semibold opacity-50">On this page</div>
       <ul className="list-none p-0 m-0 space-y-2">
         {tocHeadings.map((heading) => (
           <li key={heading.slug} className={`m-0 ${heading.depth === 3 ? 'pl-4' : 'pl-0'}`}>
