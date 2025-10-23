@@ -4,9 +4,11 @@ import icon from "astro-icon";
 
 import tailwindcss from '@tailwindcss/vite';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()],
+  integrations: [icon(), mdx()],
   site: 'https://pavi2410.com',
 
   redirects: {
