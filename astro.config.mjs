@@ -6,9 +6,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), mdx()],
+  integrations: [icon(), mdx(), react()],
   site: 'https://pavi2410.com',
 
   redirects: {
