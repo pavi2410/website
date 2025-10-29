@@ -29,7 +29,7 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={tag}>
+<BaseLayout title={tag} description={`Posts tagged with ${tag}`}>
   <div class="container mx-auto max-w-prose space-y-8 my-8">
     <p>Posts tagged with <b>{tag}</b></p>
     <section class="flex flex-col gap-4">

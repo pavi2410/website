@@ -28,7 +28,7 @@ const alt = '';
 const headings = await Astro.props.headings || [];
 ---
 
-<BaseLayout title={title} description={excerpt} permalink={permalink}>
+<BaseLayout title={title} description={excerpt} permalink={permalink} publishDate={publishDate}>
   <div class="blog-container">
     <article
       class="prose prose-lg dark:prose-invert max-lg:mx-8 my-32 max-w-prose"
