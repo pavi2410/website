@@ -27,12 +27,22 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const title = `Posts tagged with "${tag}" - pavi2410's blog`;
+const description = `Explore ${posts.length} blog post${posts.length === 1 ? '' : 's'} about ${tag} by Pavitra Golchha. Topics include web development, programming, and technology.`;
+const permalink = `/blog/tag/${tag}`;
 ---
 
-<BaseLayout title={tag} description={`Posts tagged with ${tag}`}>
-  <div class="container mx-auto max-w-prose space-y-8 my-8">
-    <p>Posts tagged with <b>{tag}</b></p>
-    <section class="flex flex-col gap-4">
+<BaseLayout 
+  title={title} 
+  description={description}
+  permalink={permalink}
+  keywords={`${tag}, blog, pavi2410, Pavitra Golchha`}
+>
+  <div class="container mx-auto max-w-prose space-y-8 my-16">
+    <h1 class="text-4xl font-bold mb-4">Posts tagged with "{tag}"</h1>
+    <p class="text-lg opacity-80 mb-8">{posts.length} post{posts.length === 1 ? '' : 's'} found</p>
+    <section class="flex flex-col gap-4 divide-y divide-neutral-500/50">
       {posts.map((post) => <BlogPostPreview post={post} />)}
     </section>
   </div>

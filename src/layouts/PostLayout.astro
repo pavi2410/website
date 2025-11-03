@@ -20,15 +20,23 @@ const {
   },
 } = Astro.props;
 
-const permalink = '';
+const permalink = Astro.url.pathname;
 const heroImage = '';
 const alt = '';
+const keywords = tags.join(', ');
 
 // Get headings for TOC
 const headings = await Astro.props.headings || [];
 ---
 
-<BaseLayout title={title} description={excerpt} permalink={permalink} publishDate={publishDate}>
+<BaseLayout 
+  title={title} 
+  description={excerpt} 
+  permalink={permalink} 
+  publishDate={publishDate}
+  keywords={keywords}
+  type="article"
+>
   <div class="blog-container">
     <article
       class="prose prose-lg dark:prose-invert max-lg:mx-8 my-32 max-w-prose"

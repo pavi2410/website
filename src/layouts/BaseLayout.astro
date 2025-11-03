@@ -4,13 +4,21 @@ import "@fontsource-variable/inter/opsz.css";
 import '@fontsource-variable/bricolage-grotesque/opsz.css';
 import "@/styles/global.css";
 
-const { title, description, publishDate } = Astro.props;
+const { title, description, publishDate, permalink, keywords, author, type } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} publishDate={publishDate} />
+    <BaseHead 
+      title={title} 
+      description={description} 
+      publishDate={publishDate}
+      permalink={permalink}
+      keywords={keywords}
+      author={author}
+      type={type}
+    />
   </head>
   <body>
     <slot />

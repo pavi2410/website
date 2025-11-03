@@ -1,0 +1,84 @@
+---
+export interface Props {
+  type: 'website' | 'person' | 'article';
+  data: any;
+}
+
+const { type, data } = Astro.props;
+
+const structuredData = (() => {
+  const baseUrl = 'https://pavi2410.com';
+  
+  switch (type) {
+    case 'website':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: data.name || 'Pavitra Golchha',
+        url: baseUrl,
+        description: data.description,
+        author: {
+          '@type': 'Person',
+          name: 'Pavitra Golchha',
+          url: baseUrl,
+          sameAs: [
+            'https://twitter.com/PavitraGolchha',
+            'https://github.com/pavi2410',
+            'https://linkedin.com/in/pavi2410',
+            'https://youtube.com/c/PavitraGolchha'
+          ]
+        }
+      };
+    
+    case 'person':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Pavitra Golchha',
+        url: baseUrl,
+        image: `${baseUrl}/apple-touch-icon.png`,
+        sameAs: [
+          'https://twitter.com/PavitraGolchha',
+          'https://github.com/pavi2410',
+          'https://linkedin.com/in/pavi2410',
+          'https://youtube.com/c/PavitraGolchha'
+        ],
+        jobTitle: data.jobTitle || 'Software Developer',
+        description: data.description
+      };
+    
+    case 'article':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: data.title,
+        description: data.description,
+        image: data.image || `${baseUrl}/apple-touch-icon.png`,
+        datePublished: data.publishDate,
+        dateModified: data.modifiedDate || data.publishDate,
+        author: {
+          '@type': 'Person',
+          name: 'Pavitra Golchha',
+          url: baseUrl
+        },
+        publisher: {
+          '@type': 'Person',
+          name: 'Pavitra Golchha',
+          url: baseUrl
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': data.url
+        },
+        keywords: data.keywords
+      };
+    
+    default:
+      return null;
+  }
+})();
+---
+
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}
