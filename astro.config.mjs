@@ -11,6 +11,11 @@ import { blogOgImage } from './src/og-image.tsx';
 // https://astro.build/config
 export default defineConfig({
   site: "https://pavi2410.com",
+
+  redirects: {
+    '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',
+  },
+
   integrations: [
     icon(),
     mdx(),
@@ -42,11 +47,6 @@ export default defineConfig({
       render: blogOgImage,
     }),
   ],
-  site: 'https://pavi2410.com',
-
-  redirects: {
-    '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',
-  },
 
   vite: {
     plugins: [tailwindcss()]
