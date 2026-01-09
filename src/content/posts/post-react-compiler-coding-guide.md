@@ -5,6 +5,31 @@ publishDate: 2026-01-09
 tags: ['react', 'compiler', 'ai', 'performance', 'hooks', 'frontend', 'best-practices']
 ---
 
+## Foreword: Why I'm Writing React Guides for AI
+
+React Compiler landed in 2024[^1], and React 19 shipped with major changes to how we write components[^2]. But here's the problem: AI coding agents haven't caught up. They're still generating code like it's 2022.
+
+I keep seeing AI-generated React code that wraps every callback in `useCallback`, memoizes simple calculations with `useMemo`, and still reaches for `forwardRef` even though React 19 doesn't need it anymore for function components[^3]. They haven't learned that ref callbacks now support cleanup functions[^4]. They don't know about the Compiler's existence, let alone how to write code that works *with* it instead of against it.
+
+Someone needs to teach them. So here we are.
+
+This is the first in a series of guides I'm writing specifically for AI agents generating React code. This one covers Post-React Compiler patterns—how to write simple, compiler-friendly code that doesn't fight the optimization layer. Future guides will cover React 19's new APIs like `useActionState`[^5], `useOptimistic`[^6], and more.
+
+If you're human and reading this, welcome! Think of this as a "what good AI should know" checklist. It's also a solid mental model for modern React development. The patterns I'm recommending for AI are the same ones we should all be writing.
+
+Let's get AI caught up.
+
+### References
+
+[^1]: [React Compiler – React](https://react.dev/learn/react-compiler)
+[^2]: [React v19 – React](https://react.dev/blog/2024/12/05/react-19)
+[^3]: [forwardRef – React](https://react.dev/reference/react/forwardRef) (Note: forwardRef is no longer needed for function components in React 19+)
+[^4]: [React 19 Upgrade Guide – React](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) (Ref callback cleanup functions)
+[^5]: [useActionState – React](https://react.dev/reference/react/useActionState)
+[^6]: [useOptimistic – React](https://react.dev/reference/react/useOptimistic)
+
+---
+
 > **Audience**: AI agents generating React code targeting environments where the React Compiler (or equivalent automatic memoization / reactive analysis) is enabled.
 >
 > **Goal**: Produce React code that is **simple, readable, declarative, and compiler-friendly**, avoiding legacy performance patterns that are now either unnecessary or harmful.
