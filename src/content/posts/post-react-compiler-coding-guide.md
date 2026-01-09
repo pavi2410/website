@@ -19,8 +19,6 @@ If you're human and reading this, welcome! Think of this as a "what good AI shou
 
 Let's get AI caught up.
 
-### References
-
 [^1]: [React Compiler – React](https://react.dev/learn/react-compiler)
 [^2]: [React v19 – React](https://react.dev/blog/2024/12/05/react-19)
 [^3]: [forwardRef – React](https://react.dev/reference/react/forwardRef) (Note: forwardRef is no longer needed for function components in React 19+)
@@ -33,8 +31,6 @@ Let's get AI caught up.
 > **Audience**: AI agents generating React code targeting environments where the React Compiler (or equivalent automatic memoization / reactive analysis) is enabled.
 >
 > **Goal**: Produce React code that is **simple, readable, declarative, and compiler-friendly**, avoiding legacy performance patterns that are now either unnecessary or harmful.
-
----
 
 ## 1. Mental Model Shift
 
