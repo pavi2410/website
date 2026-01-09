@@ -7,7 +7,7 @@ tags: ['react', 'compiler', 'ai', 'performance', 'hooks', 'frontend', 'best-prac
 
 ## Foreword: Why I'm Writing React Guides for AI
 
-React Compiler landed in 2024[^1], and React 19 shipped with major changes to how we write components[^2]. But here's the problem: AI coding agents haven't caught up. They're still generating code like it's 2022.
+[React Compiler](https://react.dev/learn/react-compiler) v1.0 landed in 2025[^1], and React 19 shipped with major changes to how we write components[^2]. But here's the problem: AI coding agents haven't caught up. They're still generating code like it's 2022.
 
 I keep seeing AI-generated React code that wraps every callback in `useCallback`, memoizes simple calculations with `useMemo`, and still reaches for `forwardRef` even though React 19 doesn't need it anymore for function components[^3]. They haven't learned that ref callbacks now support cleanup functions[^4]. They don't know about the Compiler's existence, let alone how to write code that works *with* it instead of against it.
 
@@ -19,10 +19,10 @@ If you're human and reading this, welcome! Think of this as a "what good AI shou
 
 Let's get AI caught up.
 
-[^1]: [React Compiler – React](https://react.dev/learn/react-compiler)
-[^2]: [React v19 – React](https://react.dev/blog/2024/12/05/react-19)
+[^1]: [React Compiler v1.0](https://react.dev/blog/2025/10/07/react-compiler-1)
+[^2]: [React v19](https://react.dev/blog/2024/12/05/react-19)
 [^3]: [forwardRef – React](https://react.dev/reference/react/forwardRef) (Note: forwardRef is no longer needed for function components in React 19+)
-[^4]: [React 19 Upgrade Guide – React](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) (Ref callback cleanup functions)
+[^4]: [React 19 Upgrade Guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) (Ref callback cleanup functions)
 [^5]: [useActionState – React](https://react.dev/reference/react/useActionState)
 [^6]: [useOptimistic – React](https://react.dev/reference/react/useOptimistic)
 
@@ -173,9 +173,9 @@ Derive values inline instead.
 
 ## 4. Props and Data Flow
 
-### 4.1 Prefer Passing Values, Not Callbacks
+### 4.1 Inline Callbacks Are Fine
 
-Callbacks increase indirection and were historically memoized.
+Callbacks were historically wrapped in `useCallback` for performance. The compiler handles this now.
 
 **Good**
 
@@ -203,7 +203,7 @@ The compiler can handle inline closures.
 
 ## 5. Lists and Keys
 
-* Keys must be **stable and semantic**, not index-based.
+* Keys should be **stable and semantic**. Avoid index-based keys when items can be reordered, added, or removed.
 * Do not optimize list rendering with memoization.
 
 **Good**
