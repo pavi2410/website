@@ -36,6 +36,12 @@ const openGraphImageUrl = getImagePath({ url, site });
 <meta name="author" content={author} />
 {keywords && <meta name="keywords" content={keywords} />}
 
+<!-- Theme color for iOS status bar -->
+<meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#171717" media="(prefers-color-scheme: dark)" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />

@@ -47,7 +47,7 @@ const headings = Astro.props.headings || [];
   <Header />
 
   <!-- Mobile TOC: sticky below main header -->
-  <div class="xl:hidden sticky top-14 z-40 bg-neutral-950/95 backdrop-blur border-b border-neutral-800">
+  <div class="xl:hidden sticky top-14 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
     <TableOfContents client:load headings={headings} collapsible />
   </div>
 

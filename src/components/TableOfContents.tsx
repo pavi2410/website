@@ -72,12 +72,12 @@ export default function TableOfContents({ headings, collapsible = false }: Props
       <nav className="text-sm not-prose relative" aria-label="Table of contents">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-neutral-800/50 transition-colors"
+          className="w-full flex items-center justify-between px-4 py-3 cursor-pointer bg-neutral-100 dark:bg-transparent hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors"
           aria-expanded={isOpen}
         >
-          <span className="text-neutral-200 truncate">{activeHeading?.text}</span>
+          <span className="text-neutral-800 dark:text-neutral-200 truncate">{activeHeading?.text}</span>
           <svg
-            className={`w-5 h-5 text-neutral-400 transition-transform shrink-0 ml-2 ${isOpen ? 'rotate-180' : ''}`}
+            className={`w-5 h-5 text-neutral-500 dark:text-neutral-400 transition-transform shrink-0 ml-2 ${isOpen ? 'rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -86,7 +86,7 @@ export default function TableOfContents({ headings, collapsible = false }: Props
           </svg>
         </button>
         {isOpen && (
-          <ul className="absolute left-0 right-0 top-full bg-neutral-950/95 backdrop-blur border-b border-neutral-800 list-none p-0 m-0 px-4 pb-4 pt-2 space-y-1 max-h-64 overflow-y-auto">
+          <ul className="absolute left-0 right-0 top-full bg-neutral-100 dark:bg-neutral-950/95 dark:backdrop-blur border-b border-neutral-200 dark:border-neutral-800 list-none p-0 m-0 px-4 pb-4 pt-2 space-y-1 max-h-64 overflow-y-auto z-50">
             {tocHeadings.map((heading) => (
               <li key={heading.slug} className={`m-0 ${heading.depth === 3 ? 'pl-4' : 'pl-0'}`}>
                 <a
@@ -97,8 +97,8 @@ export default function TableOfContents({ headings, collapsible = false }: Props
                   }}
                   className={`block py-1.5 transition-colors no-underline ${
                     activeId === heading.slug
-                      ? 'text-emerald-400'
-                      : 'text-neutral-400 hover:text-neutral-200'
+                      ? 'text-emerald-600 dark:text-emerald-400'
+                      : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200'
                   }`}
                 >
                   {heading.text}

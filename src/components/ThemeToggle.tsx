@@ -2,6 +2,22 @@ import { useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
 
+const THEME_COLORS = {
+  light: '#f5f5f5',
+  dark: '#171717',
+};
+
+function updateThemeColor(isDark: boolean) {
+  const color = isDark ? THEME_COLORS.dark : THEME_COLORS.light;
+  let meta = document.querySelector('meta[name="theme-color"]:not([media])') as HTMLMetaElement;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    document.head.appendChild(meta);
+  }
+  meta.content = color;
+}
+
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>('system');
 
@@ -19,9 +35,12 @@ export default function ThemeToggle() {
       localStorage.removeItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       root.classList.toggle('dark', prefersDark);
+      updateThemeColor(prefersDark);
     } else {
       localStorage.setItem('theme', theme);
-      root.classList.toggle('dark', theme === 'dark');
+      const isDark = theme === 'dark';
+      root.classList.toggle('dark', isDark);
+      updateThemeColor(isDark);
     }
   }, [theme]);
 
@@ -32,6 +51,7 @@ export default function ThemeToggle() {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handler = (e: MediaQueryListEvent) => {
       document.documentElement.classList.toggle('dark', e.matches);
+      updateThemeColor(e.matches);
     };
 
     mediaQuery.addEventListener('change', handler);

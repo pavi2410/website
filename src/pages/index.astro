@@ -2,17 +2,19 @@
 import ProjectCard from "@/components/ProjectCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Tag from "@/components/Tag.astro";
+import Header from "@/components/Header.astro";
 
 import projectsData from "@/data/projects.json";
 import { Icon } from "astro-icon/components";
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Pavitra Golchha - Software Developer | pavi2410"
   description="Welcome to Pavitra Golchha's personal website. Discover my projects, blog posts about web development, programming, and technology. Known as pavi2410 online."
   permalink="/"
   keywords="Pavitra Golchha, pavi2410, software developer, web development, programming, blog, projects"
 >
+  <Header />
   <div class="pattern-background dark:text-white">
     <section
       class="grid min-h-screen place-items-center px-8 py-24 sm:py-32 lg:px-16"
@@ -140,10 +142,10 @@ import { Icon } from "astro-icon/components";
     background-image: url("/bg_light.svg");
     background-repeat: repeat;
     background-size: 100%;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      background-image: url("/bg_dark.svg");
-    }
+  :global(.dark) .pattern-background {
+    background-image: url("/bg_dark.svg");
   }
 
   @property --glow-opacity {
