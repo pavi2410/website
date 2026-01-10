@@ -122,7 +122,7 @@ const headings = await Astro.props.headings || [];
     <main>
       <!-- TOC for mobile and lg: shows before content -->
       <div class="block xl:hidden mb-8 pb-8 border-b border-neutral-200 dark:border-neutral-800">
-        <TableOfContents client:load headings={headings} />
+        <TableOfContents client:load headings={headings} collapsible />
       </div>
       
       <slot />
