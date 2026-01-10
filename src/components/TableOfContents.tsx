@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface Heading {
   depth: number;
@@ -14,9 +14,18 @@ interface Props {
 export default function TableOfContents({ headings, collapsible = false }: Props) {
   const [activeId, setActiveId] = useState<string>('');
   const [isOpen, setIsOpen] = useState(!collapsible);
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
   // Filter to only show h2 and h3 headings
   const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+
+  // Auto-scroll TOC to keep active heading visible
+  useEffect(() => {
+    if (activeId) {
+      const link = linkRefs.current.get(activeId);
+      link?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeId]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,11 +63,11 @@ export default function TableOfContents({ headings, collapsible = false }: Props
   }
 
   return (
-    <nav className="text-sm mt-6 not-prose" aria-label="Table of contents">
+    <nav className="text-sm not-prose h-full flex flex-col" aria-label="Table of contents">
       {collapsible ? (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 uppercase text-sm font-semibold opacity-50 hover:opacity-70 transition-opacity cursor-pointer"
+          className="flex items-center gap-2 uppercase text-sm font-semibold opacity-50 hover:opacity-70 transition-opacity cursor-pointer shrink-0"
           aria-expanded={isOpen}
         >
           <svg
@@ -72,13 +81,16 @@ export default function TableOfContents({ headings, collapsible = false }: Props
           On this page
         </button>
       ) : (
-        <div className="uppercase text-sm font-semibold opacity-50">On this page</div>
+        <div className="uppercase text-sm font-semibold opacity-50 shrink-0">On this page</div>
       )}
       {isOpen && (
-        <ul className="list-none p-0 m-0 space-y-2">
+        <ul className="list-none p-0 m-0 space-y-2 flex-1 overflow-y-auto">
           {tocHeadings.map((heading) => (
             <li key={heading.slug} className={`m-0 ${heading.depth === 3 ? 'pl-4' : 'pl-0'}`}>
               <a
+                ref={(el) => {
+                  if (el) linkRefs.current.set(heading.slug, el);
+                }}
                 href={`#${heading.slug}`}
                 className={`block py-1 transition-colors no-underline border-l-2 pl-3 ${
                   activeId === heading.slug
