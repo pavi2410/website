@@ -4,10 +4,12 @@ import BaseLayout from "./BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import TableOfContents from "@/components/TableOfContents";
+import CopyToMarkdown from "@/components/CopyToMarkdown";
 
 export interface Props {
   frontmatter: CollectionEntry<"posts">["data"];
   headings?: { depth: number; slug: string; text: string; }[];
+  rawContent?: string;
 }
 
 const {
@@ -18,6 +20,7 @@ const {
     quickLinks,
     tags,
   },
+  rawContent,
 } = Astro.props;
 
 const permalink = Astro.url.pathname;
@@ -59,10 +62,19 @@ const headings = await Astro.props.headings || [];
         )
       }
       <h1 class="title">{title}</h1>
-      <p>
-        <a href="https://pavi2410.com">Pavitra Golchha</a> • Published on&nbsp;
-        {formatDate(publishDate)}
-      </p>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <p>
+          <a href="https://pavi2410.com">Pavitra Golchha</a> • Published on&nbsp;
+          {formatDate(publishDate)}
+        </p>
+        {
+          rawContent && (
+            <div class="not-prose shrink-0">
+              <CopyToMarkdown client:load content={rawContent} />
+            </div>
+          )
+        }
+      </div>
       <p>
         <div class="uppercase text-sm font-semibold opacity-50 pb-1">
           Tags
