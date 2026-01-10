@@ -1,10 +1,12 @@
 ---
-import { formatDate, pickColorByHash, pickColorGradientByHash } from "@/util";
+import { formatDate, getReadingTime, pickColorByHash, pickColorGradientByHash } from "@/util";
 import BaseLayout from "./BaseLayout.astro";
+import Header from "@/components/Header.astro";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import TableOfContents from "@/components/TableOfContents";
 import CopyToMarkdown from "@/components/CopyToMarkdown";
+import ShareButtons from "@/components/ShareButtons.astro";
 
 export interface Props {
   frontmatter: CollectionEntry<"posts">["data"];
@@ -24,22 +26,25 @@ const {
 } = Astro.props;
 
 const permalink = Astro.url.pathname;
+const fullUrl = new URL(permalink, Astro.site || 'https://pavi2410.com').href;
 const heroImage = '';
 const alt = '';
 const keywords = tags.join(', ');
+const readingTime = rawContent ? getReadingTime(rawContent) : null;
 
 // Get headings for TOC
 const headings = await Astro.props.headings || [];
 ---
 
-<BaseLayout 
-  title={title} 
-  description={excerpt} 
-  permalink={permalink} 
+<BaseLayout
+  title={title}
+  description={excerpt}
+  permalink={permalink}
   publishDate={publishDate}
   keywords={keywords}
   type="article"
 >
+  <Header />
   <div class="blog-container">
     <article
       class="prose prose-lg dark:prose-invert max-lg:mx-8 my-32 max-w-prose"
@@ -66,6 +71,7 @@ const headings = await Astro.props.headings || [];
         <p>
           <a href="https://pavi2410.com">Pavitra Golchha</a> • Published on&nbsp;
           {formatDate(publishDate)}
+          {readingTime && <span> · {readingTime}</span>}
         </p>
         {
           rawContent && (
@@ -126,6 +132,8 @@ const headings = await Astro.props.headings || [];
       </div>
       
       <slot />
+
+      <ShareButtons url={fullUrl} title={title} />
     </main>
   </article>
   

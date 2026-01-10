@@ -49,6 +49,13 @@ export function formatDate(date: Date) {
   return date.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
+export function getReadingTime(content: string): string {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+}
+
 export function formatDateRange(obj: { startDate: string, endDate?: string }) {
   const startDate = dayjs(obj.startDate);
   const endDate = dayjs(obj.endDate);

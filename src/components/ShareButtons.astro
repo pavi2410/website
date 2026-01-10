@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+
+const twitterUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+---
+
+<div class="flex items-center gap-4 mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+  <span class="text-sm text-neutral-500 dark:text-neutral-400">Share this post:</span>
+  <div class="flex gap-2">
+    <a
+      href={twitterUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+      aria-label="Share on Twitter"
+    >
+      <Icon name="tabler:brand-twitter" class="w-5 h-5" />
+    </a>
+    <a
+      href={linkedinUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors"
+      aria-label="Share on LinkedIn"
+    >
+      <Icon name="tabler:brand-linkedin" class="w-5 h-5" />
+    </a>
+  </div>
+</div>

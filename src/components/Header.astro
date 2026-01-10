@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import ThemeToggle from "./ThemeToggle";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-neutral-50/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-800">
+  <nav class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+    <a href="/" class="font-semibold text-lg hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+      pavi2410
+    </a>
+
+    <div class="flex items-center gap-1">
+      <a
+        href="/blog"
+        class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+      >
+        Blog
+      </a>
+      <a
+        href="/resume"
+        class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+      >
+        Resume
+      </a>
+
+      <a
+        href="/blog/rss.xml"
+        class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+        aria-label="RSS Feed"
+        title="RSS Feed"
+      >
+        <Icon name="tabler:rss" class="w-5 h-5" />
+      </a>
+
+      <ThemeToggle client:load />
+    </div>
+  </nav>
+</header>
+
+<!-- Spacer to prevent content from being hidden behind fixed header -->
+<div class="h-14"></div>

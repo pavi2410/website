@@ -10,15 +10,22 @@ const { title, description, publishDate, permalink, keywords, author, type } = A
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead 
-      title={title} 
-      description={description} 
+    <BaseHead
+      title={title}
+      description={description}
       publishDate={publishDate}
       permalink={permalink}
       keywords={keywords}
       author={author}
       type={type}
     />
+    <script is:inline>
+      // Prevent flash of wrong theme
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
   <body>
     <slot />
