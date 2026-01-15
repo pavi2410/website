@@ -6,13 +6,15 @@ interface TextInputPanelProps {
   value: string
   onChange: (value: string) => void
   placeholder: string
+  lineWrap: boolean
 }
 
 export default function TextInputPanel({
   label,
   value,
   onChange,
-  placeholder
+  placeholder,
+  lineWrap
 }: TextInputPanelProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const lineNumbersRef = useRef<HTMLDivElement>(null)
@@ -23,6 +25,11 @@ export default function TextInputPanel({
       lineNumbersRef.current.scrollTop = textareaRef.current.scrollTop
     }
   }
+
+  // Determine white-space and overflow styles based on lineWrap
+  const textareaClasses = lineWrap
+    ? 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre-wrap break-words overflow-auto'
+    : 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre overflow-auto'
 
   // Calculate line numbers
   const lineCount = value ? value.split('\n').length : 1
@@ -64,7 +71,7 @@ export default function TextInputPanel({
           value={value}
           onChange={e => onChange(e.target.value)}
           onScroll={handleScroll}
-          className="flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0"
+          className={textareaClasses}
           placeholder={placeholder}
           spellCheck={false}
         />

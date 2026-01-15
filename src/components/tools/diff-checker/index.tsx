@@ -53,6 +53,10 @@ function DiffCheckerContent() {
     'showWS',
     parseAsBoolean.withDefault(false).withOptions({ shallow: false })
   )
+  const [lineWrap, setLineWrap] = useQueryState(
+    'wrap',
+    parseAsBoolean.withDefault(true).withOptions({ shallow: false })
+  )
 
   // Local state
   const [textA, setTextA] = useState('')
@@ -163,6 +167,8 @@ function DiffCheckerContent() {
         onIgnoreWhitespaceChange={setIgnoreWhitespace}
         showWhitespace={showWhitespace}
         onShowWhitespaceChange={setShowWhitespace}
+        lineWrap={lineWrap}
+        onLineWrapChange={setLineWrap}
         onSwap={handleSwap}
         onCopyDiff={handleCopyDiff}
         copySuccess={copySuccess}
@@ -176,12 +182,14 @@ function DiffCheckerContent() {
           value={textA}
           onChange={setTextA}
           placeholder="Paste or type original text..."
+          lineWrap={lineWrap}
         />
         <TextInputPanel
           label="Text B (Modified)"
           value={textB}
           onChange={setTextB}
           placeholder="Paste or type modified text..."
+          lineWrap={lineWrap}
         />
       </div>
 

@@ -9,6 +9,8 @@ interface ToolbarProps {
   onIgnoreWhitespaceChange: (value: boolean) => void
   showWhitespace: boolean
   onShowWhitespaceChange: (value: boolean) => void
+  lineWrap: boolean
+  onLineWrapChange: (value: boolean) => void
   onSwap: () => void
   onCopyDiff: () => void
   copySuccess: boolean
@@ -24,6 +26,8 @@ export default function Toolbar({
   onIgnoreWhitespaceChange,
   showWhitespace,
   onShowWhitespaceChange,
+  lineWrap,
+  onLineWrapChange,
   onSwap,
   onCopyDiff,
   copySuccess,
@@ -92,6 +96,18 @@ export default function Toolbar({
             />
             <span className="text-xs text-gray-700 dark:text-gray-300">
               Show Whitespace
+            </span>
+          </label>
+
+          <label className="flex items-center gap-1.5 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={lineWrap}
+              onChange={e => onLineWrapChange(e.target.checked)}
+              className="w-3.5 h-3.5 rounded border-gray-300 dark:border-gray-600"
+            />
+            <span className="text-xs text-gray-700 dark:text-gray-300">
+              Line Wrap
             </span>
           </label>
         </div>
