@@ -235,3 +235,29 @@ export function visualizeWhitespace(text: string): string {
     .replace(/\t/g, '→')
     .replace(/\n/g, '↵\n')
 }
+
+/**
+ * Compute inline word-level diff for highlighting within lines
+ */
+export function computeInlineDiff(oldText: string, newText: string): {
+  oldSegments: Array<{ text: string; changed: boolean }>
+  newSegments: Array<{ text: string; changed: boolean }>
+} {
+  const changes = Diff.diffWordsWithSpace(oldText, newText)
+
+  const oldSegments: Array<{ text: string; changed: boolean }> = []
+  const newSegments: Array<{ text: string; changed: boolean }> = []
+
+  for (const change of changes) {
+    if (change.removed) {
+      oldSegments.push({ text: change.value, changed: true })
+    } else if (change.added) {
+      newSegments.push({ text: change.value, changed: true })
+    } else {
+      oldSegments.push({ text: change.value, changed: false })
+      newSegments.push({ text: change.value, changed: false })
+    }
+  }
+
+  return { oldSegments, newSegments }
+}

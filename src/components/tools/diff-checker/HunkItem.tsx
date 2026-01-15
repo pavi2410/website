@@ -1,4 +1,4 @@
-import type { DiffHunk } from '@/utils/diff'
+import { computeInlineDiff, type DiffHunk, type DiffChange } from '@/utils/diff'
 
 interface HunkItemProps {
   hunk: DiffHunk
@@ -6,6 +6,52 @@ interface HunkItemProps {
   isExpanded: boolean
   onToggle: (index: number) => void
   formatText: (text: string) => string
+  strategy: 'line' | 'word' | 'char'
+}
+
+interface LineRenderInfo {
+  change: DiffChange
+  inlineDiff?: {
+    segments: Array<{ text: string; changed: boolean }>
+  }
+}
+
+function prepareLineData(changes: DiffChange[], strategy: string): LineRenderInfo[] {
+  const result: LineRenderInfo[] = []
+
+  // For line strategy, detect adjacent remove/add pairs for inline highlighting
+  if (strategy === 'line') {
+    for (let i = 0; i < changes.length; i++) {
+      const current = changes[i]
+      const next = changes[i + 1]
+
+      if (
+        current.type === 'remove' &&
+        next &&
+        next.type === 'add'
+      ) {
+        // Compute inline diff for the pair
+        const { oldSegments, newSegments } = computeInlineDiff(current.value, next.value)
+
+        result.push({
+          change: current,
+          inlineDiff: { segments: oldSegments }
+        })
+        result.push({
+          change: next,
+          inlineDiff: { segments: newSegments }
+        })
+        i++ // Skip next since we've handled it
+      } else {
+        result.push({ change: current })
+      }
+    }
+  } else {
+    // For word/char strategies, no inline highlighting needed
+    result.push(...changes.map(change => ({ change })))
+  }
+
+  return result
 }
 
 export default function HunkItem({
@@ -13,8 +59,11 @@ export default function HunkItem({
   index,
   isExpanded,
   onToggle,
-  formatText
+  formatText,
+  strategy
 }: HunkItemProps) {
+  const lineData = prepareLineData(hunk.changes, strategy)
+
   return (
     <div className="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
       {/* Hunk Header */}
@@ -33,7 +82,8 @@ export default function HunkItem({
       {/* Hunk Content */}
       {isExpanded && (
         <div className="bg-white dark:bg-gray-950">
-          {hunk.changes.map((change, changeIndex) => {
+          {lineData.map((item, changeIndex) => {
+            const { change, inlineDiff } = item
             let bgColor = ''
             let borderColor = ''
             let prefix = ' '
@@ -81,7 +131,28 @@ export default function HunkItem({
                   {prefix}
                 </span>
                 <span className="px-3 py-1 flex-1 whitespace-pre-wrap break-all text-gray-900 dark:text-gray-100">
-                  {formatText(change.value)}
+                  {inlineDiff ? (
+                    // Render with inline highlighting
+                    <>
+                      {inlineDiff.segments.map((segment, segIndex) => (
+                        <span
+                          key={segIndex}
+                          className={
+                            segment.changed
+                              ? change.type === 'add'
+                                ? 'bg-green-200 dark:bg-green-800/50 font-semibold'
+                                : 'bg-red-200 dark:bg-red-800/50 font-semibold'
+                              : ''
+                          }
+                        >
+                          {formatText(segment.text)}
+                        </span>
+                      ))}
+                    </>
+                  ) : (
+                    // Render normally
+                    formatText(change.value)
+                  )}
                 </span>
               </div>
             )

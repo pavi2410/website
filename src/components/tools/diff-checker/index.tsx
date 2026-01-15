@@ -194,6 +194,7 @@ function DiffCheckerContent() {
           onExpandAll={expandAll}
           onCollapseAll={collapseAll}
           formatText={formatText}
+          strategy={strategy as DiffStrategy}
         />
       )}
 

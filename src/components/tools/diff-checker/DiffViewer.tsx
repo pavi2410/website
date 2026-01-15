@@ -8,6 +8,7 @@ interface DiffViewerProps {
   onExpandAll: () => void
   onCollapseAll: () => void
   formatText: (text: string) => string
+  strategy: 'line' | 'word' | 'char'
 }
 
 function calculateDiffStats(hunks: DiffHunk[]) {
@@ -32,7 +33,8 @@ export default function DiffViewer({
   onToggleHunk,
   onExpandAll,
   onCollapseAll,
-  formatText
+  formatText,
+  strategy
 }: DiffViewerProps) {
   const stats = calculateDiffStats(hunks)
 
@@ -88,6 +90,7 @@ export default function DiffViewer({
             isExpanded={expandedHunks.has(index)}
             onToggle={onToggleHunk}
             formatText={formatText}
+            strategy={strategy}
           />
         ))}
       </div>
