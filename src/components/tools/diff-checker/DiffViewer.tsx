@@ -37,45 +37,77 @@ export default function DiffViewer({
   strategy
 }: DiffViewerProps) {
   const stats = calculateDiffStats(hunks)
+  const totalChanges = stats.additions + stats.deletions
+
+  // GitHub-style discrete blocks (5 blocks total)
+  const BLOCK_COUNT = 5
+  const greenBlocks = totalChanges > 0 
+    ? Math.round((stats.additions / totalChanges) * BLOCK_COUNT) 
+    : 0
+  const redBlocks = BLOCK_COUNT - greenBlocks
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* Diff Header */}
-      <div className="flex-shrink-0 px-4 py-2 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+      {/* Diff Header - GitHub style */}
+      <div className="shrink-0 px-4 py-2.5 bg-gray-50 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <span className="text-xs font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wide">
             Diff
           </span>
-          <div className="flex items-center gap-3 text-xs">
-            <span className="text-gray-500 dark:text-gray-400">
-              {hunks.length} {hunks.length === 1 ? 'change' : 'changes'}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+              {hunks.length} {hunks.length === 1 ? 'hunk' : 'hunks'}
             </span>
-            <div className="h-3 w-px bg-gray-300 dark:bg-gray-600" />
-            <span className="text-green-600 dark:text-green-400" title="Additions">
-              +{stats.additions}
-            </span>
-            <span className="text-red-600 dark:text-red-400" title="Deletions">
-              -{stats.deletions}
-            </span>
-            {stats.unchanged > 0 && (
-              <span className="text-gray-500 dark:text-gray-400" title="Unchanged lines">
-                {stats.unchanged} unchanged
-              </span>
-            )}
           </div>
+
+          {/* GitHub-style change indicators with discrete blocks */}
+          {totalChanges > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-green-600 dark:text-green-400">
+                +{stats.additions}
+              </span>
+              <span className="text-xs text-red-600 dark:text-red-400">
+                -{stats.deletions}
+              </span>
+
+              {/* Discrete block visualization */}
+              <div className="flex gap-0.5">
+                {Array.from({ length: BLOCK_COUNT }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`w-2 h-2 rounded-xs ${
+                      i < greenBlocks
+                        ? 'bg-green-500'
+                        : 'bg-red-500'
+                    }`}
+                    style={i >= greenBlocks ? {
+                      background: `repeating-linear-gradient(
+                        -45deg,
+                        rgb(239 68 68),
+                        rgb(239 68 68) 1px,
+                        rgb(185 28 28) 1px,
+                        rgb(185 28 28) 2px
+                      )`
+                    } : undefined}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-        <div className="flex gap-2">
+
+        <div className="flex gap-1">
           <button
             onClick={onExpandAll}
-            className="px-2 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+            className="px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded transition-colors"
           >
-            Expand All
+            Expand all
           </button>
           <button
             onClick={onCollapseAll}
-            className="px-2 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+            className="px-2.5 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded transition-colors"
           >
-            Collapse All
+            Collapse all
           </button>
         </div>
       </div>
