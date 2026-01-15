@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
+import { NuqsAdapter } from 'nuqs/adapters/react'
+import { parseAsString, parseAsBoolean, useQueryState } from 'nuqs'
 import {
   computeDiff,
   groupIntoHunks,
@@ -13,49 +15,7 @@ interface DiffState {
   textB: string
 }
 
-// Custom hook for URL state management
-function useUrlState<T>(
-  key: string,
-  defaultValue: T,
-  parser: (value: string | null) => T
-): [T, (value: T) => void] {
-  const [state, setState] = useState<T>(defaultValue)
-  const isInitialized = useRef(false)
-
-  // Initialize from URL on mount
-  useEffect(() => {
-    if (typeof window === 'undefined' || isInitialized.current) return
-
-    const params = new URLSearchParams(window.location.search)
-    const value = parser(params.get(key))
-    setState(value)
-    isInitialized.current = true
-  }, [key, parser])
-
-  // Update URL when state changes
-  const updateState = useCallback((value: T) => {
-    setState(value)
-
-    if (typeof window === 'undefined') return
-
-    const params = new URLSearchParams(window.location.search)
-    if (value === defaultValue) {
-      params.delete(key)
-    } else {
-      params.set(key, String(value))
-    }
-
-    const newUrl = params.toString()
-      ? `${window.location.pathname}?${params.toString()}`
-      : window.location.pathname
-
-    window.history.replaceState({}, '', newUrl)
-  }, [key, defaultValue])
-
-  return [state, updateState]
-}
-
-export default function DiffChecker() {
+function DiffCheckerContent() {
   // Generate unique tab ID
   const tabId = useRef(
     typeof window !== 'undefined'
@@ -73,26 +33,22 @@ export default function DiffChecker() {
 
   const STORAGE_KEY = `diff-checker-${tabId}`
 
-  // URL state with custom hook
-  const [strategy, setStrategy] = useUrlState<DiffStrategy>(
+  // URL state with nuqs
+  const [strategy, setStrategy] = useQueryState(
     'strategy',
-    'line',
-    (value) => (value === 'word' || value === 'char' ? value : 'line')
+    parseAsString.withDefault('line').withOptions({ shallow: false })
   )
-  const [ignoreCase, setIgnoreCase] = useUrlState(
+  const [ignoreCase, setIgnoreCase] = useQueryState(
     'ignoreCase',
-    false,
-    (value) => value === 'true'
+    parseAsBoolean.withDefault(false).withOptions({ shallow: false })
   )
-  const [ignoreWhitespace, setIgnoreWhitespace] = useUrlState(
+  const [ignoreWhitespace, setIgnoreWhitespace] = useQueryState(
     'ignoreWS',
-    false,
-    (value) => value === 'true'
+    parseAsBoolean.withDefault(false).withOptions({ shallow: false })
   )
-  const [showWhitespace, setShowWhitespace] = useUrlState(
+  const [showWhitespace, setShowWhitespace] = useQueryState(
     'showWS',
-    false,
-    (value) => value === 'true'
+    parseAsBoolean.withDefault(false).withOptions({ shallow: false })
   )
 
   // Local state
@@ -417,5 +373,13 @@ export default function DiffChecker() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function DiffChecker() {
+  return (
+    <NuqsAdapter>
+      <DiffCheckerContent />
+    </NuqsAdapter>
   )
 }
