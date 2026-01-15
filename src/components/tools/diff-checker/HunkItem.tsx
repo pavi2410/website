@@ -114,13 +114,13 @@ export default function HunkItem({
             return (
               <div
                 key={changeIndex}
-                className={`flex font-mono text-xs ${bgColor} ${borderColor} hover:bg-opacity-80 transition-colors`}
+                className={`flex items-start font-mono text-xs ${bgColor} ${borderColor} hover:bg-opacity-80 transition-colors`}
               >
                 <span className="px-3 py-1 text-gray-400 dark:text-gray-600 select-none min-w-[3.5rem] text-right bg-gray-50 dark:bg-gray-900">
                   {lineNum}
                 </span>
                 <span
-                  className={`w-6 flex items-center justify-center select-none font-bold ${
+                  className={`w-6 py-1 flex items-start justify-center select-none font-bold ${
                     prefix === '+'
                       ? 'text-green-700 dark:text-green-400'
                       : prefix === '-'

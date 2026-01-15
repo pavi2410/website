@@ -28,8 +28,8 @@ export default function TextInputPanel({
 
   // Determine white-space and overflow styles based on lineWrap
   const textareaClasses = lineWrap
-    ? 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre-wrap break-words overflow-auto'
-    : 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre overflow-auto'
+    ? 'relative z-0 h-full w-full pl-15 pr-3 py-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre-wrap wrap-break-word overflow-auto'
+    : 'relative z-0 h-full w-full pl-15 pr-3 py-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre overflow-auto'
 
   // Split text into actual lines for proper line number positioning
   const lines = value ? value.split('\n') : ['']
@@ -45,30 +45,26 @@ export default function TextInputPanel({
       </div>
 
       {/* Editor with line numbers */}
-      <div className="relative flex h-80 bg-white dark:bg-gray-950">
-        {/* Line Numbers */}
+      <div className="relative h-80 bg-white dark:bg-gray-950">
+        <div className="absolute inset-y-0 left-0 w-12 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 pointer-events-none" />
         <div
           ref={lineNumbersRef}
-          className="flex-shrink-0 w-12 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 overflow-hidden select-none"
+          className="absolute inset-0 overflow-hidden select-none pointer-events-none z-10"
           style={{ overflowY: 'hidden' }}
         >
-          <div className="py-3 pr-2 text-right">
+          <div className="py-3">
             {lines.map((line, index) => (
-              <div
-                key={index}
-                className="relative"
-              >
+              <div key={index} className="relative">
                 {/* Invisible text that wraps the same way as textarea */}
                 <div
-                  className={`font-mono text-xs leading-5 opacity-0 pointer-events-none ${
-                    lineWrap ? 'whitespace-pre-wrap break-words' : 'whitespace-pre'
+                  className={`pl-15 pr-3 font-mono text-sm leading-5 opacity-0 ${
+                    lineWrap ? 'whitespace-pre-wrap wrap-break-word' : 'whitespace-pre'
                   }`}
-                  style={{ paddingRight: '0.5rem' }}
                 >
                   {line || '\n'}
                 </div>
                 {/* Line number overlay */}
-                <div className="absolute top-0 right-2 font-mono text-xs leading-5 text-gray-400 dark:text-gray-600">
+                <div className="absolute top-0 left-0 w-12 pr-2 text-right font-mono text-xs leading-5 text-gray-400 dark:text-gray-600">
                   {index + 1}
                 </div>
               </div>

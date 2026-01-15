@@ -55,7 +55,7 @@ function DiffCheckerContent() {
   )
   const [lineWrap, setLineWrap] = useQueryState(
     'wrap',
-    parseAsBoolean.withDefault(true).withOptions({ shallow: false })
+    parseAsBoolean.withDefault(false).withOptions({ shallow: false })
   )
 
   // Local state
