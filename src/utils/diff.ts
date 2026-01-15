@@ -27,24 +27,6 @@ export interface DiffHunk {
 }
 
 /**
- * Normalize text based on options
- */
-function normalizeText(text: string, options: DiffOptions): string {
-  let normalized = text
-
-  if (options.ignoreWhitespace) {
-    // Normalize all whitespace to single spaces and trim
-    normalized = normalized.replace(/\s+/g, ' ').trim()
-  }
-
-  if (options.ignoreCase) {
-    normalized = normalized.toLowerCase()
-  }
-
-  return normalized
-}
-
-/**
  * Compute diff between two texts
  */
 export function computeDiff(
@@ -52,23 +34,25 @@ export function computeDiff(
   textB: string,
   options: DiffOptions
 ): Diff.Change[] {
-  const normalizedA = normalizeText(textA, options)
-  const normalizedB = normalizeText(textB, options)
-
   let changes: Diff.Change[]
+
+  const diffOptions = {
+    ignoreCase: options.ignoreCase,
+    ignoreWhitespace: options.ignoreWhitespace
+  }
 
   switch (options.strategy) {
     case 'line':
-      changes = Diff.diffLines(normalizedA, normalizedB)
+      changes = Diff.diffLines(textA, textB, diffOptions)
       break
     case 'word':
-      changes = Diff.diffWords(normalizedA, normalizedB)
+      changes = Diff.diffWords(textA, textB, diffOptions)
       break
     case 'char':
-      changes = Diff.diffChars(normalizedA, normalizedB)
+      changes = Diff.diffChars(textA, textB, diffOptions)
       break
     default:
-      changes = Diff.diffLines(normalizedA, normalizedB)
+      changes = Diff.diffLines(textA, textB, diffOptions)
   }
 
   return changes

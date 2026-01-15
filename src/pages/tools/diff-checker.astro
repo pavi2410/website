@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Header from "@/components/Header.astro";
 import DiffChecker from "@/components/tools/DiffChecker";
 
 const title = "Diff Checker - Compare Text Differences | pavi2410";
@@ -13,57 +12,47 @@ const permalink = "/tools/diff-checker/";
   description={description}
   permalink={permalink}
 >
-  <Header />
-  <div class="container mx-auto px-4 py-8 max-w-full">
-    <div class="mb-8 max-w-4xl mx-auto">
-      <h1
-        class="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 mb-3"
-      >
-        Diff Checker
-      </h1>
-      <p class="text-lg text-gray-700 dark:text-gray-300">
-        Compare text differences with multiple strategies and options. Perfect for comparing code, configuration files, or any text content.
-      </p>
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+
+  <div class="fixed inset-0 flex flex-col bg-white dark:bg-gray-950">
+    <!-- App Header -->
+    <div class="flex-shrink-0 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950">
+      <div class="px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a
+            href="/tools"
+            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+            title="Back to tools"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </a>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Diff Checker
+            </h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Compare text differences
+            </p>
+          </div>
+        </div>
+        <a
+          href="/"
+          class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+        >
+          pavi2410.com
+        </a>
+      </div>
     </div>
 
-    <DiffChecker client:load />
-
-    <div class="mt-12 max-w-4xl mx-auto">
-      <div class="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800">
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
-          Features
-        </h2>
-        <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Multiple diff strategies:</strong> Line-by-line, word-by-word, or character-by-character comparison</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Comparison options:</strong> Ignore case, ignore whitespace, and show whitespace symbols</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Hunk-based viewer:</strong> Organized diff output with expandable/collapsible sections</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Swap text:</strong> Quickly reverse the comparison direction</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Export:</strong> Copy diff in unified format for sharing or version control</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>Persistent state:</strong> Your work is automatically saved per browser tab</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-green-500 mt-0.5">✓</span>
-            <span><strong>URL state:</strong> Settings are preserved in the URL for easy sharing</span>
-          </li>
-        </ul>
-      </div>
+    <!-- App Content -->
+    <div class="flex-1 overflow-hidden">
+      <DiffChecker client:load />
     </div>
   </div>
 </BaseLayout>
