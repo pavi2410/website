@@ -31,9 +31,8 @@ export default function TextInputPanel({
     ? 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre-wrap break-words overflow-auto'
     : 'flex-1 p-3 font-mono text-sm leading-5 border-none bg-transparent text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-0 whitespace-pre overflow-auto'
 
-  // Calculate line numbers
-  const lineCount = value ? value.split('\n').length : 1
-  const lineNumbers = Array.from({ length: lineCount }, (_, i) => i + 1)
+  // Split text into actual lines for proper line number positioning
+  const lines = value ? value.split('\n') : ['']
 
   return (
     <div className="flex flex-col border-r border-gray-200 dark:border-gray-700 last:border-r-0">
@@ -54,12 +53,24 @@ export default function TextInputPanel({
           style={{ overflowY: 'hidden' }}
         >
           <div className="py-3 pr-2 text-right">
-            {lineNumbers.map(num => (
+            {lines.map((line, index) => (
               <div
-                key={num}
-                className="font-mono text-xs leading-5 text-gray-400 dark:text-gray-600"
+                key={index}
+                className="relative"
               >
-                {num}
+                {/* Invisible text that wraps the same way as textarea */}
+                <div
+                  className={`font-mono text-xs leading-5 opacity-0 pointer-events-none ${
+                    lineWrap ? 'whitespace-pre-wrap break-words' : 'whitespace-pre'
+                  }`}
+                  style={{ paddingRight: '0.5rem' }}
+                >
+                  {line || '\n'}
+                </div>
+                {/* Line number overlay */}
+                <div className="absolute top-0 right-2 font-mono text-xs leading-5 text-gray-400 dark:text-gray-600">
+                  {index + 1}
+                </div>
               </div>
             ))}
           </div>
