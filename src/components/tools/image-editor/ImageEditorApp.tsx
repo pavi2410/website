@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useStore } from '@nanostores/react'
-import { $originalImage, actions } from '@/stores/image-editor'
+import { $originalImage, $activePanel, $zoom, actions } from '@/stores/image-editor'
 import DropZone from './DropZone'
 import Toolbar from './Toolbar'
 import Sidebar from './Sidebar'
@@ -14,6 +14,42 @@ export default function ImageEditorApp() {
   // Restore from sessionStorage on mount
   useEffect(() => {
     actions.restoreFromStorage().finally(() => setIsRestoring(false))
+  }, [])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't trigger shortcuts when typing in inputs
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+
+      const isMod = e.metaKey || e.ctrlKey
+
+      if (isMod && e.key === 'z' && !e.shiftKey) {
+        e.preventDefault()
+        actions.undo()
+      } else if (isMod && e.key === 'z' && e.shiftKey) {
+        e.preventDefault()
+        actions.redo()
+      } else if (isMod && e.key === 'y') {
+        e.preventDefault()
+        actions.redo()
+      } else if (isMod && e.key === 's') {
+        e.preventDefault()
+        actions.setPanel('format')
+      } else if (e.key === '0' && isMod) {
+        e.preventDefault()
+        actions.setZoom(1)
+      } else if (e.key === '=' && isMod) {
+        e.preventDefault()
+        actions.setZoom(Math.min(3, ($zoom.get() || 1) + 0.25))
+      } else if (e.key === '-' && isMod) {
+        e.preventDefault()
+        actions.setZoom(Math.max(0.1, ($zoom.get() || 1) - 0.25))
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   if (isRestoring) {

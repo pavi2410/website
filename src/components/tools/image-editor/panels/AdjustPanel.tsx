@@ -20,7 +20,11 @@ function Slider({ label, value, onChange, min = -100, max = 100 }: SliderProps) 
         <label className="text-xs font-medium text-gray-700 dark:text-gray-300">
           {label}
         </label>
-        <span className="text-xs text-gray-500 dark:text-gray-400 tabular-nums">
+        <span 
+          className="text-xs text-gray-500 dark:text-gray-400 tabular-nums cursor-pointer hover:text-gray-700 dark:hover:text-gray-200"
+          onClick={() => onChange(0)}
+          title="Click to reset"
+        >
           {value > 0 ? '+' : ''}{value}
         </span>
       </div>
@@ -30,7 +34,9 @@ function Slider({ label, value, onChange, min = -100, max = 100 }: SliderProps) 
         max={max}
         value={value}
         onChange={e => onChange(parseInt(e.target.value, 10))}
+        onDoubleClick={() => onChange(0)}
         className="w-full"
+        title="Double-click to reset"
       />
     </div>
   )

@@ -12,6 +12,7 @@ import {
   type ImageFormat,
 } from '@/stores/image-editor'
 import IconDownload from '~icons/tabler/download'
+import IconClipboard from '~icons/tabler/clipboard'
 
 const FORMATS: { id: ImageFormat; label: string; lossy: boolean }[] = [
   { id: 'png', label: 'PNG', lossy: false },
@@ -35,6 +36,8 @@ export default function FormatPanel() {
   const outputDims = useStore($outputDimensions)
 
   const [isExporting, setIsExporting] = useState(false)
+  const [isCopying, setIsCopying] = useState(false)
+  const [copySuccess, setCopySuccess] = useState(false)
   const [estimatedSize, setEstimatedSize] = useState<number | null>(null)
 
   const selectedFormat = FORMATS.find(f => f.id === format)!
@@ -228,14 +231,45 @@ export default function FormatPanel() {
         </div>
       )}
 
-      <button
-        onClick={handleExport}
-        disabled={isExporting}
-        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
-      >
-        <IconDownload className="w-5 h-5" />
-        {isExporting ? 'Exporting...' : 'Download'}
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={handleExport}
+          disabled={isExporting}
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+        >
+          <IconDownload className="w-5 h-5" />
+          {isExporting ? 'Saving...' : 'Download'}
+        </button>
+        <button
+          onClick={async () => {
+            setIsCopying(true)
+            setCopySuccess(false)
+            try {
+              const blob = await renderToBlob()
+              if (blob) {
+                await navigator.clipboard.write([
+                  new ClipboardItem({ [blob.type]: blob })
+                ])
+                setCopySuccess(true)
+                setTimeout(() => setCopySuccess(false), 2000)
+              }
+            } catch (e) {
+              console.error('Failed to copy:', e)
+            } finally {
+              setIsCopying(false)
+            }
+          }}
+          disabled={isCopying}
+          className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+            copySuccess
+              ? 'bg-green-600 text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300'
+          }`}
+          title="Copy to clipboard"
+        >
+          <IconClipboard className="w-5 h-5" />
+        </button>
+      </div>
     </div>
   )
 }

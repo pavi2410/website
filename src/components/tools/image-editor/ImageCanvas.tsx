@@ -10,6 +10,7 @@ import {
   $format,
   $quality,
   $estimatedFileSize,
+  actions,
 } from '@/stores/image-editor'
 
 export default function ImageCanvas() {
@@ -174,21 +175,36 @@ export default function ImageCanvas() {
     }
   }, [isDragging, handleCropMouseMove, handleCropMouseUp])
 
+  // Mouse wheel zoom
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault()
+      const delta = e.deltaY > 0 ? -0.1 : 0.1
+      const newZoom = Math.max(0.1, Math.min(3, zoom + delta))
+      actions.setZoom(newZoom)
+    }
+  }, [zoom])
+
   if (!originalImage) return null
 
   return (
     <div
       ref={containerRef}
-      className="flex-1 overflow-auto bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4"
+      className="flex-1 overflow-auto flex items-center justify-center p-4"
+      onWheel={handleWheel}
       style={{
+        backgroundColor: 'var(--canvas-bg, #f3f4f6)',
         backgroundImage: `
-          linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
-          linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
-          linear-gradient(-45deg, transparent 75%, #e5e7eb 75%)
+          linear-gradient(45deg, var(--checker-color, #e5e7eb) 25%, transparent 25%),
+          linear-gradient(-45deg, var(--checker-color, #e5e7eb) 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, var(--checker-color, #e5e7eb) 75%),
+          linear-gradient(-45deg, transparent 75%, var(--checker-color, #e5e7eb) 75%)
         `,
         backgroundSize: '20px 20px',
         backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
+        // CSS custom properties for dark mode
+        ['--canvas-bg' as string]: 'color-mix(in srgb, rgb(17 24 39) 100%, transparent)',
+        ['--checker-color' as string]: 'color-mix(in srgb, rgb(31 41 55) 100%, transparent)',
       }}
     >
       <div className="relative" style={{ transform: `scale(${zoom})`, transformOrigin: 'center' }}>
