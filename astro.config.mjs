@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import Icons from 'unplugin-icons/vite';
 import opengraphImages from 'astro-opengraph-images';
 import fs from 'fs';
 import { blogOgImage } from './src/og-image.tsx';
@@ -49,7 +50,10 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [
+      tailwindcss(),
+      Icons({ compiler: 'jsx', jsx: 'react' }),
+    ]
   },
 
   markdown: {

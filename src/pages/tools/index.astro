@@ -11,7 +11,13 @@ const tools = [
     icon: "tabler:git-compare",
     tags: ["Text", "Comparison", "Developer Tools"]
   },
-  // Future tools can be added here
+  {
+    name: "Image Editor",
+    description: "Resize, crop, and convert images. Adjust brightness, contrast, and saturation. Export to PNG, JPEG, or WebP. Privacy-first: images never leave your device.",
+    url: "/tools/image-editor",
+    icon: "tabler:photo-edit",
+    tags: ["Image", "Converter", "Editor"]
+  },
 ];
 
 const title = "Developer Tools | pavi2410";
@@ -44,7 +50,7 @@ const permalink = "/tools/";
           class="group block p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-400 transition-all hover:-translate-y-1"
         >
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
+            <div class="shrink-0 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
               <Icon
                 name={tool.icon}
                 class="w-8 h-8 text-blue-600 dark:text-blue-400"

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImageEditorTool from "@/components/tools/image-editor";
+
+const title = "Image Editor - Resize, Crop & Convert Images | pavi2410";
+const description = "A powerful client-side image editor. Resize by dimensions or file size, crop with aspect ratio presets, adjust brightness/contrast/saturation, and convert between PNG, JPEG, and WebP formats. Privacy-first: images never leave your device.";
+const permalink = "/tools/image-editor/";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  permalink={permalink}
+>
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+
+  <div class="fixed inset-0 flex flex-col bg-white dark:bg-gray-950">
+    <div class="shrink-0 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950">
+      <div class="px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a
+            href="/tools"
+            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+            title="Back to tools"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </a>
+          <h1 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Image Editor
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-hidden">
+      <ImageEditorTool client:only="react" />
+    </div>
+  </div>
+</BaseLayout>
