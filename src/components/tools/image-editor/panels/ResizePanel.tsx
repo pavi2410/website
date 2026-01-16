@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useStore } from '@nanostores/react'
-import { $originalMeta, $transforms, actions } from '@/stores/image-editor'
+import { $croppedDimensions, $transforms, actions } from '@/stores/image-editor'
 import IconLink from '~icons/tabler/link'
 import IconLinkOff from '~icons/tabler/link-off'
 
@@ -14,12 +14,15 @@ const PRESETS = [
 ]
 
 export default function ResizePanel() {
-  const meta = useStore($originalMeta)
+  // Use cropped dimensions as the base (reflects actual image after crop)
+  const croppedDims = useStore($croppedDimensions)
   const transforms = useStore($transforms)
 
-  const currentWidth = transforms.resize?.width ?? meta?.width ?? 0
-  const currentHeight = transforms.resize?.height ?? meta?.height ?? 0
-  const aspectRatio = meta ? meta.width / meta.height : 1
+  const baseWidth = croppedDims?.width ?? 0
+  const baseHeight = croppedDims?.height ?? 0
+  const currentWidth = transforms.resize?.width ?? baseWidth
+  const currentHeight = transforms.resize?.height ?? baseHeight
+  const aspectRatio = baseWidth && baseHeight ? baseWidth / baseHeight : 1
 
   const [width, setWidth] = useState(currentWidth.toString())
   const [height, setHeight] = useState(currentHeight.toString())
@@ -29,11 +32,11 @@ export default function ResizePanel() {
   useEffect(() => {
     setWidth(currentWidth.toString())
     setHeight(currentHeight.toString())
-    if (meta) {
-      const pct = Math.round((currentWidth / meta.width) * 100)
+    if (baseWidth) {
+      const pct = Math.round((currentWidth / baseWidth) * 100)
       setPercentage(pct.toString())
     }
-  }, [currentWidth, currentHeight, meta])
+  }, [currentWidth, currentHeight, baseWidth])
 
   const handleWidthChange = (value: string) => {
     setWidth(value)
@@ -60,10 +63,10 @@ export default function ResizePanel() {
   const handlePercentageChange = (value: string) => {
     setPercentage(value)
     const pct = parseInt(value, 10)
-    if (isNaN(pct) || pct <= 0 || !meta) return
+    if (isNaN(pct) || pct <= 0 || !baseWidth || !baseHeight) return
 
-    const w = Math.round(meta.width * (pct / 100))
-    const h = Math.round(meta.height * (pct / 100))
+    const w = Math.round(baseWidth * (pct / 100))
+    const h = Math.round(baseHeight * (pct / 100))
     setWidth(w.toString())
     setHeight(h.toString())
   }
@@ -87,17 +90,19 @@ export default function ResizePanel() {
         <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
           Dimensions (px)
         </label>
-        <div className="flex items-center gap-2">
-          <input
-            type="number"
-            value={width}
-            onChange={e => handleWidthChange(e.target.value)}
-            onBlur={applyResize}
-            onKeyDown={e => e.key === 'Enter' && applyResize()}
-            className="flex-1 px-3 py-2 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
-            placeholder="Width"
-            min={1}
-          />
+        <div className="grid grid-cols-[1fr_auto_1fr] items-end gap-2">
+          <div>
+            <label className="block text-[10px] text-gray-500 dark:text-gray-400 mb-1">Width</label>
+            <input
+              type="number"
+              value={width}
+              onChange={e => handleWidthChange(e.target.value)}
+              onBlur={applyResize}
+              onKeyDown={e => e.key === 'Enter' && applyResize()}
+              className="w-full px-3 py-2 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
+              min={1}
+            />
+          </div>
           <button
             onClick={() => setLockAspect(!lockAspect)}
             className={`p-2 rounded transition-colors ${
@@ -109,16 +114,18 @@ export default function ResizePanel() {
           >
             {lockAspect ? <IconLink className="w-4 h-4" /> : <IconLinkOff className="w-4 h-4" />}
           </button>
-          <input
-            type="number"
-            value={height}
-            onChange={e => handleHeightChange(e.target.value)}
-            onBlur={applyResize}
-            onKeyDown={e => e.key === 'Enter' && applyResize()}
-            className="flex-1 px-3 py-2 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
-            placeholder="Height"
-            min={1}
-          />
+          <div>
+            <label className="block text-[10px] text-gray-500 dark:text-gray-400 mb-1">Height</label>
+            <input
+              type="number"
+              value={height}
+              onChange={e => handleHeightChange(e.target.value)}
+              onBlur={applyResize}
+              onKeyDown={e => e.key === 'Enter' && applyResize()}
+              className="w-full px-3 py-2 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
+              min={1}
+            />
+          </div>
         </div>
       </div>
 

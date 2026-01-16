@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react'
-import { $originalMeta, $outputDimensions, $format, $quality } from '@/stores/image-editor'
+import { $originalMeta, $outputDimensions, $format, $quality, $estimatedFileSize } from '@/stores/image-editor'
 
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
@@ -12,14 +12,9 @@ export default function ImageInfo() {
   const outputDims = useStore($outputDimensions)
   const format = useStore($format)
   const quality = useStore($quality)
+  const estimatedSize = useStore($estimatedFileSize)
 
   if (!meta) return null
-
-  const hasChanges = outputDims && (
-    outputDims.width !== meta.width ||
-    outputDims.height !== meta.height ||
-    format !== meta.type.split('/')[1]
-  )
 
   return (
     <div className="shrink-0 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-4 py-2">
@@ -31,12 +26,13 @@ export default function ImageInfo() {
           </span>
         </div>
 
-        {hasChanges && outputDims && (
+        {outputDims && (
           <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
             <span>
               <span className="font-medium text-gray-900 dark:text-gray-100">Output:</span>{' '}
               {outputDims.width} × {outputDims.height} {format.toUpperCase()}
-              {format !== 'png' && ` (${Math.round(quality * 100)}%)`}
+              {format !== 'png' && ` @ ${Math.round(quality * 100)}%`}
+              {estimatedSize && ` (~${formatFileSize(estimatedSize)})`}
             </span>
           </div>
         )}

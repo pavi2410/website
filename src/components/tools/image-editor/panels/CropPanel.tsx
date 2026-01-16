@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useStore } from '@nanostores/react'
-import { $originalMeta, $transforms, $isCropping, actions } from '@/stores/image-editor'
+import { $originalMeta, $transforms, $isCropping, $cropSelection, actions } from '@/stores/image-editor'
 
 const ASPECT_PRESETS = [
   { label: 'Free', ratio: null },
@@ -17,23 +17,29 @@ export default function CropPanel() {
   const meta = useStore($originalMeta)
   const transforms = useStore($transforms)
   const isCropping = useStore($isCropping)
+  const cropSelection = useStore($cropSelection)
 
   const [selectedRatio, setSelectedRatio] = useState<number | null>(null)
-  const [cropX, setCropX] = useState('0')
-  const [cropY, setCropY] = useState('0')
-  const [cropW, setCropW] = useState('100')
-  const [cropH, setCropH] = useState('100')
 
   if (!meta) return null
+
+  // Sync input values with shared crop selection
+  const cropX = (cropSelection.x * 100).toFixed(1)
+  const cropY = (cropSelection.y * 100).toFixed(1)
+  const cropW = (cropSelection.width * 100).toFixed(1)
+  const cropH = (cropSelection.height * 100).toFixed(1)
+
+  const updateCropSelection = (field: 'x' | 'y' | 'width' | 'height', value: string) => {
+    const numValue = parseFloat(value) / 100
+    if (isNaN(numValue)) return
+    $cropSelection.set({ ...cropSelection, [field]: Math.max(0, Math.min(1, numValue)) })
+  }
 
   const handlePresetClick = (ratio: number | null) => {
     setSelectedRatio(ratio)
 
     if (ratio === null) {
-      setCropX('0')
-      setCropY('0')
-      setCropW('100')
-      setCropH('100')
+      $cropSelection.set({ x: 0, y: 0, width: 1, height: 1 })
       return
     }
 
@@ -43,29 +49,23 @@ export default function CropPanel() {
     let cropHeight: number
 
     if (ratio > imageRatio) {
-      cropWidth = 100
-      cropHeight = (imageRatio / ratio) * 100
+      cropWidth = 1
+      cropHeight = imageRatio / ratio
     } else {
-      cropHeight = 100
-      cropWidth = (ratio / imageRatio) * 100
+      cropHeight = 1
+      cropWidth = ratio / imageRatio
     }
 
-    const x = (100 - cropWidth) / 2
-    const y = (100 - cropHeight) / 2
+    const x = (1 - cropWidth) / 2
+    const y = (1 - cropHeight) / 2
 
-    setCropX(x.toFixed(1))
-    setCropY(y.toFixed(1))
-    setCropW(cropWidth.toFixed(1))
-    setCropH(cropHeight.toFixed(1))
+    $cropSelection.set({ x, y, width: cropWidth, height: cropHeight })
   }
 
   const applyCrop = () => {
-    const x = parseFloat(cropX) / 100
-    const y = parseFloat(cropY) / 100
-    const width = parseFloat(cropW) / 100
-    const height = parseFloat(cropH) / 100
+    const { x, y, width, height } = cropSelection
 
-    if (x < 0 || y < 0 || width <= 0 || height <= 0 || x + width > 1 || y + height > 1) {
+    if (x < 0 || y < 0 || width <= 0 || height <= 0 || x + width > 1.001 || y + height > 1.001) {
       return
     }
 
@@ -76,19 +76,15 @@ export default function CropPanel() {
   const startCropping = () => {
     actions.setIsCropping(true)
     if (transforms.crop) {
-      setCropX((transforms.crop.x * 100).toFixed(1))
-      setCropY((transforms.crop.y * 100).toFixed(1))
-      setCropW((transforms.crop.width * 100).toFixed(1))
-      setCropH((transforms.crop.height * 100).toFixed(1))
+      $cropSelection.set(transforms.crop)
+    } else {
+      $cropSelection.set({ x: 0, y: 0, width: 1, height: 1 })
     }
   }
 
   const cancelCrop = () => {
     actions.setIsCropping(false)
-    setCropX('0')
-    setCropY('0')
-    setCropW('100')
-    setCropH('100')
+    $cropSelection.set({ x: 0, y: 0, width: 1, height: 1 })
   }
 
   return (
@@ -124,7 +120,7 @@ export default function CropPanel() {
             <input
               type="number"
               value={cropX}
-              onChange={e => setCropX(e.target.value)}
+              onChange={e => updateCropSelection('x', e.target.value)}
               className="w-full px-2 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
               min={0}
               max={100}
@@ -136,7 +132,7 @@ export default function CropPanel() {
             <input
               type="number"
               value={cropY}
-              onChange={e => setCropY(e.target.value)}
+              onChange={e => updateCropSelection('y', e.target.value)}
               className="w-full px-2 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
               min={0}
               max={100}
@@ -148,7 +144,7 @@ export default function CropPanel() {
             <input
               type="number"
               value={cropW}
-              onChange={e => setCropW(e.target.value)}
+              onChange={e => updateCropSelection('width', e.target.value)}
               className="w-full px-2 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
               min={1}
               max={100}
@@ -160,7 +156,7 @@ export default function CropPanel() {
             <input
               type="number"
               value={cropH}
-              onChange={e => setCropH(e.target.value)}
+              onChange={e => updateCropSelection('height', e.target.value)}
               className="w-full px-2 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-gray-100"
               min={1}
               max={100}
