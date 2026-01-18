@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NameChecker from "@/components/tools/name-checker";
+import NameCheckerTool from "@/components/tools/name-checker";
 
 const title = "Name Checker - Check Brand & Domain Availability | pavi2410";
 const description = "Check if your project name is available across platforms (GitHub, npm, PyPI, etc.) and domains. Find the perfect name for your next project.";
@@ -52,7 +52,7 @@ const permalink = "/tools/name-checker/";
 
     <!-- App Content -->
     <div class="flex-1 overflow-hidden">
-      <NameChecker client:load />
+      <NameCheckerTool client:load />
     </div>
   </div>
 </BaseLayout>

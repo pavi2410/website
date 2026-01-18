@@ -55,7 +55,18 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       Icons({ compiler: 'jsx', jsx: 'react' }),
-    ]
+    ],
+    ssr: { // ssr instead of rollupOptions
+      external: ['@resvg/resvg-js']
+    },
+    build: {
+      rollupOptions: {
+        external: ['@resvg/resvg-js', 'jsdom', 'cssstyle']
+      }
+    },
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js']
+    },
   },
 
   markdown: {
