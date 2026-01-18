@@ -1,8 +1,13 @@
 {
   "name": "website",
+  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2026-01-09",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
+    "binding": "ASSETS",
     "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
   }
 }
