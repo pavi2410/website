@@ -9,6 +9,8 @@ import opengraphImages from 'astro-opengraph-images';
 import fs from 'fs';
 import { blogOgImage } from './src/og-image.tsx';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://pavi2410.com",
@@ -64,4 +66,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare(),
 });

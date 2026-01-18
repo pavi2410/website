@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import NameChecker from "@/components/tools/name-checker";
+
+const title = "Name Checker - Check Brand & Domain Availability | pavi2410";
+const description = "Check if your project name is available across platforms (GitHub, npm, PyPI, etc.) and domains. Find the perfect name for your next project.";
+const permalink = "/tools/name-checker/";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  permalink={permalink}
+>
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+
+  <div class="fixed inset-0 flex flex-col bg-white dark:bg-gray-950">
+    <!-- App Header -->
+    <div class="shrink-0 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950">
+      <div class="px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a
+            href="/tools"
+            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+            title="Back to tools"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </a>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Name Checker
+            </h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Check brand & domain availability
+            </p>
+          </div>
+        </div>
+        <a
+          href="/"
+          class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+        >
+          pavi2410.com
+        </a>
+      </div>
+    </div>
+
+    <!-- App Content -->
+    <div class="flex-1 overflow-hidden">
+      <NameChecker client:load />
+    </div>
+  </div>
+</BaseLayout>
