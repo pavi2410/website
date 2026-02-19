@@ -15,124 +15,156 @@ import { Icon } from "astro-icon/components";
   keywords="Pavitra Golchha, pavi2410, software developer, web development, programming, blog, projects"
 >
   <Header />
-  <div class="pattern-background dark:text-white">
+  <div class="pattern-background dark:text-white overflow-hidden">
+    <!-- Playful Hero Section -->
     <section
-      class="grid min-h-screen place-items-center px-8 py-24 sm:py-32 lg:px-16"
+      class="min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 py-24 sm:py-20 relative"
     >
-      <div>
-        <h1 class="text-3xl md:text-5xl rounded-xl leading-normal">
-          <p>Hello World! 👋</p>
-          <p>
-            I'm <span class="text-green-500 dark:text-green-300 text-glow-green font-bold">Pavitra Golchha</span>
-          </p>
-          <p>
-            You may know me as <span class="text-blue-500 dark:text-blue-300 text-glow-blue font-bold">pavi2410</span>
-          </p>
+      <!-- Decorative background elements -->
+      <div class="absolute top-1/4 left-10 md:left-1/4 animate-bounce-slow opacity-50 dark:opacity-30 text-6xl hidden sm:block">✨</div>
+      <div class="absolute bottom-1/4 right-10 md:right-1/4 animate-pulse-slow opacity-50 dark:opacity-30 text-5xl hidden sm:block">🚀</div>
+      <div class="absolute top-1/3 right-1/4 -rotate-12 opacity-50 dark:opacity-30 text-6xl hidden sm:block">💡</div>
+      
+      <div class="w-full max-w-4xl mx-auto text-center z-10 relative">
+        
+        <div class="inline-block hover:animate-wiggle cursor-pointer mb-4 sm:mb-6 transition-transform hover:scale-110">
+          <span class="text-6xl md:text-8xl inline-block origin-bottom-right animate-wave">👋</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bricolage font-black tracking-tight leading-[1.1] sm:leading-[1.1]">
+          <span class="block text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-4">Hello World!</span>
+          <span class="relative inline-block mt-2 sm:mt-4">
+            <span class="absolute -inset-x-2 sm:-inset-x-4 -inset-y-1 sm:-inset-y-2 bg-green-300 dark:bg-green-600 -rotate-2 rounded-xl sm:rounded-2xl -z-10 shadow-lg"></span>
+            <span class="text-green-950 dark:text-white relative z-10">I'm Pavitra</span>
+          </span>
         </h1>
 
-        <div class="text-2xl mt-8 font-bricolage">
-          <p>discover everything about me and my creations right here.</p>
-          <p>enjoy your stay here :)</p>
+        <div class="mt-12 sm:mt-16 text-xl sm:text-2xl md:text-3xl font-bricolage text-neutral-600 dark:text-neutral-300 font-medium space-y-3 sm:space-y-4 px-2">
+          <p>
+            You might know me as 
+            <span class="relative inline-block mx-1 sm:mx-2 group cursor-crosshair whitespace-nowrap mt-2 sm:mt-0">
+              <span class="absolute -inset-2 bg-blue-200 dark:bg-blue-600/50 rotate-3 rounded-lg -z-10 group-hover:-rotate-2 transition-transform duration-300"></span>
+              <span class="text-blue-700 dark:text-blue-200 font-bold">@pavi2410</span>
+            </span>
+          </p>
+          <p class="text-base sm:text-lg md:text-xl text-neutral-500 dark:text-neutral-400 mt-6 sm:mt-8 max-w-2xl mx-auto italic">
+            "I build things, write things, and occasionally break things."
+          </p>
         </div>
 
-        <div class="flex flex-wrap font-semibold mt-16 -ml-4">
-          <a href="/blog">
-            <button
-              class="bg-yellow-500 hover:bg-yellow-600 text-black m-4 py-3 px-4 rounded-lg shadow-2xl shadow-yellow-500 hover:-translate-y-2 transition-all"
-            >
-              Read my blogs
-            </button>
+        <!-- Unconventional Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 mt-12 sm:mt-16 font-bricolage text-base sm:text-lg font-bold w-full max-w-sm sm:max-w-none mx-auto">
+          
+          <a href="/blog" class="group relative block w-full sm:w-auto">
+            <div class="absolute inset-0 bg-yellow-400 rounded-xl sm:rounded-2xl rotate-2 sm:rotate-3 group-hover:rotate-4 sm:group-hover:rotate-6 transition-all duration-300 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.2)]"></div>
+            <div class="relative bg-white dark:bg-neutral-800 border-2 border-neutral-900 dark:border-neutral-600 px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl group-hover:-translate-y-1 transition-transform duration-300 flex items-center justify-center sm:justify-start gap-2 text-neutral-900 dark:text-white">
+              <Icon name="tabler:writing" class="text-xl sm:text-2xl text-yellow-500" />
+              <span>Read my blogs</span>
+            </div>
           </a>
-          <a href="#about">
-            <button
-              class="bg-emerald-500 hover:bg-emerald-600 m-4 py-3 px-4 rounded-lg shadow-2xl shadow-emerald-500 hover:-translate-y-2 transition-all"
-            >
-              About me
-            </button>
+
+          <a href="#about" class="group relative block w-full sm:w-auto">
+            <div class="absolute inset-0 bg-emerald-400 rounded-xl sm:rounded-2xl -rotate-1 sm:-rotate-2 group-hover:-rotate-3 sm:group-hover:-rotate-6 transition-all duration-300 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.2)]"></div>
+            <div class="relative bg-white dark:bg-neutral-800 border-2 border-neutral-900 dark:border-neutral-600 px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl group-hover:-translate-y-1 transition-transform duration-300 flex items-center justify-center sm:justify-start gap-2 text-neutral-900 dark:text-white">
+              <Icon name="tabler:user-scan" class="text-xl sm:text-2xl text-emerald-500" />
+              <span>About me</span>
+            </div>
           </a>
-          <a href="#projects">
-            <button
-              class="bg-blue-500 hover:bg-blue-600 m-4 py-3 px-4 rounded-lg shadow-2xl shadow-blue-500 hover:-translate-y-2 transition-all"
-            >
-              My dearest projects
-            </button>
+
+          <a href="#projects" class="group relative block w-full sm:w-auto">
+            <div class="absolute inset-0 bg-blue-400 rounded-xl sm:rounded-2xl rotate-1 sm:rotate-2 group-hover:rotate-2 sm:group-hover:rotate-4 transition-all duration-300 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.2)]"></div>
+            <div class="relative bg-white dark:bg-neutral-800 border-2 border-neutral-900 dark:border-neutral-600 px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl group-hover:-translate-y-1 transition-transform duration-300 flex items-center justify-center sm:justify-start gap-2 text-neutral-900 dark:text-white">
+              <Icon name="tabler:code" class="text-xl sm:text-2xl text-blue-500" />
+              <span>My dearest projects</span>
+            </div>
           </a>
-          <a href="/resume">
-            <button
-              class="bg-rose-500 hover:bg-rose-600 m-4 py-3 px-4 rounded-lg shadow-2xl shadow-rose-500 hover:-translate-y-2 transition-all"
-            >
-              Resume
-            </button>
+
+          <a href="/resume" class="group relative block w-full sm:w-auto">
+            <div class="absolute inset-0 bg-rose-400 rounded-xl sm:rounded-2xl -rotate-2 sm:-rotate-3 group-hover:-rotate-4 sm:group-hover:-rotate-6 transition-all duration-300 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.2)]"></div>
+            <div class="relative bg-white dark:bg-neutral-800 border-2 border-neutral-900 dark:border-neutral-600 px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl group-hover:-translate-y-1 transition-transform duration-300 flex items-center justify-center sm:justify-start gap-2 text-neutral-900 dark:text-white">
+              <Icon name="tabler:file-cv" class="text-xl sm:text-2xl text-rose-500" />
+              <span>Resume</span>
+            </div>
           </a>
+          
         </div>
       </div>
     </section>
 
+    <!-- Projects Section -->
     <section
-      class="grid min-h-screen place-items-center px-8 py-24 sm:py-32 lg:px-16"
+      class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-32 relative"
       id="projects"
     >
-      <h2 class="py-8 text-4xl font-semibold">
-        My Projects <Tag text={`${projectsData.length}+`} />
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 grid-rows-masonry mt-8">
-        {projectsData.map((project) => <ProjectCard project={project} />)}
+      <div class="flex flex-col sm:flex-row items-center sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12 text-center sm:text-left">
+        <h2 class="text-4xl sm:text-5xl font-black font-bricolage">
+          Stuff I've Built
+        </h2>
+        <div class="rotate-6 mt-2 sm:mt-0">
+          <Tag text={`${projectsData.length}+`} />
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {projectsData.map((project, index) => <ProjectCard project={project} index={index} />)}
       </div>
     </section>
 
+    <!-- Connect Section -->
     <section
-      class="grid min-h-screen place-items-center px-8 py-24 sm:py-32 lg:px-16"
+      class="max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-32 text-center relative"
+      id="about"
     >
-      <h2 class="py-8 text-4xl font-semibold">Connect with me</h2>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black font-bricolage mb-6 sm:mb-8">
+        Let's be internet friends!
+      </h2>
+      <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-10 sm:mb-12 font-medium px-2">
+        I'm always down to chat about code, design, or life in general. Drop a hi!
+      </p>
 
-      <div class="flex flex-col md:flex-row font-semibold mt-16">
-        <a
-          href="https://twitter.com/PavitraGolchha"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button
-            class="bg-blue-500 hover:bg-blue-100 text-white hover:text-blue-700 shadow-2xl shadow-blue-500 font-bold m-4 py-2 px-4 rounded inline-flex items-center hover:-translate-y-2 transition-all"
-          >
-            <Icon name="tabler:brand-twitter" />
-            <span class="pl-1">Twitter</span>
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 font-bricolage font-bold">
+        
+        <a href="https://twitter.com/PavitraGolchha" target="_blank" rel="noreferrer" class="group">
+          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#1DA1F2]/10 hover:bg-[#1DA1F2] text-[#1DA1F2] hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-3 text-sm sm:text-base">
+            <Icon name="tabler:brand-twitter" class="text-xl sm:text-2xl" />
+            <span>Twitter</span>
           </button>
         </a>
-        <a href="https://github.com/pavi2410" target="_blank">
-          <button
-            class="bg-slate-800 hover:bg-slate-100 text-white hover:text-slate-700 shadow-2xl shadow-slate-700 font-bold m-4 py-2 px-4 rounded inline-flex items-center hover:-translate-y-2 transition-all"
-          >
-            <Icon name="tabler:brand-github" />
-            <span class="pl-1">GitHub</span>
+
+        <a href="https://github.com/pavi2410" target="_blank" rel="noreferrer" class="group">
+          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-neutral-900/10 dark:bg-white/10 hover:bg-neutral-900 dark:hover:bg-white text-neutral-900 dark:text-white hover:text-white dark:hover:text-neutral-900 transition-all duration-300 hover:scale-110 hover:rotate-2 text-sm sm:text-base">
+            <Icon name="tabler:brand-github" class="text-xl sm:text-2xl" />
+            <span>GitHub</span>
           </button>
         </a>
-        <a href="https://linkedin.com/in/pavi2410" target="_blank">
-          <button
-            class="bg-indigo-500 hover:bg-indigo-100 text-white hover:text-indigo-700 shadow-2xl shadow-indigo-500 font-bold m-4 py-2 px-4 rounded inline-flex items-center hover:-translate-y-2 transition-all"
-          >
-            <Icon name="tabler:brand-linkedin" />
-            <span class="pl-1">LinkedIn</span>
+
+        <a href="https://linkedin.com/in/pavi2410" target="_blank" rel="noreferrer" class="group">
+          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#0A66C2]/10 hover:bg-[#0A66C2] text-[#0A66C2] hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-2 text-sm sm:text-base">
+            <Icon name="tabler:brand-linkedin" class="text-xl sm:text-2xl" />
+            <span>LinkedIn</span>
           </button>
         </a>
-        <a href="https://youtube.com/@PavitraGolchha" target="_blank">
-          <button
-            class="bg-red-500 hover:bg-red-100 text-white hover:text-red-700 shadow-2xl shadow-red-500 font-bold m-4 py-2 px-4 rounded inline-flex items-center hover:-translate-y-2 transition-all"
-          >
-            <Icon name="tabler:brand-youtube" />
-            <span class="pl-1">YouTube</span>
+
+        <a href="https://youtube.com/@PavitraGolchha" target="_blank" rel="noreferrer" class="group">
+          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#FF0000]/10 hover:bg-[#FF0000] text-[#FF0000] hover:text-white transition-all duration-300 hover:scale-110 hover:rotate-3 text-sm sm:text-base">
+            <Icon name="tabler:brand-youtube" class="text-xl sm:text-2xl" />
+            <span>YouTube</span>
           </button>
         </a>
-        <a href="mailto:hello@pavi2410.com" target="_blank">
-          <button
-            class="bg-emerald-500 hover:bg-emerald-100 text-white hover:text-emerald-700 shadow-2xl shadow-emerald-500 font-bold m-4 py-2 px-4 rounded inline-flex items-center hover:-translate-y-2 transition-all"
-          >
-            <Icon name="tabler:mail" />
-            <span class="pl-1">Email</span>
+
+        <a href="mailto:hello@pavi2410.com" target="_blank" rel="noreferrer" class="group">
+          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-600 dark:text-emerald-400 hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-2 text-sm sm:text-base">
+            <Icon name="tabler:mail" class="text-xl sm:text-2xl" />
+            <span>Email</span>
           </button>
         </a>
+
       </div>
 
-      <p>See you again! 👋</p>
+      <div class="mt-20 sm:mt-24 text-neutral-500 font-bricolage flex flex-col items-center gap-2">
+        <p class="text-base sm:text-lg">See you again! 👋</p>
+        <div class="w-12 sm:w-16 h-1 bg-linear-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent rounded-full"></div>
+      </div>
     </section>
   </div>
 </BaseLayout>
@@ -148,28 +180,42 @@ import { Icon } from "astro-icon/components";
     background-image: url("/bg_dark.svg");
   }
 
-  @property --glow-opacity {
-    syntax: "<number>";
-    initial-value: 0.5;
-    inherits: false;
+  /* Custom Animations for Playful Feel */
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
   }
 
-  .text-glow-green {
-    text-shadow: 0px 0px 20px rgba(34 197 94 / var(--glow-opacity));
-    animation: glow 1s ease-in-out infinite alternate;
+  .animate-wave {
+    animation: wave 2.5s infinite;
   }
 
-  .text-glow-blue {
-    text-shadow: 0px 0px 20px rgba(59 130 246 / var(--glow-opacity));
-    animation: glow 1s ease-in-out infinite alternate;
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
   }
 
-  @keyframes glow {
-    from {
-      --glow-opacity: 0.5;
-    }
-    to {
-      --glow-opacity: 0.9;
-    }
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-bounce-slow {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes fadePulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.9); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  .animate-pulse-slow {
+    animation: fadePulse 5s ease-in-out infinite;
   }
 </style>
