@@ -1,5 +1,10 @@
 ---
-import { formatDate, getReadingTime, pickColorByHash, pickColorGradientByHash } from "@/util";
+import {
+  formatDate,
+  getReadingTime,
+  pickColorByHash,
+  pickColorGradientByHash,
+} from "@/util";
 import BaseLayout from "./BaseLayout.astro";
 import Header from "@/components/Header.astro";
 import type { CollectionEntry } from "astro:content";
@@ -10,26 +15,20 @@ import ShareButtons from "@/components/ShareButtons.astro";
 
 export interface Props {
   frontmatter: CollectionEntry<"posts">["data"];
-  headings?: { depth: number; slug: string; text: string; }[];
+  headings?: { depth: number; slug: string; text: string }[];
   rawContent?: string;
 }
 
 const {
-  frontmatter: {
-    title,
-    excerpt,
-    publishDate,
-    quickLinks,
-    tags,
-  },
+  frontmatter: { title, excerpt, publishDate, quickLinks, tags },
   rawContent,
 } = Astro.props;
 
 const permalink = Astro.url.pathname;
-const fullUrl = new URL(permalink, Astro.site || 'https://pavi2410.com').href;
-const heroImage = '';
-const alt = '';
-const keywords = tags.join(', ');
+const fullUrl = new URL(permalink, Astro.site || "https://pavi2410.com").href;
+const heroImage = "";
+const alt = "";
+const keywords = tags.join(", ");
 const readingTime = rawContent ? getReadingTime(rawContent) : null;
 
 // Get headings for TOC
@@ -47,7 +46,9 @@ const headings = Astro.props.headings || [];
   <Header />
 
   <!-- Mobile TOC: sticky below main header -->
-  <div class="xl:hidden sticky top-14 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
+  <div
+    class="xl:hidden sticky top-14 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur border-b border-neutral-200 dark:border-neutral-800"
+  >
     <TableOfContents client:load headings={headings} collapsible />
   </div>
 
@@ -55,95 +56,129 @@ const headings = Astro.props.headings || [];
     <article
       class="prose prose-lg dark:prose-invert max-lg:mx-8 mt-28 mb-16 max-w-prose"
     >
-    <header class="text-left">
-      {
-        heroImage && (
-          <img
-            width="720"
-            height="420"
-            class="hero-image"
-            loading="lazy"
-            src={heroImage}
-            alt={alt}
-          />
-        )
-      }
-      <h1 class="title">{title}</h1>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p>
-          <a href="https://pavi2410.com">Pavitra Golchha</a> • Published on&nbsp;
-          {formatDate(publishDate)}
-          {readingTime && <span> · {readingTime}</span>}
-        </p>
+      <header
+        class="text-left pb-10 border-b border-neutral-200 dark:border-neutral-800 mb-10"
+      >
         {
-          rawContent && (
-            <div class="not-prose shrink-0">
-              <CopyToMarkdown client:load content={rawContent} />
-            </div>
+          heroImage && (
+            <img
+              width="720"
+              height="420"
+              class="hero-image rounded-2xl shadow-xl mb-8 mx-auto"
+              loading="lazy"
+              src={heroImage}
+              alt={alt}
+            />
           )
         }
-      </div>
-      <div>
-        <div class="uppercase text-sm font-semibold opacity-50 pb-1">
-          Tags
-        </div>
-        <div class="flex flex-wrap gap-1 not-prose">
-          {
-            tags.map((tag) => (
+
+        {/* Tags moved to the bottom */}
+
+        <h1
+          class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-linear-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400"
+        >
+          {title}
+        </h1>
+
+        {/* Metadata and Author */}
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-neutral-600 dark:text-neutral-400"
+        >
+          <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-left">
               <a
-                href={`/blog/tag/${encodeURIComponent(tag)}`}
-                class="rounded text-sm px-2.5 py-0.5"
-                style={pickColorByHash(tag)}
+                href="https://pavi2410.com"
+                class="font-semibold text-neutral-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >Pavitra Golchha</a
               >
-                {tag}
-              </a>
-            ))
-          }
-        </div>
-      </div>
-      {
-        quickLinks && (
-          <p>
-            <div class="uppercase text-sm font-semibold opacity-50 pb-1">
-              Quick Links
+              <span class="opacity-50 hidden sm:inline">&bull;</span>
+              <span class="flex items-center gap-1.5 opacity-80">
+                <Icon name="tabler:calendar" class="w-4 h-4" />
+                {formatDate(publishDate)}
+                {
+                  readingTime && (
+                    <>
+                      <span class="w-1 h-1 rounded-full bg-current opacity-50" />
+                      <Icon name="tabler:clock" class="w-4 h-4" />
+                      {readingTime}
+                    </>
+                  )
+                }
+              </span>
             </div>
-            <div class="flex gap-4 not-prose overflow-x-scroll mask-r-from-95%">
+          </div>
+
+          <div class="flex items-center gap-3 mt-4 sm:mt-0">
+            {
+              rawContent && (
+                <div class="not-prose shrink-0">
+                  <CopyToMarkdown client:load content={rawContent} />
+                </div>
+              )
+            }
+          </div>
+        </div>
+
+        {
+          quickLinks && (
+            <div class="mt-6 flex flex-wrap gap-3 not-prose pt-6 border-t border-neutral-200 dark:border-neutral-800">
               {quickLinks.map(({ title, link }) => (
                 <a
                   href={link}
                   target="_blank"
-                  class={`relative border rounded-xl py-2 px-4 h-32 aspect-video ${pickColorGradientByHash(title)}`}
+                  class="group flex items-center gap-2 rounded-xl py-2 px-4 shadow-sm hover:shadow-md transition-all text-sm font-bold border border-transparent hover:border-black/5 dark:hover:border-white/10 hover:-translate-y-0.5"
+                  style={pickColorByHash(title)}
                 >
+                  <Icon name="tabler:link" class="w-4 h-4 opacity-70" />
                   {title}
                   <Icon
                     name="tabler:external-link"
-                    size="2rem"
-                    class="absolute bottom-4 right-4"
+                    class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity ml-1"
                   />
                 </a>
               ))}
             </div>
-          </p>
-        )
-      }
-    </header>
-    <main>
-      <slot />
+          )
+        }
+      </header>
+      <main>
+        <slot />
 
-      <ShareButtons url={fullUrl} title={title} />
-    </main>
-  </article>
-  
-  <!-- TOC for desktop: sticky on the right -->
-  <aside class="toc-aside">
-    <TableOfContents client:load headings={headings} />
-  </aside>
+        <ShareButtons url={fullUrl} title={title} />
+
+        {
+          tags && tags.length > 0 && (
+            <div class="mt-8 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+              <h3 class="text-sm font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest mb-4">
+                Tags
+              </h3>
+              <div class="flex flex-wrap gap-2 not-prose">
+                {tags.map((tag) => (
+                  <a
+                    href={`/blog/tag/${encodeURIComponent(tag)}`}
+                    class="rounded-full text-xs font-semibold px-3 py-1 hover:scale-105 transition-transform shadow-xs"
+                    style={pickColorByHash(tag)}
+                  >
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </main>
+    </article>
+
+    <!-- TOC for desktop: sticky on the right -->
+    <aside class="toc-aside">
+      <TableOfContents client:load headings={headings} />
+    </aside>
   </div>
 </BaseLayout>
 
 <style>
   @reference "../styles/global.css";
-  
+
   .blog-container {
     @apply mx-auto;
   }
