@@ -20,7 +20,7 @@ I ran into this exact problem. I wanted a single library that works across Andro
 
 So I built [kmp-app-updater](https://github.com/pavi2410/kmp-app-updater).
 
-## What It Does
+## The Solution
 
 The core flow is simple:
 
@@ -36,6 +36,17 @@ The library ships in two modules:
 
 - **`core`** — the headless engine: update sources, downloader, installer, state machine
 - **`compose-ui`** — optional Compose Multiplatform UI components (`UpdateCard`, `UpdateBanner`, `DownloadProgressIndicator`)
+
+## See It in Action
+
+Here is a look at the Android sample app in action, running `v0.1.0`. It checks for a new release from GitHub, downloads the update with a progress indicator, and installs it using the Android package manager:
+
+<video controls class="w-full max-w-[300px] mx-auto rounded-xl shadow-lg my-8">
+  <source src="/assets/blog/kmp-app-updater-demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+> **Try it out!** Want to test it yourself? Download the sample APK from the [v0.1.0 release](https://github.com/pavi2410/kmp-app-updater/releases/tag/v0.1.0). When you open the app, it will find and let you install the dummy `v99.0.0` update—demonstrating how the library works.
 
 ## Quick Start
 
@@ -257,9 +268,11 @@ val updater = AppUpdater.github(
 )
 ```
 
+## Things to Watch Out For
+
 ### Signing — The One Thing You Can't Skip
 
-**This is the #1 gotcha.** Android refuses to install an update if the new APK is signed with a different key than the installed one. Your CI builds and local builds must use the same keystore.
+**This is the #1 gotcha.** Android refuses to install an update if the new APK is signed with a different key than the installed one. If an update download succeeds but installation fails with "package conflicts with an existing package", the signing keys don't match. Your CI builds and local builds must use the same keystore.
 
 The easiest setup:
 
@@ -282,19 +295,9 @@ Add the keystore to `.gitignore` so it never gets committed.
 
 ### Pre-Releases for Beta Testing
 
-Mark a GitHub release as a "pre-release" and it won't show up via `/releases/latest`. Your stable users won't see it. But beta testers running with `includePreReleases = true` will. This gives you a clean way to do staged rollouts without any server-side infrastructure.
-
-## Things to Watch Out For
-
-**R8 + WorkManager** — If you enable `isMinifyEnabled = true`, add a ProGuard rule to keep WorkManager's Room internals. Otherwise R8 strips `WorkDatabase_Impl` and your app crashes on launch:
-
-```proguard
--keep class androidx.work.impl.** { *; }
-```
-
 **`/releases/latest` skips pre-releases** — This is GitHub API behavior, not a bug. If your only release is a pre-release, the library won't find it unless `includePreReleases = true` is set.
 
-**Signing key mismatch** — If an update download succeeds but installation fails with "package conflicts with an existing package", the signing keys don't match. Use the same keystore on local and CI.
+Mark a GitHub release as a "pre-release" and it won't show up via `/releases/latest`. Your stable users won't see it. But beta testers running with `includePreReleases = true` will. This gives you a clean way to do staged rollouts without any server-side infrastructure.
 
 ## Get It
 
