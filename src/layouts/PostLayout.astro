@@ -4,6 +4,8 @@ import {
   getReadingTime,
   pickColorByHash,
   pickColorGradientByHash,
+  pickItemByHash,
+  strHash,
 } from "@/util";
 import BaseLayout from "./BaseLayout.astro";
 import Header from "@/components/Header.astro";
@@ -126,8 +128,11 @@ const headings = Astro.props.headings || [];
                 <a
                   href={link}
                   target="_blank"
-                  class="group flex items-center gap-2 rounded-xl py-2 px-4 shadow-sm hover:shadow-md transition-all text-sm font-bold border border-transparent hover:border-black/5 dark:hover:border-white/10 hover:-translate-y-0.5"
-                  style={pickColorByHash(title)}
+                  class="quick-link group flex items-center gap-2 rounded-xl py-2 px-4 transition-all text-sm font-bold border hover:-translate-y-0.5 backdrop-blur-sm"
+                  style={`--hue: ${pickItemByHash(
+                    [12, 27, 45, 142, 230, 200, 270, 310],
+                    strHash(title)
+                  )}`}
                 >
                   <Icon name="tabler:link" class="w-4 h-4 opacity-70" />
                   {title}
@@ -224,5 +229,26 @@ const headings = Astro.props.headings || [];
       /* Desktop: only header (56px) + padding */
       scroll-margin-top: 5rem;
     }
+  }
+
+  /* Playful subtle colors for quick links */
+  .quick-link {
+    background-color: oklch(0.96 0.03 var(--hue) / 0.8);
+    color: oklch(0.45 0.12 var(--hue));
+    border-color: oklch(0.8 0.08 var(--hue) / 0.5);
+  }
+
+  .quick-link:hover {
+    border-color: oklch(0.6 0.1 var(--hue) / 0.8);
+  }
+
+  :global(.dark) .quick-link {
+    background-color: oklch(0.25 0.04 var(--hue) / 0.5);
+    color: oklch(0.9 0.06 var(--hue));
+    border-color: oklch(0.5 0.1 var(--hue) / 0.6);
+  }
+
+  :global(.dark) .quick-link:hover {
+    border-color: oklch(0.6 0.15 var(--hue) / 0.8);
   }
 </style>

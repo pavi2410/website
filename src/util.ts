@@ -5,11 +5,11 @@ import isToday from "dayjs/plugin/isToday";
 dayjs.extend(relativeTime)
 dayjs.extend(isToday)
 
-function strHash(str: string) {
+export function strHash(str: string) {
   return str.split('').reduce((hash, c) => Math.imul(15, hash) + c.charCodeAt(0), 0);
 }
 
-function pickItemByHash<T>(arr: T[], hash: number) {
+export function pickItemByHash<T>(arr: T[], hash: number) {
   const index = Math.abs(hash) % arr.length;
   return arr[index];
 }
@@ -22,14 +22,22 @@ export function pickColorSchemeByStringHash(str: string) {
 export function pickColorByHash(str: string) {
   const hues = [12, 27, 45, 142, 230, 200, 270, 310]; // Red, Orange, Amber, Emerald, Blue, Sky, Violet, Fuchsia
   const hue = pickItemByHash(hues, strHash(str));
-  
+
   // OKLCH values: lightness (0-1), chroma (0-0.4), hue (0-360)
   const bgLightness = 0.75; // Lighter background
   const chroma = 0.15;
   const textLightness = bgLightness > 0.6 ? 0.35 : 0.95; // Dark text for light bg, light text for dark bg
   const textChroma = 0.18;
-  
+
   return `background: oklch(${bgLightness} ${chroma} ${hue}); color: oklch(${textLightness} ${textChroma} ${hue});`;
+}
+
+export function pickSubtleColorByHash(str: string) {
+  const hues = [12, 27, 45, 142, 230, 200, 270, 310]; // Red, Orange, Amber, Emerald, Blue, Sky, Violet, Fuchsia
+  const hue = pickItemByHash(hues, strHash(str));
+
+  // Very light translucent background, darker text/border
+  return `background: oklch(0.95 0.05 ${hue} / 0.5); color: oklch(0.4 0.15 ${hue}); border-color: oklch(0.6 0.15 ${hue} / 0.3);`;
 }
 
 export function pickColorGradientByHash(str: string) {
