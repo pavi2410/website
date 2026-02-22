@@ -10,6 +10,8 @@ import fs from 'fs';
 import { blogOgImage } from './src/og-image.tsx';
 
 import cloudflare from '@astrojs/cloudflare';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 // https://astro.build/config
 export default defineConfig({
@@ -76,6 +78,25 @@ export default defineConfig({
         dark: 'github-dark',
       },
     },
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, {
+        behavior: 'append',
+        properties: {
+          className: ['heading-anchor'],
+          ariaHidden: true,
+          tabIndex: -1,
+        },
+        content: {
+          type: 'element',
+          tagName: 'span',
+          properties: {
+            className: ['icon', 'icon-link'],
+          },
+          children: [{ type: 'text', value: '#' }],
+        },
+      }],
+    ],
   },
 
   adapter: cloudflare(),

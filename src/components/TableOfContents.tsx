@@ -16,8 +16,10 @@ export default function TableOfContents({ headings, collapsible = false }: Props
   const [isOpen, setIsOpen] = useState(!collapsible);
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
-  // Filter to only show h2 and h3 headings
-  const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+  // Filter to only show h2 and h3 headings, and strip trailing '#' from text
+  const tocHeadings = headings
+    .filter(h => h.depth === 2 || h.depth === 3)
+    .map(h => ({ ...h, text: h.text.replace(/#$/, '').trim() }));
 
   // Auto-scroll TOC to keep active heading visible
   useEffect(() => {
@@ -95,11 +97,10 @@ export default function TableOfContents({ headings, collapsible = false }: Props
                     setActiveId(heading.slug);
                     setIsOpen(false);
                   }}
-                  className={`block py-1.5 transition-colors no-underline ${
-                    activeId === heading.slug
+                  className={`block py-1.5 transition-colors no-underline ${activeId === heading.slug
                       ? 'text-emerald-600 dark:text-emerald-400'
                       : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200'
-                  }`}
+                    }`}
                 >
                   {heading.text}
                 </a>
@@ -124,11 +125,10 @@ export default function TableOfContents({ headings, collapsible = false }: Props
               }}
               href={`#${heading.slug}`}
               onClick={() => setActiveId(heading.slug)}
-              className={`block py-1 transition-colors no-underline border-l-2 pl-3 ${
-                activeId === heading.slug
+              className={`block py-1 transition-colors no-underline border-l-2 pl-3 ${activeId === heading.slug
                   ? 'text-neutral-900 dark:text-neutral-100 border-l-emerald-500'
                   : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 border-transparent'
-              }`}
+                }`}
             >
               {heading.text}
             </a>

@@ -47,14 +47,14 @@ const headings = Astro.props.headings || [];
 
   <!-- Mobile TOC: sticky below main header -->
   <div
-    class="xl:hidden sticky top-14 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur border-b border-neutral-200 dark:border-neutral-800"
+    class="xl:hidden sticky top-0 pt-[4.5rem] z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur border-b border-neutral-200 dark:border-neutral-800"
   >
     <TableOfContents client:load headings={headings} collapsible />
   </div>
 
   <div class="blog-container">
     <article
-      class="prose prose-lg dark:prose-invert max-lg:mx-8 mt-28 mb-16 max-w-prose"
+      class="prose prose-lg dark:prose-invert max-lg:mx-8 mt-8 xl:mt-28 mb-16 max-w-prose"
     >
       <header
         class="text-left pb-10 border-b border-neutral-200 dark:border-neutral-800 mb-10"
@@ -213,8 +213,8 @@ const headings = Astro.props.headings || [];
   article :global(h2[id]),
   article :global(h3[id]),
   article :global(h4[id]) {
-    /* Mobile: header (56px) + TOC bar (48px) + padding */
-    scroll-margin-top: 7rem;
+    /* Mobile: header (72px) + TOC bar (48px) + padding */
+    scroll-margin-top: 9rem;
   }
 
   @media (min-width: 1280px) {

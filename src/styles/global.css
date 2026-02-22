@@ -30,6 +30,39 @@
             display: none;
         }
     }
+
+    /* Heading anchors */
+    h1:hover .heading-anchor,
+    h2:hover .heading-anchor,
+    h3:hover .heading-anchor,
+    h4:hover .heading-anchor,
+    h5:hover .heading-anchor,
+    h6:hover .heading-anchor {
+        opacity: 1;
+    }
+
+    .heading-anchor {
+        text-decoration: none;
+        margin-left: 0.3em;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        color: inherit;
+        font-weight: normal;
+        
+        .icon-link {
+            color: oklch(0.6 0.1 230);
+            font-size: 0.8em;
+        }
+
+        .dark & .icon-link {
+            color: oklch(0.8 0.1 230);
+        }
+        
+        &:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+    }
 }
 
 .max-w-prose {
