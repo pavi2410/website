@@ -37,6 +37,7 @@ export default function PdfEditorApp() {
     handlePageDragEnd,
     exportPdf,
     exportSelectedPages,
+    exportPagesAsImages,
     unlockPdf,
     previewPdf,
     closePreview,
@@ -75,6 +76,8 @@ export default function PdfEditorApp() {
         onSelectAll={selectAllPages}
         onDeleteSelected={deleteSelectedPages}
         onExtractSelected={exportSelectedPages}
+        onExportImages={() => exportPagesAsImages()}
+        onExportSelectedImages={selectedPages.size > 0 ? () => exportPagesAsImages(selectedPages) : undefined}
         onClearAll={clearAll}
         onExport={exportPdf}
       />

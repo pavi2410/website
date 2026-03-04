@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react'
-import { PDFDocument } from 'pdf-lib'
+import { PDFDocument, degrees } from 'pdf-lib'
 import * as pdfjsLib from 'pdfjs-dist'
 import type { PdfFile, PageInfo } from './types'
 
@@ -394,9 +394,7 @@ export function usePdfEditor() {
         const sourcePdf = await PDFDocument.load(file.data, { ignoreEncryption: true })
         const [copiedPage] = await mergedPdf.copyPages(sourcePdf, [page.pageIndex])
         
-        if (page.rotation !== 0) {
-          copiedPage.setRotation({ angle: page.rotation, type: 0 } as any)
-        }
+        copiedPage.setRotation(degrees((copiedPage.getRotation().angle + page.rotation) % 360))
         
         mergedPdf.addPage(copiedPage)
       }
@@ -436,9 +434,7 @@ export function usePdfEditor() {
         const sourcePdf = await PDFDocument.load(file.data, { ignoreEncryption: true })
         const [copiedPage] = await newPdf.copyPages(sourcePdf, [page.pageIndex])
         
-        if (page.rotation !== 0) {
-          copiedPage.setRotation({ angle: page.rotation, type: 0 } as any)
-        }
+        copiedPage.setRotation(degrees((copiedPage.getRotation().angle + page.rotation) % 360))
         
         newPdf.addPage(copiedPage)
       }
@@ -460,6 +456,49 @@ export function usePdfEditor() {
       setIsProcessing(false)
     }
   }, [selectedPages, pages, files])
+
+  const exportPagesAsImages = useCallback(async (pageIds?: Set<string>) => {
+    const targetPages = pageIds
+      ? pages.filter(p => pageIds.has(p.id))
+      : pages
+    if (targetPages.length === 0) return
+
+    setIsProcessing(true)
+    setError(null)
+
+    try {
+      for (let i = 0; i < targetPages.length; i++) {
+        const page = targetPages[i]
+        const file = files.find(f => f.id === page.fileId)
+        if (!file || !file.pdfJsDoc) continue
+
+        const pdfJsPage = await file.pdfJsDoc.getPage(page.pageIndex + 1)
+        const totalRotation = (pdfJsPage.rotate + page.rotation) % 360
+        const viewport = pdfJsPage.getViewport({ scale: 2, rotation: totalRotation })
+
+        const canvas = document.createElement('canvas')
+        canvas.width = viewport.width
+        canvas.height = viewport.height
+
+        const context = canvas.getContext('2d')!
+        await pdfJsPage.render({ canvasContext: context, viewport, canvas } as any).promise
+
+        const dataUrl = canvas.toDataURL('image/png')
+        const link = document.createElement('a')
+        link.href = dataUrl
+        const baseName = file.name.replace(/\.pdf$/i, '')
+        link.download = targetPages.length === 1
+          ? `${baseName}_page${page.pageIndex + 1}.png`
+          : `${baseName}_page${page.pageIndex + 1}_${i + 1}of${targetPages.length}.png`
+        link.click()
+      }
+    } catch (e) {
+      setError('Failed to export pages as images')
+      console.error(e)
+    } finally {
+      setIsProcessing(false)
+    }
+  }, [pages, files])
 
   const unlockPdf = useCallback(async (fileId: string, password: string) => {
     const file = files.find(f => f.id === fileId)
@@ -580,6 +619,7 @@ export function usePdfEditor() {
     handlePageDragEnd,
     exportPdf,
     exportSelectedPages,
+    exportPagesAsImages,
     unlockPdf,
     previewPdf,
     closePreview,

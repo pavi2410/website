@@ -2,6 +2,7 @@ import IconPlus from '~icons/tabler/plus'
 import IconTrash from '~icons/tabler/trash'
 import IconDownload from '~icons/tabler/download'
 import IconScissors from '~icons/tabler/scissors'
+import IconPhoto from '~icons/tabler/photo'
 
 interface ToolbarProps {
   pagesCount: number
@@ -12,6 +13,8 @@ interface ToolbarProps {
   onSelectAll: () => void
   onDeleteSelected: () => void
   onExtractSelected: () => void
+  onExportImages: () => void
+  onExportSelectedImages?: () => void
   onClearAll: () => void
   onExport: () => void
 }
@@ -25,6 +28,8 @@ export function Toolbar({
   onSelectAll,
   onDeleteSelected,
   onExtractSelected,
+  onExportImages,
+  onExportSelectedImages,
   onClearAll,
   onExport,
 }: ToolbarProps) {
@@ -74,11 +79,30 @@ export function Toolbar({
                 <IconScissors className="w-4 h-4" />
                 Extract Selected
               </button>
+
+              {onExportSelectedImages && (
+                <button
+                  onClick={onExportSelectedImages}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors"
+                >
+                  <IconPhoto className="w-4 h-4" />
+                  Export as Images
+                </button>
+              )}
             </>
           )}
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={onExportImages}
+            disabled={isProcessing || pagesCount === 0}
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 disabled:opacity-40 rounded-lg transition-colors"
+          >
+            <IconPhoto className="w-4 h-4" />
+            Export as Images
+          </button>
+
           <button
             onClick={onClearAll}
             className="px-3 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
