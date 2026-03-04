@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: 'website' | 'person' | 'article';
+  type: 'website' | 'person' | 'article' | 'softwareApplication';
   data: any;
 }
 
@@ -73,6 +73,28 @@ const structuredData = (() => {
         keywords: data.keywords
       };
     
+    case 'softwareApplication':
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: data.name,
+        description: data.description,
+        url: `${baseUrl}${data.url}`,
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+        author: {
+          '@type': 'Person',
+          name: 'Pavitra Golchha',
+          url: baseUrl,
+        },
+        featureList: data.features,
+      };
+
     default:
       return null;
   }

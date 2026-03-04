@@ -3,6 +3,7 @@ title: 'MD Test'
 excerpt: 'A markdown test page'
 publishDate: 1970-01-01
 tags: ['tag1', 'tag2']
+draft: true
 ---
 
 Github Flavored Markdown (GFMD) is based on [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) with some overwriting as described at [Github Flavored Markdown](http://github.github.com/github-flavored-markdown/)

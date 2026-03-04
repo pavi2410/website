@@ -1,10 +1,19 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import DiffChecker from "@/components/tools/diff-checker";
+import DiffCheckerTool from "@/components/tools/diff-checker";
+import StructuredData from "@/components/StructuredData.astro";
 
 const title = "Diff Checker - Compare Text Differences | pavi2410";
 const description = "A powerful diff checker tool to compare text with line, word, or character-level strategies. Features include ignore case, ignore whitespace, hunk-based viewing, and unified diff export.";
 const permalink = "/tools/diff-checker/";
+const features = [
+  "Line, word, and character-level diff strategies",
+  "Ignore case and whitespace options",
+  "Hunk-based side-by-side viewing",
+  "Unified diff export",
+  "Syntax highlighting",
+  "Privacy-first: text never leaves your device",
+];
 ---
 
 <BaseLayout
@@ -12,6 +21,10 @@ const permalink = "/tools/diff-checker/";
   description={description}
   permalink={permalink}
 >
+  <StructuredData
+    type="softwareApplication"
+    data={{ name: "Diff Checker", description, url: permalink, features }}
+  />
   <style>
     body {
       overflow: hidden;
@@ -20,7 +33,7 @@ const permalink = "/tools/diff-checker/";
 
   <div class="fixed inset-0 flex flex-col bg-white dark:bg-gray-950">
     <!-- App Header -->
-    <div class="flex-shrink-0 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950">
+    <div class="shrink-0 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-950">
       <div class="px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <a
@@ -52,7 +65,14 @@ const permalink = "/tools/diff-checker/";
 
     <!-- App Content -->
     <div class="flex-1 overflow-hidden">
-      <DiffChecker client:load />
+      <DiffCheckerTool client:load />
     </div>
   </div>
+
+  <section class="sr-only">
+    <h2>Diff Checker Features</h2>
+    <ul>
+      {features.map(f => <li>{f}</li>)}
+    </ul>
+  </section>
 </BaseLayout>

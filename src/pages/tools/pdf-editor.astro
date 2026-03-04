@@ -1,10 +1,21 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PdfEditorTool from "@/components/tools/pdf-editor";
+import StructuredData from "@/components/StructuredData.astro";
 
 const title = "PDF Editor - Merge, Split, Rotate & Unlock PDFs | pavi2410";
 const description = "A powerful client-side PDF editor. Merge multiple PDFs, split and extract pages, rotate, reorder, delete pages, and unlock password-protected PDFs. Privacy-first: files never leave your device.";
 const permalink = "/tools/pdf-editor/";
+const features = [
+  "Merge multiple PDF files into one",
+  "Split and extract individual pages",
+  "Rotate pages 90° or 180°",
+  "Reorder pages via drag and drop",
+  "Delete unwanted pages",
+  "Unlock password-protected PDFs",
+  "Export pages as PNG images",
+  "Privacy-first: files never leave your device",
+];
 ---
 
 <BaseLayout
@@ -12,6 +23,10 @@ const permalink = "/tools/pdf-editor/";
   description={description}
   permalink={permalink}
 >
+  <StructuredData
+    type="softwareApplication"
+    data={{ name: "PDF Editor", description, url: permalink, features }}
+  />
   <style>
     body {
       overflow: hidden;
@@ -42,4 +57,11 @@ const permalink = "/tools/pdf-editor/";
       <PdfEditorTool client:only="react" />
     </div>
   </div>
+
+  <section class="sr-only">
+    <h2>PDF Editor Features</h2>
+    <ul>
+      {features.map(f => <li>{f}</li>)}
+    </ul>
+  </section>
 </BaseLayout>

@@ -1,10 +1,17 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import NameCheckerTool from "@/components/tools/name-checker";
+import StructuredData from "@/components/StructuredData.astro";
 
 const title = "Name Checker - Check Brand & Domain Availability | pavi2410";
 const description = "Check if your project name is available across platforms (GitHub, npm, PyPI, etc.) and domains. Find the perfect name for your next project.";
 const permalink = "/tools/name-checker/";
+const features = [
+  "Check name availability on GitHub, npm, PyPI, and more",
+  "Check domain name availability",
+  "Instant results across multiple platforms",
+  "Find the perfect name for your next project",
+];
 ---
 
 <BaseLayout
@@ -12,6 +19,10 @@ const permalink = "/tools/name-checker/";
   description={description}
   permalink={permalink}
 >
+  <StructuredData
+    type="softwareApplication"
+    data={{ name: "Name Checker", description, url: permalink, features }}
+  />
   <style>
     body {
       overflow: hidden;
@@ -55,4 +66,11 @@ const permalink = "/tools/name-checker/";
       <NameCheckerTool client:load />
     </div>
   </div>
+
+  <section class="sr-only">
+    <h2>Name Checker Features</h2>
+    <ul>
+      {features.map(f => <li>{f}</li>)}
+    </ul>
+  </section>
 </BaseLayout>

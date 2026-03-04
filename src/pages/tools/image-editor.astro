@@ -1,10 +1,18 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ImageEditorTool from "@/components/tools/image-editor";
+import StructuredData from "@/components/StructuredData.astro";
 
 const title = "Image Editor - Resize, Crop & Convert Images | pavi2410";
 const description = "A powerful client-side image editor. Resize by dimensions or file size, crop with aspect ratio presets, adjust brightness/contrast/saturation, and convert between PNG, JPEG, and WebP formats. Privacy-first: images never leave your device.";
 const permalink = "/tools/image-editor/";
+const features = [
+  "Resize images by dimensions or target file size",
+  "Crop with aspect ratio presets",
+  "Adjust brightness, contrast, and saturation",
+  "Convert between PNG, JPEG, and WebP",
+  "Privacy-first: images never leave your device",
+];
 ---
 
 <BaseLayout
@@ -12,6 +20,10 @@ const permalink = "/tools/image-editor/";
   description={description}
   permalink={permalink}
 >
+  <StructuredData
+    type="softwareApplication"
+    data={{ name: "Image Editor", description, url: permalink, features }}
+  />
   <style>
     body {
       overflow: hidden;
@@ -42,4 +54,11 @@ const permalink = "/tools/image-editor/";
       <ImageEditorTool client:only="react" />
     </div>
   </div>
+
+  <section class="sr-only">
+    <h2>Image Editor Features</h2>
+    <ul>
+      {features.map(f => <li>{f}</li>)}
+    </ul>
+  </section>
 </BaseLayout>

@@ -11,6 +11,7 @@ export interface Props {
   author?: string;
   type?: 'website' | 'article';
   structuredData?: boolean;
+  noindex?: boolean;
 }
 const { 
   title, 
@@ -20,7 +21,8 @@ const {
   keywords,
   author = 'Pavitra Golchha',
   type = 'website',
-  structuredData = true
+  structuredData = true,
+  noindex = false,
 } = Astro.props;
 
 const { url, site } = Astro;
@@ -30,6 +32,7 @@ const openGraphImageUrl = getImagePath({ url, site });
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
+{noindex && <meta name="robots" content="noindex, follow" />}
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="canonical" href={canonicalURL} />
