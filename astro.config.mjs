@@ -16,7 +16,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 // https://astro.build/config
 export default defineConfig({
   site: "https://pavi2410.com",
-  trailingSlash: 'never',
+  trailingSlash: 'always',
 
   redirects: {
     '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',
