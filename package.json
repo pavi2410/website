@@ -11,14 +11,14 @@
   "devDependencies": {
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "astro": "5.18.0"
+    "astro": "6.0.6"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
-    "@astrojs/mdx": "4.3.13",
-    "@astrojs/react": "4.4.2",
-    "@astrojs/rss": "4.0.15",
-    "@astrojs/sitemap": "3.7.0",
+    "@astrojs/cloudflare": "13.1.2",
+    "@astrojs/mdx": "5.0.2",
+    "@astrojs/react": "5.0.1",
+    "@astrojs/rss": "4.0.17",
+    "@astrojs/sitemap": "3.7.1",
     "@fontsource-variable/bricolage-grotesque": "^5.2.10",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/bricolage-grotesque": "^5.2.10",

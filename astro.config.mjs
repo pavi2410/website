@@ -61,8 +61,11 @@ export default defineConfig({
       tailwindcss(),
       Icons({ compiler: 'jsx', jsx: 'react' }),
     ],
-    ssr: { // ssr instead of rollupOptions
-      external: ['@resvg/resvg-js']
+    ssr: {
+      external: ['@resvg/resvg-js'],
+      optimizeDeps: {
+        exclude: ['@resvg/resvg-js']
+      }
     },
     build: {
       rollupOptions: {
@@ -102,5 +105,7 @@ export default defineConfig({
     ],
   },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    prerenderEnvironment: 'node',
+  }),
 });
