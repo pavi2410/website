@@ -16,10 +16,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 // https://astro.build/config
 export default defineConfig({
   site: "https://pavi2410.com",
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',
 
   redirects: {
     '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',
+    '/tools': 'https://toolkit.pavi2410.com',
+    '/tools/diff-checker': 'https://toolkit.pavi2410.com/diff-checker',
+    '/tools/image-editor': 'https://toolkit.pavi2410.com/image-editor',
+    '/tools/name-checker': 'https://toolkit.pavi2410.com/name-checker',
+    '/tools/pdf-editor': 'https://toolkit.pavi2410.com/pdf-editor',
   },
 
   integrations: [
