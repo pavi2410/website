@@ -8,6 +8,7 @@ import Icons from 'unplugin-icons/vite';
 import opengraphImages from 'astro-opengraph-images';
 import fs from 'fs';
 import { blogOgImage } from './src/og-image.tsx';
+import { unified } from '@astrojs/markdown-remark';
 
 import cloudflare from '@astrojs/cloudflare';
 import rehypeSlug from 'rehype-slug';
@@ -89,25 +90,27 @@ export default defineConfig({
         dark: 'github-dark',
       },
     },
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, {
-        behavior: 'append',
-        properties: {
-          className: ['heading-anchor'],
-          ariaHidden: true,
-          tabIndex: -1,
-        },
-        content: {
-          type: 'element',
-          tagName: 'span',
+    processor: unified({
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, {
+          behavior: 'append',
           properties: {
-            className: ['icon', 'icon-link'],
+            className: ['heading-anchor'],
+            ariaHidden: true,
+            tabIndex: -1,
           },
-          children: [{ type: 'text', value: '#' }],
-        },
-      }],
-    ],
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: {
+              className: ['icon', 'icon-link'],
+            },
+            children: [{ type: 'text', value: '#' }],
+          },
+        }],
+      ],
+    }),
   },
 
   adapter: cloudflare({
