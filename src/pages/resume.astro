@@ -54,11 +54,11 @@ import { Icon } from "astro-icon/components";
                 <h3>{groupName}</h3>
                 {group?.map((work) => (
                   <div>
-                    <p>{work.description}</p>
+                    {work.description && <p>{work.description}</p>}
                     <p>
                       <b>{work.position}</b>, {formatDateRange(work)}
                     </p>
-                    <p>{work.summary}</p>
+                    {work.summary && <p>{work.summary}</p>}
                     <ul>
                       {work.highlights?.map((highlight) => (
                         <li>{highlight}</li>

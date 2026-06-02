@@ -2,69 +2,96 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Pavitra Golchha",
+    "label": "Software Engineer",
     "email": "hello+hire@pavi2410.com",
     "url": "https://pavi2410.com",
-    "summary": "A computerphile who is fascinated by computers and the internet, and is enthusiastic about new technologies. I have keen focus and interest in making performant and resource-efficient software, topped with fine principles of software engineering.",
+    "summary": "Software engineer with a focus on building performant, resource-efficient systems end-to-end. Strong across backend infrastructure (serverless, event-driven, IaC), systems programming (Rust), and product engineering (web/Android). Comfortable as a sole engineer owning a full stack, from architecture to deployment and QA.",
+    "location": {
+      "countryCode": "IN",
+      "region": "India"
+    },
     "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "pavi2410",
-        "url": "https://www.linkedin.com/in/pavi2410/"
-      },
       {
         "network": "GitHub",
         "username": "pavi2410",
         "url": "https://github.com/pavi2410"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "pavi2410",
+        "url": "https://www.linkedin.com/in/pavi2410/"
       }
     ]
   },
   "work": [
     {
-      "name": "Kodular",
-      "url": "https://kodular.io/",
-      "description": "A no-code Android app builder",
-      "position": "Co-Founder",
-      "startDate": "2017-06-01",
+      "name": "Infocusp",
+      "url": "https://infocusp.com/",
+      "position": "Software Engineer II",
+      "location": "India",
+      "startDate": "2025-07-01",
+      "description": "Backend & DevOps for a US-based F&B retail chain",
       "highlights": [
-        "A no-code Android app builder that allows you to build Android apps without code using Blockly.",
-        "Responsible for developing and maintaining a collection of over 150 Android components that uses a variety of Android APIs and libraries, and the Andorid build server.",
-        "Gained a consistent user base of 100,000 monthly active users (MAU) over the course of several years. Have over a million app developers registered on our platform. Over 4 million apps were built in 2020 alone."
+        "Working on multiple concurrent systems powering restaurant/store operations including mobile ordering, kitchen operations, and in-store digital signage for a US-based F&B retail chain.",
+        "Among the engineers who designed and architected backend APIs, AWS infrastructure, and serverless systems from the ground up.",
+        "Own infrastructure and DevOps across AWS Lambda, API Gateway, Terraform IaC, authentication, DNS, email infrastructure, security, and operational cost management.",
+        "Performed load/stress testing and optimized backend API flows for sub-second p90 latency under production traffic.",
+        "Fine-tuned Lambda runtime and infrastructure configuration to balance latency and cost efficiency (~$200/month per environment handling 10K MAU).",
+        "Implemented RBAC, phone-number authentication, and large-scale webhook ingestion pipelines for Square and DoorDash using queue-driven event processing.",
+        "Built a real-time Kitchen Display System using AWS IoT Core with MQTT/WebSocket-based communication and event-driven serverless architecture; shipped the full system within 3 weeks by leveraging AI-assisted development workflows.",
+        "Developed Android TV software for scheduled campaigns, menus, and promotional media across franchise store locations; optimized for low-resource TV hardware using disk-cached HD video playback, push-driven scheduling, and coroutine-based background execution; delivered end-to-end within 2 months."
       ]
     },
     {
       "name": "Infocusp",
       "url": "https://infocusp.com/",
-      "position": "Software Engineer",
+      "position": "Software Engineer I",
+      "location": "India",
       "startDate": "2023-07-01",
-      "summary": "Working on an early-stage Blockchain startup project",
+      "endDate": "2025-06-30",
+      "description": "Sole engineer on end-to-end product builds (Chrome extension & Aztec wallet)",
       "highlights": [
-        "Responsible for the developement of a dApp web frontend using React.",
-        "Have an understanding of the Blockchain and the Ethereum network."
-      ]
-    },
-    {
-      "name": "Infocusp",
-      "url": "https://infocusp.com/",
-      "position": "Software Engineer",
-      "startDate": "2023-07-01",
-      "summary": "Working on an early-stage startup project related to Salesforce",
-      "highlights": [
-        "Responsible for the end-to-end development of a Chrome browser extension using Vue.",
-        "Designed the infrastructure using a serverless and event-driven architecture on AWS.",
-        "Helped getting the Google CASA (Cloud Application Security Assessment) certification for the project."
+        "Led two back-to-back products end-to-end as the sole engineer — architecting, building, deploying, and QA-ing complete systems from scratch.",
+        "Designed and single-handedly built a Sales/Leads Chrome Extension integrating Salesforce and Gmail workflows into the browser new-tab experience.",
+        "Owned the full stack including frontend architecture, AWS serverless backend infrastructure, Terraform IaC, deployment pipelines, and QA.",
+        "Implemented secure Gmail background scanning systems and achieved Google CASA security certification.",
+        "Built Stripe-powered billing/subscription workflows and authentication federation using OAuth 2.0 and OpenID Connect.",
+        "Architected and developed a production-ready privacy-focused browser wallet and DApp for Aztec Network, an Ethereum Layer 2 focused on programmable privacy using zero-knowledge proofs.",
+        "Implemented secure cryptographic flows, transaction signing, and key-management systems for privacy-preserving smart contracts.",
+        "Designed state-machine driven UI systems handling complex asynchronous wallet and blockchain interaction flows."
       ]
     },
     {
       "name": "Infocusp",
       "url": "https://infocusp.com/",
       "position": "Associate Software Engineer",
+      "location": "India",
       "startDate": "2022-07-01",
-      "endDate": "2023-07-01",
-      "summary": "Worked on a health-tech device used by 100k users globally.",
+      "endDate": "2023-06-30",
+      "description": "Data engineering for a sleep-tech wearable device",
+      "summary": "Data engineering for a sleep-tech wearable device used by 100K+ users in the US market.",
       "highlights": [
-        "Utilized AWS Glue with PySpark for data engineering tasks to produce performance reports and perform comparisons with the ground truth data of over 100GB.",
-        "Built and maintained a data dashboard that aid cross-functional teams to monitor and troubleshoot user data, which reduced the amount of work and time spent by 80%.",
-        "Performed regular sleep and usage data analysis on random users' sample from a pool of over 10k users, as well as, statistical analysis on all of the users on a quaterly cadence."
+        "Built a data pipeline from scratch in AWS Glue using PySpark, processing tens of GBs of time-series sensor data daily from a health-monitoring wearable device deployed to 100K+ users.",
+        "Optimized pipeline runtime from 3 hours down to 15 minutes through streaming data from S3, intelligent partitioning, optimized joins, and Glue memory/DPU tuning.",
+        "Developed an interactive data dashboard reducing cross-functional team troubleshooting time by 80%.",
+        "Conducted quarterly statistical analysis on user behavior patterns across 10K+ user samples for product insights.",
+        "Ramped up on Apache Spark from the ground up to achieve full technical competence within the first few months on the job."
+      ]
+    },
+    {
+      "name": "Kodular",
+      "url": "https://kodular.io/",
+      "position": "Co-Founder",
+      "location": "Remote",
+      "startDate": "2017-06-01",
+      "description": "A no-code Android app builder",
+      "summary": "US-registered no-code Android app development platform.",
+      "highlights": [
+        "Co-founded a US-registered no-code Android app development platform enabling visual Android app development using Blockly.",
+        "Architected and maintained distributed build infrastructure compiling 10K+ user projects daily into APK and AAB formats.",
+        "Developed and maintained 150+ Android components using Android APIs and third-party libraries.",
+        "Helped scale the platform to 2.2M+ users who collectively built over 5.2M Android applications.",
+        "Worked across platform engineering, Android runtime systems, backend infrastructure, and developer tooling."
       ]
     },
     {
@@ -74,7 +101,7 @@
       "position": "Apprentice",
       "startDate": "2022-01-01",
       "endDate": "2022-04-01",
-      "summary": "Learnt and build an ML based fullstack project."
+      "summary": "Learnt and built an ML-based fullstack project."
     },
     {
       "hide": true,
@@ -84,19 +111,19 @@
       "startDate": "2021-06-01",
       "endDate": "2021-07-01",
       "highlights": [
-        "Bootstrapped a Multi Tenant - SaaS based Campaign Manager",
-        "Built components of a Global E-commerce Engine",
-        "Worked on a Food Tech Platform to aggregate Home Chefs"
+        "Bootstrapped a Multi-Tenant SaaS-based Campaign Manager.",
+        "Built components of a Global E-commerce Engine.",
+        "Worked on a Food-Tech Platform to aggregate Home Chefs."
       ]
     },
     {
-      "name": "Google Summer Of Code × MIT App Inventor",
+      "name": "Google Summer of Code × MIT App Inventor",
       "url": "https://summerofcode.withgoogle.com/archive/2020/projects/5288616609185792",
       "position": "Participant",
       "startDate": "2020-05-01",
       "endDate": "2020-08-01",
       "description": "App Inventor is a project that democratizes mobile app development",
-      "summary": "Researched and Developed a prototype that enables the functionality of visible component extensions, filling a crucial gap within the platform."
+      "summary": "Researched and developed a prototype enabling visible component extensions on the MIT App Inventor platform; implemented iframe-based sandboxing for secure execution of untrusted extension code."
     }
   ],
   "volunteer": [
@@ -104,15 +131,15 @@
       "organization": "Google Developers Student Clubs",
       "position": "Tech Lead",
       "startDate": "2020-03-01",
-      "endDate": "2022-01-01",
-      "summary": "Hosted a few workshops on Android and Kotlin Study Jams."
+      "endDate": "2022-03-01",
+      "summary": "Led technical initiatives and hosted workshops on Android and Kotlin Study Jams."
     },
     {
       "organization": "Google Cloud Sprint Bootcamp",
-      "position": "Apprenticeship",
+      "position": "Apprentice",
       "startDate": "2022-06-01",
       "endDate": "2022-07-01",
-      "summary": "Learnt Google Cloud Platform, networking and troubleshooting."
+      "summary": "Learnt Google Cloud Platform, networking, and troubleshooting."
     }
   ],
   "education": [
@@ -122,7 +149,7 @@
       "area": "Computer Science & Engineering",
       "studyType": "B.Tech",
       "startDate": "2019-07-01",
-      "endDate": "2023-06-31",
+      "endDate": "2023-06-30",
       "score": "9.23/10",
       "courses": [
         "Operating Systems",
@@ -137,63 +164,73 @@
   ],
   "skills": [
     {
-      "name": "Web Development",
+      "name": "Systems & Languages",
       "keywords": [
-        "HTML",
-        "CSS",
-        "JavaScript",
+        "Rust",
         "TypeScript",
+        "JavaScript",
+        "Kotlin",
+        "Python",
+        "Java",
+        "SQL",
+        "C"
+      ]
+    },
+    {
+      "name": "Backend & Infrastructure",
+      "keywords": [
+        "AWS Lambda",
+        "API Gateway",
+        "SQS",
+        "Cognito",
+        "Terraform",
+        "Event-Driven Architecture",
+        "Serverless Systems",
+        "REST APIs"
+      ]
+    },
+    {
+      "name": "Rust & Systems Programming",
+      "keywords": [
+        "Async Rust",
+        "CLI Tooling",
+        "WASM",
+        "Concurrency",
+        "Developer Tooling",
+        "Performance-Oriented Systems"
+      ]
+    },
+    {
+      "name": "Frontend & Product Engineering",
+      "keywords": [
         "React",
         "Vue",
-        "Node",
-        "Chrome Extensions"
+        "Chrome Extensions",
+        "SVG",
+        "State Management",
+        "Responsive UI"
       ]
     },
     {
-      "name": "Android Development",
+      "name": "Blockchain & Cryptography",
       "keywords": [
-        "Java",
-        "Kotlin",
-        "Compose"
+        "Ethereum",
+        "Layer 2 Networks",
+        "Wallet Development",
+        "Zero-Knowledge Cryptography",
+        "Smart Contracts"
       ]
     },
     {
-      "name": "Databases",
+      "name": "Data & DevOps",
       "keywords": [
-        "PostgreSQL",
-        "SQLite"
-      ]
-    },
-    {
-      "name": "Cloud Computing",
-      "keywords": [
-        "Docker",
-        "Terraform",
-        "AWS",
-        "GCP"
-      ]
-    },
-    {
-      "name": "Operating Systems",
-      "keywords": [
-        "Linux",
-        "Windows"
-      ]
-    },
-    {
-      "name": "Systems Programming",
-      "keywords": [
-        "C",
-        "Rust"
-      ]
-    },
-    {
-      "name": "Data Engineering",
-      "keywords": [
-        "Python",
-        "Pandas",
         "PySpark",
-        "AWS Glue"
+        "AWS Glue",
+        "Docker",
+        "CI/CD",
+        "Linux",
+        "MongoDB",
+        "Infrastructure as Code"
       ]
     }
   ],
@@ -235,36 +272,38 @@
   ],
   "projects": [
     {
-      "name": "folo",
-      "description": "a social media metrics tracker app"
+      "name": "based",
+      "description": "Rust-based systems/developer tooling project focused on performance, simplicity, and low-level control. Explores modern Rust patterns around async systems programming and tooling ergonomics.",
+      "url": "https://github.com/pavi2410/based",
+      "keywords": ["Rust", "CLI Tooling", "Async"]
     },
     {
-      "name": "picsup",
-      "description": "an image sharing platform"
+      "name": "jot",
+      "description": "Experimental Rust project exploring lightweight developer workflows and performant tooling. Focused on clean architecture, portability, and minimal abstractions.",
+      "url": "https://github.com/pavi2410/jot",
+      "keywords": ["Rust", "Developer Tooling"]
     },
     {
-      "name": "VR Compatibility Checker",
-      "description": "~100K downloads"
+      "name": "vector",
+      "description": "A feature-rich SVG editor with advanced filter and animation capabilities. Built drag-and-drop canvas editor with real-time SVG rendering, auto-save, undo/redo history, and comprehensive keyboard shortcuts.",
+      "url": "https://vector.pavi2410.com",
+      "keywords": ["React", "SVG", "TypeScript", "ShadCN UI"]
     },
     {
       "name": "PlayBadges",
-      "description": "a badge service for displaying Play Store app's downloads and rating"
+      "description": "Dynamic SVG badge service displaying Android app metrics from Google Play Store. Built a serverless API using Hono for high-performance badge generation integrated with Google Play Store APIs.",
+      "url": "https://github.com/pavi2410/PlayBadges",
+      "keywords": ["Node.js", "Hono", "SVG", "Serverless"]
+    }
+  ],
+  "openSource": [
+    {
+      "name": "MIT App Inventor",
+      "description": "External contributor focused on Android and Java systems."
     },
     {
-      "name": "FloLang",
-      "description": "an interpreted programming language"
-    },
-    {
-      "name": "Sendy",
-      "description": "anonymous file transfer service"
-    },
-    {
-      "name": "App Inventor Modern (unfinished)",
-      "description": "a modernized version of MIT App Inventor using the latest stack."
-    },
-    {
-      "name": "Project Jigsaw (unfinished)",
-      "description": "a new take on a blockly-based app builder. modeled using a declarative UI paradigm influenced by React."
+      "name": "Alchemy IaC",
+      "description": "Contributed Docker provider support."
     }
   ],
   "meta": {
