@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sessionDrivers } from 'astro/config';
 import icon from "astro-icon";
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
@@ -18,6 +18,14 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 export default defineConfig({
   site: "https://pavi2410.com",
   trailingSlash: 'ignore',
+
+  // This is a fully static site that does not use Astro sessions. By default the
+  // Cloudflare adapter enables a KV-backed session driver, which makes Wrangler try
+  // to auto-provision a "website-session" KV namespace on deploy (failing once it
+  // already exists). Using the no-op driver opts out of that KV binding entirely.
+  session: {
+    driver: sessionDrivers.null(),
+  },
 
   redirects: {
     '/gsoc-2020-appinventor-project-vce': '/blog/gsoc-2020-appinventor-project-vce',
