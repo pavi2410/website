@@ -5,9 +5,7 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import Icons from 'unplugin-icons/vite';
-import opengraphImages from 'astro-opengraph-images';
-import fs from 'fs';
-import { blogOgImage } from './src/og-image.tsx';
+import { astroTakumiOg } from './scripts/takumi-og-integration.mjs';
 import { unified } from '@astrojs/markdown-remark';
 
 import cloudflare from '@astrojs/cloudflare';
@@ -35,31 +33,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => !page.includes('/api/') && !page.includes('/blog/tag/'),
     }),
-    opengraphImages({
-      options: {
-        fonts: [
-          {
-            name: "Inter",
-            weight: 400,
-            style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/inter/files/inter-latin-400-normal.woff"),
-          },
-          {
-            name: "Inter",
-            weight: 700,
-            style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/inter/files/inter-latin-700-normal.woff"),
-          },
-          {
-            name: "Bricolage Grotesque",
-            weight: 800,
-            style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff"),
-          },
-        ],
-      },
-      render: blogOgImage,
-    }),
+    astroTakumiOg(),
   ],
 
   vite: {
@@ -67,20 +41,6 @@ export default defineConfig({
       tailwindcss(),
       Icons({ compiler: 'jsx', jsx: 'react' }),
     ],
-    ssr: {
-      external: ['@resvg/resvg-js'],
-      optimizeDeps: {
-        exclude: ['@resvg/resvg-js']
-      }
-    },
-    build: {
-      rollupOptions: {
-        external: ['@resvg/resvg-js', 'jsdom', 'cssstyle']
-      }
-    },
-    optimizeDeps: {
-      exclude: ['@resvg/resvg-js']
-    },
   },
 
   markdown: {

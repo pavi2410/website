@@ -1,4 +1,4 @@
-import type { RenderFunctionInput } from "astro-opengraph-images";
+import type { RenderFunctionInput } from "@/integrations/takumi-og";
 
 export async function blogOgImage(input: RenderFunctionInput): Promise<React.ReactNode> {
   const { title, description, document } = input;
@@ -77,7 +77,6 @@ export async function blogOgImage(input: RenderFunctionInput): Promise<React.Rea
           <span
             style={{
               textDecoration: "underline",
-              textDecorationStyle: "wavy",
               textDecorationColor: "#6366f1",
               textDecorationThickness: "2px",
             }}
