@@ -1,10 +1,9 @@
 import fs from "node:fs";
 import * as fsPromises from "node:fs/promises";
 import path from "node:path";
-import { render } from "takumi-js";
 import { JSDOM } from "jsdom";
-import { blogOgImage } from "../src/og-image.tsx";
 import { extract, sanitizeHtml } from "../src/integrations/takumi-og/extract.ts";
+import { renderOgImageForPage } from "./og-image-render.ts";
 import { ogImageOptions } from "./og-image-options.ts";
 
 interface Manifest {
@@ -31,21 +30,18 @@ const options = { ...ogImageOptions };
 for (const page of manifest.pages) {
   const htmlFile = getFilePath({ dir: manifest.dir, page: page.pathname });
   const html = (await fsPromises.readFile(htmlFile)).toString();
-  const document = new JSDOM(sanitizeHtml(html)).window.document;
-  const pageDetails = extract(document);
-  const reactNode = await blogOgImage({ ...page, ...pageDetails, dir: new URL(`file://${manifest.dir}/`), document });
-  const imageBuffer = await render(reactNode, {
-    width: options.width,
-    height: options.height,
-    format: options.format,
-    drawDebugBorder: options.drawDebugBorder,
-    fonts: options.fonts,
+  const imageBuffer = await renderOgImageForPage({
+    html,
+    pathname: page.pathname,
+    dir: manifest.dir,
   });
 
   const imageFile = htmlFile.replace(/\.html$/, `.${options.format}`);
   await fsPromises.writeFile(imageFile, imageBuffer);
 
   const relativeImageFile = path.relative(manifest.dir, imageFile).replace(/\\/g, "/");
+  const document = new JSDOM(sanitizeHtml(html)).window.document;
+  const pageDetails = extract(document);
   const imageUrl = new URL(pageDetails.image).pathname.slice(1);
 
   if (imageUrl !== relativeImageFile) {

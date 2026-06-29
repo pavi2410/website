@@ -3,11 +3,21 @@ import * as fsPromises from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { ogDevPlugin } from "./og-dev-plugin.ts";
 
 export function astroTakumiOg() {
   return {
     name: "astro-takumi-og",
     hooks: {
+      "astro:config:setup": ({ updateConfig, command }) => {
+        if (command === "dev") {
+          updateConfig({
+            vite: {
+              plugins: [ogDevPlugin()],
+            },
+          });
+        }
+      },
       "astro:build:done": async ({ logger, pages, dir }) => {
         logger.info("Generating Open Graph images using Takumi");
 

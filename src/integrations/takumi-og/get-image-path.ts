@@ -7,28 +7,25 @@ export function getImagePath({
   site: URL | string | undefined;
   format?: string;
 }): string {
-  if (!site) {
+  const base = import.meta.env.DEV ? url.origin : String(site);
+
+  if (!base) {
     throw new Error(
       "`site` must be set in your Astro configuration: https://docs.astro.build/en/reference/configuration-reference/#site",
     );
   }
 
-  let target = url.pathname;
+  const imagePath = url.pathname.endsWith("/")
+    ? `${url.pathname}index.${format}`
+    : `${url.pathname}.${format}`;
 
-  if (target.endsWith("/")) {
-    target = target + `index.${format}`;
-  } else {
-    target = target + `.${format}`;
+  if (imagePath === `/404/index.${format}`) {
+    return new URL(`404.${format}`, base).href;
   }
 
-  if (target === `/404/index.${format}`) {
-    return site.toString() + `404.${format}`;
+  if (imagePath === `/500/index.${format}`) {
+    return new URL(`500.${format}`, base).href;
   }
 
-  if (target === `/500/index.${format}`) {
-    return site.toString() + `500.${format}`;
-  }
-
-  target = target.slice(1);
-  return site.toString() + target;
+  return new URL(imagePath, base).href;
 }
