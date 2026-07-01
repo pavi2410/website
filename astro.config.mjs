@@ -76,4 +76,8 @@ export default defineConfig({
   adapter: cloudflare({
     prerenderEnvironment: 'node',
   }),
+
+  devToolbar: {
+    enabled: false,
+  },
 });

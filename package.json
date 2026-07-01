@@ -34,6 +34,7 @@
     "astro-icon": "^1.1.5",
     "dayjs": "^1.11.19",
     "jsdom": "^29.1.1",
+    "motion": "^12.42.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "rehype-autolink-headings": "^7.1.0",

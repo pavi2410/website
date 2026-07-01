@@ -3,81 +3,195 @@
     "title": "Kodular",
     "icon": "/icon-192.png",
     "description": "A no-code web-based Android app builder",
+    "longDescription": "A no-code, web-based Android app builder that lets anyone assemble fully native Android applications using a drag-and-drop interface — no code required. I contributed to the platform powering hundreds of thousands of published apps.",
+    "homepage": "https://kodular.io",
+    "repo": null,
     "url": "https://kodular.io",
-    "techStack": [
-      "Android",
-      "Java",
-      "No Code"
-    ]
+    "techStack": ["Android", "Java", "No Code"],
+    "stars": null,
+    "language": "Java",
+    "topics": ["android", "no-code", "app-builder"]
   },
   {
     "title": "VR Compatibility Checker",
     "icon": "/icon-192.png",
-    "description": "An Android app to test your's phone VR compatibility",
+    "description": "An Android app to test your phone's VR compatibility",
+    "longDescription": "A Kotlin + Jetpack Compose app that checks whether a phone is VR-ready by probing its sensors, gyroscope, and display capabilities. Published on the Play Store.",
+    "homepage": "https://play.google.com/store/apps/details?id=appinventor.ai_pavitragolchha.VR",
+    "repo": "https://github.com/pavi2410/VRCompatibilityChecker",
     "url": "https://play.google.com/store/apps/details?id=appinventor.ai_pavitragolchha.VR",
-    "techStack": [
-      "Android",
-      "Kotlin",
-      "Compose"
-    ]
+    "techStack": ["Android", "Kotlin", "Compose"],
+    "stars": 21,
+    "language": "Kotlin",
+    "topics": ["android", "kotlin", "compose", "vr"]
+  },
+  {
+    "title": "PlayBadges",
+    "icon": "/icon-192.png",
+    "description": "Show off your Play Store app's downloads and ratings in your repo",
+    "longDescription": "Generate beautiful, auto-updating README badges for your Play Store apps — downloads, ratings, and version. A hosted service used by hundreds of developers to spruce up their GitHub repos. My most-starred project.",
+    "homepage": "https://playbadges.pavi2410.com",
+    "repo": "https://github.com/pavi2410/PlayBadges",
+    "url": "https://github.com/pavi2410/PlayBadges",
+    "techStack": ["NodeJS", "TypeScript", "Hono", "REST"],
+    "stars": 105,
+    "language": "TypeScript",
+    "topics": ["android", "play-store", "badge", "readme-badges", "aso"]
+  },
+  {
+    "title": "based",
+    "icon": "/icon-192.png",
+    "description": "A git-friendly database client",
+    "longDescription": "A modern, git-friendly database client built in Rust with the GPUI toolkit. Query and explore PostgreSQL, SQLite, and MongoDB with a fast, keyboard-driven UI that keeps your workflows version-control friendly.",
+    "homepage": "https://based.pavi2410.com",
+    "repo": "https://github.com/pavi2410/based",
+    "url": "https://github.com/pavi2410/based",
+    "techStack": ["Rust", "GPUI", "PostgreSQL", "SQLite"],
+    "stars": 29,
+    "language": "Rust",
+    "topics": ["database", "explorer", "postgresql", "sqlite", "mongodb", "gpui", "rust"]
+  },
+  {
+    "title": "kmp-app-updater",
+    "icon": "/icon-192.png",
+    "description": "Kotlin Multiplatform in-app update library",
+    "longDescription": "A Kotlin Multiplatform library that handles checking for updates, downloading, and installing them on Android and Desktop JVM — with pluggable update sources. Ship self-updating KMP apps without reinventing the wheel.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/kmp-app-updater",
+    "url": "https://github.com/pavi2410/kmp-app-updater",
+    "techStack": ["Kotlin", "KMP", "Compose", "Desktop"],
+    "stars": 28,
+    "language": "Kotlin",
+    "topics": ["android", "compose-multiplatform", "desktop", "in-app-update", "kmp", "kotlin-multiplatform"]
+  },
+  {
+    "title": "useCompose",
+    "icon": "/icon-192.png",
+    "description": "Headless @Composable hooks that drive UI logic",
+    "longDescription": "Headless, framework-agnostic @Composable hooks that drive UI logic in Jetpack Compose — inspired by TanStack and React hooks. Build reusable, testable state machines for Android UIs.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/useCompose",
+    "url": "https://github.com/pavi2410/useCompose",
+    "techStack": ["Kotlin", "Compose", "Headless", "Hooks"],
+    "stars": 30,
+    "language": "Kotlin",
+    "topics": ["kotlin", "android", "compose", "jetpack-compose", "headless", "hooks", "composable"]
+  },
+  {
+    "title": "html-preview-action",
+    "icon": "/icon-192.png",
+    "description": "GitHub Action to preview HTML pages in PRs",
+    "longDescription": "A GitHub Action that deploys a preview of your HTML pages on every pull request so reviewers can see changes live before merging. Drop-in CI for static-site and demo repos.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/html-preview-action",
+    "url": "https://github.com/pavi2410/html-preview-action",
+    "techStack": ["TypeScript", "GitHub Actions", "CI"],
+    "stars": 44,
+    "language": "TypeScript",
+    "topics": ["html", "preview", "github-actions", "html-preview"]
+  },
+  {
+    "title": "jot",
+    "icon": "/icon-192.png",
+    "description": "A modern Java build tool — cargo for Java",
+    "longDescription": "A modern Java build tool — like cargo for Rust or uv for Python. A single binary, zero config, fast deterministic builds. Reimagining the JVM build experience without the XML ceremony.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/jot",
+    "url": "https://github.com/pavi2410/jot",
+    "techStack": ["Rust", "JVM", "Build Tool", "CLI"],
+    "stars": 14,
+    "language": "Rust",
+    "topics": ["build-tool", "java", "jvm", "maven", "rust", "toolchain", "cli"]
+  },
+  {
+    "title": "cublica",
+    "icon": "/icon-192.png",
+    "description": "A web-based Replicube game clone",
+    "longDescription": "A web-based clone of Replicube, a programming puzzle game. Build logic that replicates target shapes — rendered and simulated in the browser.",
+    "homepage": "https://cublica.pavi2410.workers.dev",
+    "repo": "https://github.com/pavi2410/cublica",
+    "url": "https://cublica.pavi2410.workers.dev",
+    "techStack": ["JavaScript", "Web", "Game", "Cloudflare"],
+    "stars": 12,
+    "language": "JavaScript",
+    "topics": ["game", "web", "puzzle", "cloudflare-workers"]
+  },
+  {
+    "title": "semsearch",
+    "icon": "/icon-192.png",
+    "description": "CLI semantic search engine with BM25 ranking",
+    "longDescription": "A CLI semantic search engine with BM25 ranking, a web crawler, an NLP pipeline, and a rich terminal UI. Crawl a site and query it from your terminal, fast.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/semsearch",
+    "url": "https://github.com/pavi2410/semsearch",
+    "techStack": ["Python", "BM25", "NLP", "CLI"],
+    "stars": 6,
+    "language": "Python",
+    "topics": ["search-engine", "bm25", "cli", "full-text-search", "information-retrieval", "nlp", "web-crawler"]
+  },
+  {
+    "title": "sysdesign-wiki",
+    "icon": "/icon-192.png",
+    "description": "An open encyclopedia of system design for popular apps",
+    "longDescription": "An open encyclopedia of system design and architecture for popular apps — WhatsApp, Instagram, Netflix, Uber, Telegram, Twitter. Copy AI-ready prompts to build your own. Built with Astro on Cloudflare.",
+    "homepage": "https://sysdesign.wiki",
+    "repo": "https://github.com/pavi2410/sysdesign-wiki",
+    "url": "https://sysdesign.wiki",
+    "techStack": ["Astro", "MDX", "Cloudflare", "Tailwind"],
+    "stars": 1,
+    "language": "MDX",
+    "topics": ["distributed-systems", "encyclopedia", "software-architecture", "system-design", "wiki"]
   },
   {
     "title": "picsup",
     "icon": "/icon-192.png",
     "description": "An image sharing platform",
+    "longDescription": "A full-stack image sharing platform where users upload, share, and browse images. Built with React and a Node backend.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/picsup",
     "url": "https://github.com/pavi2410/picsup",
-    "techStack": [
-      "FullStack",
-      "Web",
-      "Javascript",
-      "React"
-    ]
-  },
-  {
-    "title": "PlayBadges",
-    "icon": "/icon-192.png",
-    "description": "Show off your Play Store™ app's downloads and rating in your repo",
-    "url": "https://github.com/pavi2410/playbadges",
-    "techStack": [
-      "NodeJS",
-      "JavaScript",
-      "Hono",
-      "REST"
-    ]
+    "techStack": ["FullStack", "Web", "JavaScript", "React"],
+    "stars": null,
+    "language": "JavaScript",
+    "topics": ["fullstack", "web", "react", "images"]
   },
   {
     "title": "folo",
     "icon": "/icon-192.png",
-    "description": "Followers tracker app",
+    "description": "A social media metrics tracker app",
+    "longDescription": "A followers and social media metrics tracker app for Android, built with Kotlin and Jetpack Compose. Track your audience growth over time.",
+    "homepage": "https://folo.ing",
+    "repo": "https://github.com/pavi2410/folo",
     "url": "https://folo.ing",
-    "techStack": [
-      "Android",
-      "Kotlin",
-      "Compose"
-    ]
+    "techStack": ["Android", "Kotlin", "Compose"],
+    "stars": null,
+    "language": "Kotlin",
+    "topics": ["android", "kotlin", "compose", "social-media"]
   },
   {
     "title": "TaskMate",
     "icon": "/icon-192.png",
     "description": "Yet another Trello clone",
+    "longDescription": "A Trello-style kanban board clone with boards, lists, and drag-and-drop cards. A full-stack web app built to learn React state and real-time sync.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/taskmate",
     "url": "https://github.com/pavi2410/taskmate",
-    "techStack": [
-      "FullStack",
-      "Web",
-      "JavaScript",
-      "React"
-    ]
+    "techStack": ["FullStack", "Web", "JavaScript", "React"],
+    "stars": null,
+    "language": "JavaScript",
+    "topics": ["fullstack", "web", "react", "kanban"]
   },
   {
     "title": "REPLisp",
     "icon": "/icon-192.png",
     "description": "A LISP interpreter implemented in Rust",
-    "url": "https://github.com/pavi2410/replisp",
-    "techStack": [
-      "Rust",
-      "LISP",
-      "Programming Language",
-      "Interpreter"
-    ]
+    "longDescription": "A mini Lisp-like interpreted language built from scratch in Rust — lexer, parser, evaluator, and a REPL. A fun deep-dive into interpreters and programming-language design.",
+    "homepage": null,
+    "repo": "https://github.com/pavi2410/REPLisp",
+    "url": "https://github.com/pavi2410/REPLisp",
+    "techStack": ["Rust", "LISP", "Programming Language", "Interpreter"],
+    "stars": 4,
+    "language": "Rust",
+    "topics": ["rust", "lisp", "interpreter", "programming-language"]
   }
 ]
