@@ -1,0 +1,45 @@
+---
+import SocialLink from "./SocialLink.astro";
+
+const links = [
+  {
+    href: "https://twitter.com/PavitraGolchha",
+    label: "Twitter",
+    icon: "tabler:brand-twitter",
+    buttonClass:
+      "bg-[#1DA1F2] hover:bg-[#1DA1F2]/10 text-white hover:text-[#1DA1F2] hover:-rotate-3",
+  },
+  {
+    href: "https://github.com/pavi2410",
+    label: "GitHub",
+    icon: "tabler:brand-github",
+    buttonClass:
+      "bg-neutral-900 dark:bg-white hover:bg-neutral-900/10 dark:hover:bg-white/10 text-white dark:text-neutral-900 hover:text-neutral-900 dark:hover:text-white hover:rotate-2",
+  },
+  {
+    href: "https://linkedin.com/in/pavi2410",
+    label: "LinkedIn",
+    icon: "tabler:brand-linkedin",
+    buttonClass:
+      "bg-[#0A66C2] hover:bg-[#0A66C2]/10 text-white hover:text-[#0A66C2] hover:-rotate-2",
+  },
+  {
+    href: "https://youtube.com/@PavitraGolchha",
+    label: "YouTube",
+    icon: "tabler:brand-youtube",
+    buttonClass:
+      "bg-[#FF0000] hover:bg-[#FF0000]/10 text-white hover:text-[#FF0000] hover:rotate-3",
+  },
+  {
+    href: "mailto:hello@pavi2410.com",
+    label: "Email",
+    icon: "tabler:mail",
+    buttonClass:
+      "bg-emerald-500 hover:bg-emerald-500/10 text-white hover:text-emerald-600 dark:hover:text-emerald-400 hover:-rotate-2",
+  },
+];
+---
+
+<div class="flex flex-wrap justify-center gap-3 sm:gap-4 font-bricolage font-bold">
+  {links.map((link) => <SocialLink {...link} />)}
+</div>

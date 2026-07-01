@@ -2,6 +2,7 @@
 import ProjectsGrid from "@/components/projects/ProjectsGrid";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Tag from "@/components/Tag.astro";
+import SocialButtons from "@/components/SocialButtons.astro";
 import Header from "@/components/Header.astro";
 
 import projectsData from "@/data/projects.json";
@@ -120,44 +121,7 @@ import { Icon } from "astro-icon/components";
         I'm always down to chat about code, design, or life in general. Drop a hi!
       </p>
 
-      <div class="flex flex-wrap justify-center gap-3 sm:gap-4 font-bricolage font-bold">
-        
-        <a href="https://twitter.com/PavitraGolchha" target="_blank" rel="noreferrer" class="group">
-          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#1DA1F2]/10 hover:bg-[#1DA1F2] text-[#1DA1F2] hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-3 text-sm sm:text-base">
-            <Icon name="tabler:brand-twitter" class="text-xl sm:text-2xl" />
-            <span>Twitter</span>
-          </button>
-        </a>
-
-        <a href="https://github.com/pavi2410" target="_blank" rel="noreferrer" class="group">
-          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-neutral-900/10 dark:bg-white/10 hover:bg-neutral-900 dark:hover:bg-white text-neutral-900 dark:text-white hover:text-white dark:hover:text-neutral-900 transition-all duration-300 hover:scale-110 hover:rotate-2 text-sm sm:text-base">
-            <Icon name="tabler:brand-github" class="text-xl sm:text-2xl" />
-            <span>GitHub</span>
-          </button>
-        </a>
-
-        <a href="https://linkedin.com/in/pavi2410" target="_blank" rel="noreferrer" class="group">
-          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#0A66C2]/10 hover:bg-[#0A66C2] text-[#0A66C2] hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-2 text-sm sm:text-base">
-            <Icon name="tabler:brand-linkedin" class="text-xl sm:text-2xl" />
-            <span>LinkedIn</span>
-          </button>
-        </a>
-
-        <a href="https://youtube.com/@PavitraGolchha" target="_blank" rel="noreferrer" class="group">
-          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-[#FF0000]/10 hover:bg-[#FF0000] text-[#FF0000] hover:text-white transition-all duration-300 hover:scale-110 hover:rotate-3 text-sm sm:text-base">
-            <Icon name="tabler:brand-youtube" class="text-xl sm:text-2xl" />
-            <span>YouTube</span>
-          </button>
-        </a>
-
-        <a href="mailto:hello@pavi2410.com" target="_blank" rel="noreferrer" class="group">
-          <button class="flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-600 dark:text-emerald-400 hover:text-white transition-all duration-300 hover:scale-110 hover:-rotate-2 text-sm sm:text-base">
-            <Icon name="tabler:mail" class="text-xl sm:text-2xl" />
-            <span>Email</span>
-          </button>
-        </a>
-
-      </div>
+      <SocialButtons />
 
       <div class="mt-20 sm:mt-24 text-neutral-500 font-bricolage flex flex-col items-center gap-2">
         <p class="text-base sm:text-lg">See you again! 👋</p>
