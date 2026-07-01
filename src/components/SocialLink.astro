@@ -5,18 +5,132 @@ interface Props {
   href: string;
   label: string;
   icon: string;
-  buttonClass: string;
+  color: string;
+  darkColor?: string;
+  hoverRotate?: string;
+  gooDelay?: string;
 }
 
-const { href, label, icon, buttonClass } = Astro.props;
+const {
+  href,
+  label,
+  icon,
+  color,
+  darkColor,
+  hoverRotate = "0deg",
+  gooDelay = "0s",
+} = Astro.props;
 
-const baseClass =
-  "flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-4 rounded-full hover:backdrop-blur-md transition-all duration-300 hover:scale-110 text-sm sm:text-base";
+const style = darkColor
+  ? `--blob-color-light: ${color}; --blob-color-dark: ${darkColor}; --hover-rotate: ${hoverRotate}; --goo-delay: ${gooDelay}`
+  : `--blob-color: ${color}; --hover-rotate: ${hoverRotate}; --goo-delay: ${gooDelay}`;
 ---
 
-<a href={href} target="_blank" rel="noreferrer" class="group">
-  <button class:list={[baseClass, buttonClass]}>
-    <Icon name={icon} class="text-xl sm:text-2xl" />
-    <span>{label}</span>
-  </button>
+<a
+  href={href}
+  target="_blank"
+  rel="noreferrer"
+  class:list={[
+    "social-link group inline-block font-bricolage font-bold transition-transform duration-300 hover:scale-[1.06]",
+    darkColor && "has-dark-blob",
+  ]}
+  style={style}
+>
+  <div class="social-link__inner relative inline-flex items-center isolate">
+    <div
+      class="absolute inset-0 rounded-full bg-[var(--blob-color)] transition-opacity duration-300 group-hover:opacity-0"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="social-link__goo absolute inset-0 z-0 flex items-center opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100"
+      aria-hidden="true"
+    >
+      <div class="size-12 shrink-0 rounded-full bg-[var(--blob-color)] social-link__circle"></div>
+      <div class="social-link__pill h-12 flex-1 min-w-0 -ml-[0.625rem] rounded-full bg-[var(--blob-color)]"></div>
+    </div>
+
+    <div
+      class:list={[
+        "social-link__content relative z-10 flex items-center gap-0 pl-2 text-sm sm:text-base text-white transition-[padding] duration-300 group-hover:pl-0",
+        darkColor && "dark:text-neutral-900",
+      ]}
+    >
+      <span class="flex size-10 shrink-0 items-center justify-center transition-[width,height] duration-300 group-hover:size-12">
+        <Icon name={icon} class="size-5 sm:size-6 stroke-[2] text-current" />
+      </span>
+      <span class="whitespace-nowrap py-3 pr-5 pl-0 transition-[padding] duration-300 group-hover:pl-2">{label}</span>
+    </div>
+  </div>
 </a>
+
+<style is:global>
+  .social-link.has-dark-blob {
+    --blob-color: var(--blob-color-light);
+  }
+
+  :is(.dark) .social-link.has-dark-blob {
+    --blob-color: var(--blob-color-dark);
+  }
+
+  .social-link:hover .social-link__goo {
+    filter: url(#social-goo);
+  }
+</style>
+
+<style>
+  .social-link {
+    transform: rotate(0deg);
+  }
+
+  .social-link:hover {
+    transform: scale(1.06) rotate(var(--hover-rotate));
+  }
+
+  .social-link:hover .social-link__circle {
+    animation: goo-circle 2s ease-in-out infinite;
+    animation-delay: var(--goo-delay);
+  }
+
+  .social-link:hover .social-link__pill {
+    animation: goo-pill 2s ease-in-out infinite;
+    animation-delay: var(--goo-delay);
+  }
+
+  @keyframes goo-circle {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(-1px, -1px) scale(1.04);
+    }
+    66% {
+      transform: translate(1px, 1px) scale(0.97);
+    }
+  }
+
+  @keyframes goo-pill {
+    0%,
+    100% {
+      margin-left: -0.625rem;
+      transform: scaleX(1);
+    }
+    50% {
+      margin-left: -0.5rem;
+      transform: scaleX(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .social-link:hover {
+      transform: none;
+    }
+
+    .social-link:hover .social-link__circle,
+    .social-link:hover .social-link__pill {
+      animation: none;
+    }
+  }
+</style>

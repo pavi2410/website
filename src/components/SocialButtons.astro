@@ -6,40 +6,79 @@ const links = [
     href: "https://twitter.com/PavitraGolchha",
     label: "Twitter",
     icon: "tabler:brand-twitter",
-    buttonClass:
-      "bg-[#1DA1F2] hover:bg-[#1DA1F2]/10 text-white hover:text-[#1DA1F2] hover:-rotate-3",
+    color: "#1DA1F2",
+    hoverRotate: "-3deg",
+    gooDelay: "0s",
   },
   {
     href: "https://github.com/pavi2410",
     label: "GitHub",
     icon: "tabler:brand-github",
-    buttonClass:
-      "bg-neutral-900 dark:bg-white hover:bg-neutral-900/10 dark:hover:bg-white/10 text-white dark:text-neutral-900 hover:text-neutral-900 dark:hover:text-white hover:rotate-2",
+    color: "#171717",
+    darkColor: "#ffffff",
+    hoverRotate: "2deg",
+    gooDelay: "0.4s",
   },
   {
     href: "https://linkedin.com/in/pavi2410",
     label: "LinkedIn",
     icon: "tabler:brand-linkedin",
-    buttonClass:
-      "bg-[#0A66C2] hover:bg-[#0A66C2]/10 text-white hover:text-[#0A66C2] hover:-rotate-2",
+    color: "#0A66C2",
+    hoverRotate: "-2deg",
+    gooDelay: "0.8s",
   },
   {
     href: "https://youtube.com/@PavitraGolchha",
     label: "YouTube",
     icon: "tabler:brand-youtube",
-    buttonClass:
-      "bg-[#FF0000] hover:bg-[#FF0000]/10 text-white hover:text-[#FF0000] hover:rotate-3",
+    color: "#FF0000",
+    hoverRotate: "3deg",
+    gooDelay: "1.2s",
   },
   {
     href: "mailto:hello@pavi2410.com",
     label: "Email",
     icon: "tabler:mail",
-    buttonClass:
-      "bg-emerald-500 hover:bg-emerald-500/10 text-white hover:text-emerald-600 dark:hover:text-emerald-400 hover:-rotate-2",
+    color: "#10b981",
+    hoverRotate: "-2deg",
+    gooDelay: "1.6s",
   },
 ];
 ---
 
-<div class="flex flex-wrap justify-center gap-3 sm:gap-4 font-bricolage font-bold">
+<svg class="sr-only" aria-hidden="true">
+  <defs>
+    <filter id="social-goo" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur">
+        <animate
+          attributeName="stdDeviation"
+          values="4;6;5;6;5;4"
+          dur="4s"
+          repeatCount="indefinite"></animate>
+      </feGaussianBlur>
+      <feColorMatrix
+        in="blur"
+        mode="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -13"
+        result="goo">
+        <animate
+          attributeName="values"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10;1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 30 -15;1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -13"
+          dur="4s"
+          repeatCount="indefinite"></animate>
+      </feColorMatrix>
+    </filter>
+  </defs>
+</svg>
+
+<div class="flex flex-wrap justify-center gap-4 sm:gap-5 font-bricolage font-bold">
   {links.map((link) => <SocialLink {...link} />)}
 </div>
+
+<style is:global>
+  @media (prefers-reduced-motion: reduce) {
+    #social-goo animate {
+      display: none;
+    }
+  }
+</style>
