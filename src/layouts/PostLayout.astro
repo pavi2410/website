@@ -174,7 +174,7 @@ const headings = Astro.props.headings || [];
       </main>
     </article>
 
-    <!-- TOC for desktop: sticky on the right -->
+    <!-- TOC for desktop: compact rail fixed to the right edge -->
     <aside class="toc-aside">
       <TableOfContents client:load headings={headings} />
     </aside>
@@ -192,14 +192,14 @@ const headings = Astro.props.headings || [];
     @apply hidden;
   }
 
-  /* Desktop xl (1280px+): center content + TOC as a group */
+  /* Desktop xl (1280px+): center the article independently of the edge TOC */
   @media (min-width: 1280px) {
     .blog-container {
-      @apply flex justify-center gap-8 max-w-[1200px];
+      @apply flex justify-center;
     }
 
     .toc-aside {
-      @apply block sticky top-24 w-64 h-[calc(100vh-6rem)] shrink-0;
+      @apply fixed inset-y-0 right-0 z-30 block h-screen w-8;
     }
   }
 
