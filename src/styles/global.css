@@ -24,6 +24,39 @@
         @apply bg-blue-500/20! border border-blue-500/30! rounded-lg;
     }
 
+    .code-block {
+        @apply relative my-8;
+    }
+
+    .code-block > pre {
+        @apply my-0 pr-12;
+    }
+
+    .code-copy-btn {
+        @apply absolute top-2 right-2 z-10 flex size-8 items-center justify-center rounded-md p-0;
+        @apply border border-blue-500/30 bg-white/90 text-neutral-600 shadow-sm backdrop-blur-sm;
+        @apply dark:bg-neutral-900/90 dark:text-neutral-200 dark:border-blue-400/30;
+        @apply transition-colors duration-150 cursor-pointer;
+        @apply hover:bg-white hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white;
+        @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500;
+    }
+
+    .code-copy-btn .copied-icon {
+        display: none;
+    }
+
+    .code-copy-btn[data-copied] {
+        @apply text-emerald-600 border-emerald-500/40 dark:text-emerald-400;
+    }
+
+    .code-copy-btn[data-copied] .copy-icon {
+        display: none;
+    }
+
+    .code-copy-btn[data-copied] .copied-icon {
+        display: block;
+    }
+
     blockquote > p {
         &::before,
         &::after {

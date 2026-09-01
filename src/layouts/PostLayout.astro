@@ -14,6 +14,7 @@ import { Icon } from "astro-icon/components";
 import TableOfContents from "@/components/TableOfContents";
 import CopyToMarkdown from "@/components/CopyToMarkdown";
 import ShareButtons from "@/components/ShareButtons.astro";
+import CodeCopy from "@/components/CodeCopy.astro";
 
 export interface Props {
   frontmatter: CollectionEntry<"posts">["data"];
@@ -147,6 +148,7 @@ const headings = Astro.props.headings || [];
         }
       </header>
       <main>
+        <CodeCopy />
         <slot />
 
         <ShareButtons url={fullUrl} title={title} />

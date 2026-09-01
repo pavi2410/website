@@ -11,6 +11,7 @@ import { unified } from '@astrojs/markdown-remark';
 import cloudflare from '@astrojs/cloudflare';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { transformerCopyButton } from './src/plugins/shiki-copy-button.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,6 +50,7 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark',
       },
+      transformers: [transformerCopyButton()],
     },
     processor: unified({
       rehypePlugins: [

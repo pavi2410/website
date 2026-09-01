@@ -1,0 +1,28 @@
+<script>
+  document.addEventListener("click", async (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const button = target.closest(".code-copy-btn");
+    if (!(button instanceof HTMLButtonElement)) return;
+
+    const code = button.closest(".code-block")?.querySelector("code");
+    const text = code?.textContent ?? "";
+    if (!text) return;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      button.dataset.copied = "";
+      button.setAttribute("aria-label", "Copied");
+      button.setAttribute("title", "Copied");
+
+      window.setTimeout(() => {
+        delete button.dataset.copied;
+        button.setAttribute("aria-label", "Copy code");
+        button.setAttribute("title", "Copy code");
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to copy code:", error);
+    }
+  });
+</script>
