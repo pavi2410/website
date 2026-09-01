@@ -13,6 +13,8 @@ const encodedTitle = encodeURIComponent(title);
 
 const twitterUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
 const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+const redditUrl = `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`;
+const hackerNewsUrl = `https://news.ycombinator.com/submitlink?u=${encodedUrl}&t=${encodedTitle}`;
 ---
 
 <div class="flex items-center gap-4 mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
@@ -35,6 +37,24 @@ const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encod
       aria-label="Share on LinkedIn"
     >
       <Icon name="tabler:brand-linkedin" class="w-5 h-5" />
+    </a>
+    <a
+      href={redditUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors"
+      aria-label="Share on Reddit"
+    >
+      <Icon name="tabler:brand-reddit" class="w-5 h-5" />
+    </a>
+    <a
+      href={hackerNewsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+      aria-label="Share on Hacker News"
+    >
+      <Icon name="tabler:brand-ycombinator" class="w-5 h-5" />
     </a>
   </div>
 </div>
