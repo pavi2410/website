@@ -8,6 +8,8 @@ quickLinks:
     link: https://github.com/pavi2410/kmp-app-updater
   - title: Maven Central
     link: https://central.sonatype.com/namespace/com.pavi2410.kmp-app-updater
+  - title: klibs.io
+    link: https://klibs.io/project/pavi2410/kmp-app-updater
 ---
 
 ## The Problem
@@ -309,6 +311,6 @@ dependencies {
 }
 ```
 
-The source is on [GitHub](https://github.com/pavi2410/kmp-app-updater), and it should show up on [klibs.io](https://klibs.io) shortly.
+The source is on [GitHub](https://github.com/pavi2410/kmp-app-updater), and it's listed on [klibs.io](https://klibs.io/project/pavi2410/kmp-app-updater).
 
 If you have feedback or ideas, open an issue. I'd love to hear what other update sources people want — GitLab, Bitbucket, custom HTTP, whatever.
